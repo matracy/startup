@@ -1,1 +1,1 @@
-Initial local text
+Initial remote text
