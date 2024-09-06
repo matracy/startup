@@ -1,1 +1,1 @@
-Initial remote text
+Second local edit
