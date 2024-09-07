@@ -11,15 +11,15 @@ STV voting site.  Create and vote in polls using single transferable vote.
 ### Use of focus technologies
 #### HTML
 * display text
-* provide scaffolding to attatch all the other features to
+* provide scaffolding to attach all the other features to
 * forum could be used to submit votes
 #### CSS
 * everything looks better with color
 * much of the voting interface would look better if it wasn't left-justified
 #### JavaScript
 * ripple/blink effect when an option is selected would provide more obvious feedback
-* results could be given as an animation showing how they were calculated.  Shown work, basicaly.
-#### React [JS UI framework]
+* results could be given as an animation showing how they were calculated.  Shown work, basically.
+#### React (JS UI framework)
 * a UI framework feels like it would provide a nice simplification of the CSS and JavaScript described above.
 #### Web service
 ##### Local services
@@ -35,7 +35,7 @@ STV voting site.  Create and vote in polls using single transferable vote.
 ##### External services
 * Colors randomly set per poll by the Colormind API
 #### Authentication
-* prevent voter fraud by requireing login to vote
+* prevent voter fraud by requiring login to vote
 * provide a way to track past polls
 * provide a way to create new polls
 #### Database data
@@ -51,5 +51,10 @@ STV voting site.  Create and vote in polls using single transferable vote.
   - results
 #### WebSocket data
 * clients could receive "shown work" for poll results in stages
-* 
 ### Concept sketches
+#### Home and authentication
+![Landing page, account creation, and login](image-cache/home-and-auth.jpg)
+#### Account view, poll results, and poll administration
+![Account home, poll results, poll administration](image-cache/account-view.jpg "Account views")
+#### Poll creation, registering to vote, and voting
+![Poll creation, voting registration, and voting process](image-cache/poll-participation.jpg)
