@@ -58,3 +58,10 @@ STV voting site.  Create and vote in polls using single transferable vote.
 ![Account home, poll results, poll administration](image-cache/account-view.jpg "Account views")
 #### Poll creation, registering to vote, and voting
 ![Poll creation, voting registration, and voting process](image-cache/poll-participation.jpg)
+
+## Startup HTML deliverable
+### Modifications
+* Updated README.md to include modifications and deletions for Startup HTML deliverable
+### Additions
+* Initial deployment of Simon HTML
+
