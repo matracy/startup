@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32.979794mm"
+   height="18.768875mm"
+   viewBox="0 0 32.979794 18.768874"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="logo-square.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.979405"
+     inkscape:cx="73.753158"
+     inkscape:cy="37.461921"
+     inkscape:window-width="1920"
+     inkscape:window-height="987"
+     inkscape:window-x="0"
+     inkscape:window-y="56"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect26026"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-44.049908,-50.266415)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="49.769699"
+       y="58.121208"
+       id="text3026"><tspan
+         sodipodi:role="line"
+         id="tspan3024"
+         style="stroke-width:0.264583"
+         x="49.769699"
+         y="58.121208">ST  </tspan></text>
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.405;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect22750"
+       width="5.2115746"
+       height="4.2503285"
+       x="61.442612"
+       y="56.045467" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="43.455631"
+       y="68.885429"
+       id="text52782"><tspan
+         sodipodi:role="line"
+         id="tspan52780"
+         style="stroke-width:0.264583"
+         x="43.455631"
+         y="68.885429">Online</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="z+1"
+     transform="translate(-44.049908,-50.266415)">
+    <path
+       style="fill:none;stroke:#00ff00;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 62.69135,52.384825 c 0.425276,3.457325 0.850507,6.914285 1.31997,6.952275 0.469463,0.03799 0.983178,-3.342851 1.931656,-5.666006 0.948479,-2.323155 2.33156,-3.588111 3.63766,-4.480941 1.306099,-0.89283 2.534971,-1.413395 3.763737,-1.933915"
+       id="path26024"
+       inkscape:path-effect="#path-effect26026"
+       inkscape:original-d="m 62.69135,52.384825 c 0.425504,3.457297 0.850735,6.914257 1.275719,10.371096 0.514012,-3.380785 1.027727,-6.761627 1.541209,-10.142939 1.383429,-1.264767 2.76651,-2.529723 4.149409,-3.795019 1.229184,-0.52032 2.458055,-1.040885 3.686686,-1.561725"
+       sodipodi:nodetypes="ccccc" />
+  </g>
+</svg>
