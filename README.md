@@ -64,4 +64,13 @@ STV voting site.  Create and vote in polls using single transferable vote.
 * Updated README.md to include modifications and deletions for Startup HTML deliverable
 ### Additions
 * Initial deployment of Simon HTML
-
+* GitHub repo is now linked in footers of all pages
+* All pages for the website actually exist now, including login pages
+* Pages all have sensible links between eachother
+* Pages all have placeholder text
+### TODO
+* Application images
+* add username display
+* placeholder for 3rd party API calls
+* clarifiy what data is stored in database
+* clarify what data is recieved in realtime via websocket
