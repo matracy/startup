@@ -37,63 +37,69 @@
 				</span>
 			</div>
 		</header>
-		<h1>Poll Options</h1>
-		<ul>
-			<li>An option</li>
-			<li>Some other option</li>
-			<li>Yet another option</li>
-			<li>Some not-so-secret-anymore 4th option</li>
-		</ul>
-		<form action="./newPoll.html" method="post">
-			<label for="newOption">Add option</label>
-			<input type="text" id="addOption" name="addOption" />
-			<input type="submit" value="Add" />
-		</form>
-		<br />
-		<h1>Poll Settings</h1>
-		<form action="./newPoll.html" method="post">
-			<label for="pollName">Poll Name: </label>
-			<input type="text" id="pollName" name="pollName" />
-			<label for="voterCount">Maximum number of voters: </label>
-			<input
-				type="number"
-				id="voterCount"
-				name="voterCount"
-				step="1"
-				min="1"
-			/><br />
-			<label for="unlimitedRegistration"
-				>Allow unlimited number of voters</label
-			>
-			<input
-				type="checkbox"
-				id="unlimitedRegistration"
-				name="unlimitedRegistration"
-			/><br />
-			<label for="startDateTime">Voting opens: </label>
-			<input
-				type="datetime"
-				id="startDateTime"
-				name="startDateTime"
-			/><br />
-			<label for="endDateTime">Voting closes: </label>
-			<input type="datetime" id="endDateTime" name="endDateTime" /><br />
-			<input type="submit" value="Apply" />
-		</form>
-		<br />
-		<h1>Launch Poll</h1>
-		<form action="./registerInPoll.html" method="post">
-			<label for="launchConfirmation"
-				>I understand that once launched, a poll cannot be changed, and
-				wish to launch this poll.</label
-			>
-			<input
-				type="checkbox"
-				name="launchConfirmation"
-				id="launchConfirmation"
-			/>
-			<input type="submit" value="Launch poll" />
-		</form>
+		<main>
+			<h1>Poll Options</h1>
+			<ul>
+				<li>An option</li>
+				<li>Some other option</li>
+				<li>Yet another option</li>
+				<li>Some not-so-secret-anymore 4th option</li>
+			</ul>
+			<form action="./newPoll.html" method="post">
+				<label for="newOption">Add option</label>
+				<input type="text" id="addOption" name="addOption" />
+				<input type="submit" value="Add" />
+			</form>
+			<br />
+			<h1>Poll Settings</h1>
+			<form action="./newPoll.html" method="post">
+				<label for="pollName">Poll Name: </label>
+				<input type="text" id="pollName" name="pollName" />
+				<label for="voterCount">Maximum number of voters: </label>
+				<input
+					type="number"
+					id="voterCount"
+					name="voterCount"
+					step="1"
+					min="1"
+				/><br />
+				<label for="unlimitedRegistration"
+					>Allow unlimited number of voters</label
+				>
+				<input
+					type="checkbox"
+					id="unlimitedRegistration"
+					name="unlimitedRegistration"
+				/><br />
+				<label for="startDateTime">Voting opens: </label>
+				<input
+					type="datetime"
+					id="startDateTime"
+					name="startDateTime"
+				/><br />
+				<label for="endDateTime">Voting closes: </label>
+				<input
+					type="datetime"
+					id="endDateTime"
+					name="endDateTime"
+				/><br />
+				<input type="submit" value="Apply" />
+			</form>
+			<br />
+			<h1>Launch Poll</h1>
+			<form action="./registerInPoll.html" method="post">
+				<label for="launchConfirmation"
+					>I understand that once launched, a poll cannot be changed,
+					and wish to launch this poll.</label
+				>
+				<input
+					type="checkbox"
+					name="launchConfirmation"
+					id="launchConfirmation"
+				/>
+				<input type="submit" value="Launch poll" />
+			</form>
+		</main>
 		<footer>
 			<nav>
 				<span
