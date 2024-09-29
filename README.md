@@ -68,9 +68,7 @@ STV voting site.  Create and vote in polls using single transferable vote.
 * All pages for the website actually exist now, including login pages
 * Pages all have sensible links between eachother
 * Pages all have placeholder text
-### TODO
-* Application images
-* add username display
-* placeholder for 3rd party API calls
-* clarifiy what data is stored in database
-* clarify what data is recieved in realtime via websocket
+* Included comments to show examples of which filler data comes from the database, and which comes from a websocket
+* Included placeholder for 3rd-party API call
+### A note about the 3rd-party API call
+My 3rd-party API of choice is [colormind.io], and cannot be included represented without CSS since it only supplies color palettes.  For the sake of meeting the placeholder requirement, I have included a CSS file with a note to this effect inside it.
