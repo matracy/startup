@@ -12,27 +12,27 @@
 		<header>
 			<nav>
 				<span>
-					<a href="./index.html">
+					<a class="imgLink" href="./index.html">
 						<img
 							src="./img-assets/logo-wide.svg"
 							alt="STV Online"
 						/>
 					</a>
 				</span>
-				<span>
+				<span class="navLink">
 					<a href="./index.html">Log out</a>
 				</span>
 			</nav>
 			<div>
 				<span>
-					<a href="./account.html">
+					<a class="imgLink" href="./account.html">
 						<img
 							src="./img-assets/generig-pfp.svg"
 							alt="pfp"
 							width="50px"
 					/></a>
 				</span>
-				<span>
+				<span class="infoText">
 					<p>Voting as Jhon Doe</p>
 				</span>
 			</div>
@@ -40,14 +40,22 @@
 		<main>
 			<form action="./poll.html" method="post">
 				<label for="pollID">Poll ID:</label>
-				<input type="text" id="pollID" name="pollID" required /><br />
-				<input type="submit" value="Register" />
+				<input
+					class="textInput"
+					type="text"
+					id="pollID"
+					name="pollID"
+					required
+				/><br />
+				<input class="buttonInput" type="submit" value="Register" />
 			</form>
 		</main>
 		<footer>
 			<nav>
 				<span
-					><a href="https://github.com/matracy/startup/"
+					><a
+						class="sourceLink"
+						href="https://github.com/matracy/startup/"
 						>The source</a
 					>
 					is available on GitHub.</span
