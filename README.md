@@ -83,8 +83,8 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
   - [X] account.html
   - [X] createAccount.html
   - [X] index.html
-  - [ ] newPoll.html
-  - [ ] poll.html
+  - [X] newPoll.html
+  - [X] poll.html
   - [ ] pollResults.html
   - [ ] registerInPoll.html
   - [ ] signIn.html
@@ -106,6 +106,12 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 	  - [ ] sourceLink
 		- [ ] textInput
 		- [ ] buttonInput
+		- [ ] toggleInput
+		- [ ] confirmInput
+		- [ ] rankInput
+		- [ ] sectionTitle
+		- [ ] instructionText
+		- [ ] pollOption
 * Ensure that name is displayed in the application
   - [ ] account.html
   - [ ] createAccount.html
