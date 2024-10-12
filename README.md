@@ -79,15 +79,6 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * Updated Simon deployment to CSS
 ### Additions
 ### TODO
-* Tag all pages with CSS classes
-  - [X] account.html
-  - [X] createAccount.html
-  - [X] index.html
-  - [X] newPoll.html
-  - [X] poll.html
-  - [ ] pollResults.html
-  - [ ] registerInPoll.html
-  - [ ] signIn.html
 * [ ] Create CSS sheets - skeleton files
 * [ ] Fill color variables in dynamic-colors.css
 * [ ] Use CSS [var()](https://www.w3schools.com/css/css3_variables.asp) to reference color sheet
