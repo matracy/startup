@@ -1,0 +1,48 @@
+/* Global defaults */
+:root {
+	color: var(--primaryColor);
+}
+/* Element-based styles */
+header {
+	color: var(--mainAccentColor);
+}
+main {
+}
+footer {
+	color: var(--mainAccentColor);
+}
+nav {
+}
+label {
+}
+/* Class-based styles */
+.navLink {
+}
+.imgLink {
+}
+.infoText {
+}
+.imitationButton {
+}
+.sourceLink {
+}
+.textInput {
+}
+.buttonInput {
+}
+.toggleInput {
+}
+.confrimInput {
+}
+.rankInput {
+}
+.sectionTitle {
+}
+.instructionText {
+}
+.pollOption {
+}
+.pollWinner {
+}
+.pollResults {
+}
