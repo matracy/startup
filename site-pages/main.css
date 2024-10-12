@@ -1,48 +1,121 @@
 /* Global defaults */
 :root {
-	color: var(--primaryColor);
+	background-color: var(--primaryColor);
+	--cornerSize: 5px;
 }
+
 /* Element-based styles */
 header {
-	color: var(--mainAccentColor);
+	position: sticky;
+	top: 0;
+	right: 0;
+	width: 100%;
 }
+
+header nav {
+	color: var(--primaryColor);
+	background-color: var(--mainAccentColor);
+	display: flex;
+	flex-direction: row;
+	justify-content: right;
+	align-content: center;
+}
+
 main {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-content: center;
+	align-items: center;
+	height: 100%;
 }
+
 footer {
-	color: var(--mainAccentColor);
+	color: var(--primaryColor);
+	background-color: var(--mainAccentColor);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: center;
+	align-items: center;
+	height: fit-content;
+	position: sticky;
+	bottom: 0;
+	right: 0;
+	width: 100%;
 }
+
+* > footer {
+	padding: 5px;
+}
+
 nav {
+	height: max-content;
+	text-align: center;
 }
+
 label {
 }
+
 /* Class-based styles */
 .navLink {
+	border: 3px solid var(--secondayrAccentColor);
+	margin: 10px;
+	padding: 5px;
+	border-radius: var(--cornerSize);
 }
+
+.navLink :any-link {
+	text-decoration: none;
+	color: inherit;
+}
+
 .imgLink {
 }
+
 .infoText {
+	font-size: 8pt;
 }
+
 .imitationButton {
+	appearance: button;
 }
+
 .sourceLink {
+	background-color: #29903b;
+	color: #ffffff;
+	text-decoration: none;
+	padding: 5px;
+	border-radius: var(--cornerSize);
+	margin-inline-start: 5px;
 }
+
 .textInput {
 }
+
 .buttonInput {
 }
+
 .toggleInput {
 }
+
 .confrimInput {
 }
+
 .rankInput {
 }
+
 .sectionTitle {
 }
+
 .instructionText {
 }
+
 .pollOption {
 }
+
 .pollWinner {
 }
+
 .pollResults {
 }
