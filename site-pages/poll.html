@@ -12,14 +12,14 @@
 		<header>
 			<nav>
 				<span>
-					<a href="./index.html">
+					<a class="imgLink" href="./index.html">
 						<img
 							src="./img-assets/logo-wide.svg"
 							alt="STV Online"
 						/>
 					</a>
 				</span>
-				<span>
+				<span class="navLink">
 					<a href="./index.html">Log out</a>
 				</span>
 			</nav>
@@ -27,24 +27,26 @@
 				<span>
 					<a href="./account.html">
 						<img
+							class="imgLink"
 							src="./img-assets/generig-pfp.svg"
 							alt="pfp"
 							width="50px"
 					/></a>
 				</span>
-				<span>
+				<span class="infoText">
 					<p>Voting as Jhon Doe</p>
 				</span>
 			</div>
 		</header>
 		<main>
-			<p>
+			<p class="instructionText">
 				Please rank all the choices in order of preference, with 1 being
 				the most prefered option.
 			</p>
 			<form action="./pollResults.html" method="post">
-				<label for="Option1">Option1</label>
+				<label class="pollOption" for="Option1">Option1</label>
 				<input
+					class="rankInput"
 					type="number"
 					id="option1"
 					name="option1"
@@ -52,8 +54,9 @@
 					step="1"
 					min="1"
 				/><br />
-				<label for="Option2">Option2</label>
+				<label class="pollOption" for="Option2">Option2</label>
 				<input
+					class="rankInput"
 					type="number"
 					id="option2"
 					name="option2"
@@ -61,8 +64,9 @@
 					step="1"
 					min="1"
 				/><br />
-				<label for="Option3">Option3</label>
+				<label class="pollOption" for="Option3">Option3</label>
 				<input
+					class="rankInput"
 					type="number"
 					id="option3"
 					name="option3"
@@ -70,13 +74,15 @@
 					step="1"
 					min="1"
 				/><br />
-				<input type="submit" value="Cast vote" />
+				<input class="buttonInput" type="submit" value="Cast vote" />
 			</form>
 		</main>
 		<footer>
 			<nav>
 				<span
-					><a href="https://github.com/matracy/startup/"
+					><a
+						class="sourceLink"
+						href="https://github.com/matracy/startup/"
 						>The source</a
 					>
 					is available on GitHub.</span
