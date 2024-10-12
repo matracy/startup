@@ -88,7 +88,7 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 		- [X] header
 	  - [X] footer
 	  - [X] main
-		- [ ] label
+		- [X] label
 		- [X] nav
 	+ Classes
 	  - [X] navLink
@@ -109,7 +109,7 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 		- [ ] pollResults
 * Ensure that name is displayed in the application
   - [ ] account.html
-  - [ ] createAccount.html
+  - [X] createAccount.html
   - [X] index.html
   - [ ] newPoll.html
   - [ ] poll.html
@@ -118,7 +118,7 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
   - [X] signIn.html
 * Add form bypass links
   - [ ] account.html
-  - [ ] createAccount.html
+  - [X] createAccount.html
   - [ ] newPoll.html
   - [ ] poll.html
   - [ ] pollResults.html
@@ -126,7 +126,7 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
   - [X] signIn.html
 * Verify the address of forum targets
   - [ ] account.html
-  - [ ] createAccount.html
+  - [X] createAccount.html
   - [ ] newPoll.html
   - [ ] poll.html
   - [ ] pollResults.html
