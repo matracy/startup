@@ -72,3 +72,14 @@ STV voting site.  Create and vote in polls using single transferable vote.
 * Included placeholder for 3rd-party API call
 ### A note about the 3rd-party API call
 My 3rd-party API of choice is [colormind.io], and cannot be included represented without CSS since it only supplies color palettes.  For the sake of meeting the placeholder requirement, I have included a CSS file with a note to this effect inside it.
+
+## Startup CSS deliverable
+### Modifications
+* Updated README.md to include modifications and deletions for Startup CSS deliverable
+* Updated Simon deployment to CSS
+### Additions
+### TODO
+* Tag all pages with CSS classes
+* Create CSS sheets - skeleton files
+* Fill color variables in dynamic-colors.css
+* Use CSS [var()](https://www.w3schools.com/css/css3_variables.asp) to reference color sheet
