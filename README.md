@@ -77,21 +77,25 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup CSS deliverable
 * Updated Simon deployment to CSS
+* Minor footer changes
+  - GitHub link moved from "the source" to "GitHub"
+  - Added my name, despite my wishes, since that was part of this deliverable's specs
+  - Removed inner `span` element from `nav`, as it was an only child
 ### Additions
 ### TODO
 * [ ] Make CSS styles
 	+ Elements
-		- [ ] header
-	  - [ ] footer
-	  - [ ] main
+		- [X] header
+	  - [X] footer
+	  - [X] main
 		- [ ] label
-		- [ ] nav
+		- [X] nav
 	+ Classes
-	  - [ ] navLink
+	  - [X] navLink
 	  - [ ] imgLink
-	  - [ ] infoText
+	  - [X] infoText
 	  - [ ] imitationButton
-	  - [ ] sourceLink
+	  - [X] sourceLink
 		- [ ] textInput
 		- [ ] buttonInput
 		- [ ] toggleInput
@@ -106,16 +110,15 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * Ensure that name is displayed in the application
   - [ ] account.html
   - [ ] createAccount.html
-  - [ ] index.html
+  - [X] index.html
   - [ ] newPoll.html
   - [ ] poll.html
   - [ ] pollResults.html
   - [ ] registerInPoll.html
-  - [ ] signIn.html
-* Add forum bypass links
+  - [X] signIn.html
+* Add form bypass links
   - [ ] account.html
   - [ ] createAccount.html
-  - [ ] index.html
   - [ ] newPoll.html
   - [ ] poll.html
   - [ ] pollResults.html
@@ -124,7 +127,6 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * Verify the address of forum targets
   - [ ] account.html
   - [ ] createAccount.html
-  - [ ] index.html
   - [ ] newPoll.html
   - [ ] poll.html
   - [ ] pollResults.html
