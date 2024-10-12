@@ -80,6 +80,52 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 ### Additions
 ### TODO
 * Tag all pages with CSS classes
-* Create CSS sheets - skeleton files
-* Fill color variables in dynamic-colors.css
-* Use CSS [var()](https://www.w3schools.com/css/css3_variables.asp) to reference color sheet
+  - [X] account.html
+  - [ ] createAccount.html
+  - [ ] index.html
+  - [ ] newPoll.html
+  - [ ] poll.html
+  - [ ] pollResults.html
+  - [ ] registerInPoll.html
+  - [ ] signIn.html
+* [ ] Create CSS sheets - skeleton files
+* [ ] Fill color variables in dynamic-colors.css
+* [ ] Use CSS [var()](https://www.w3schools.com/css/css3_variables.asp) to reference color sheet
+* [ ] Make CSS styles
+	+ Elements
+		- [ ] header
+	  - [ ] footer
+	  - [ ] main
+	+ Classes
+	  - [ ] navLink
+	  - [ ] imgLink
+	  - [ ] infoText
+	  - [ ] imitationButton
+	  - [ ] sourceLink
+* Ensure that name is displayed in the application
+  - [ ] account.html
+  - [ ] createAccount.html
+  - [ ] index.html
+  - [ ] newPoll.html
+  - [ ] poll.html
+  - [ ] pollResults.html
+  - [ ] registerInPoll.html
+  - [ ] signIn.html
+* Add forum bypass links
+  - [ ] account.html
+  - [ ] createAccount.html
+  - [ ] index.html
+  - [ ] newPoll.html
+  - [ ] poll.html
+  - [ ] pollResults.html
+  - [ ] registerInPoll.html
+  - [ ] signIn.html
+* Verify the address of forum targets
+  - [ ] account.html
+  - [ ] createAccount.html
+  - [ ] index.html
+  - [ ] newPoll.html
+  - [ ] poll.html
+  - [ ] pollResults.html
+  - [ ] registerInPoll.html
+  - [ ] signIn.html
