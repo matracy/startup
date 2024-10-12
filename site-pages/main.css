@@ -55,6 +55,7 @@ nav {
 }
 
 label {
+	color: var(--mainAccentColor);
 }
 
 /* Class-based styles */
@@ -77,10 +78,6 @@ label {
 	font-size: 8pt;
 }
 
-.imitationButton {
-	appearance: button;
-}
-
 .sourceLink {
 	background-color: #29903b;
 	color: #ffffff;
@@ -91,9 +88,8 @@ label {
 }
 
 .textInput {
-}
-
-.buttonInput {
+	background: var(--primaryColor);
+	color: var(--mainAccentColor);
 }
 
 .toggleInput {
@@ -103,6 +99,15 @@ label {
 }
 
 .rankInput {
+}
+
+.buttonInput,
+.imitationButton {
+	background: var(--secondayrAccentColor);
+	color: var(--mainAccentColor);
+}
+
+.imitationButton {
 }
 
 .sectionTitle {
@@ -118,4 +123,18 @@ label {
 }
 
 .pollResults {
+}
+
+.formBypass {
+	background-color: #ff0000aa;
+	border: 3px solid red;
+	position: fixed;
+	top: 50%;
+	left: 0px;
+	color: #ffffff;
+	padding: 3px;
+}
+
+.formBypass :any-link {
+	color: inherit;
 }
