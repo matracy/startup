@@ -12,19 +12,19 @@
 		<header>
 			<nav>
 				<span>
-					<a href="./index.html">
+					<a class="imgLink" href="./index.html">
 						<img
 							src="./img-assets/logo-wide.svg"
 							alt="STV Online"
 						/>
 					</a>
 				</span>
-				<span>
+				<span class="navLink">
 					<a href="./index.html">Log out</a>
 				</span>
 			</nav>
 			<div>
-				<span>
+				<span class="navLink">
 					<a href="./account.html">
 						<img
 							src="./img-assets/generig-pfp.svg"
@@ -33,13 +33,13 @@
 					/></a>
 				</span>
 				<span>
-					<p>Voting as Jhon Doe</p>
+					<p class="infoText">Voting as Jhon Doe</p>
 				</span>
 			</div>
 		</header>
 		<main>
 			<!-- The poll options and settings will be pulled from the server in realtime with a websocket -->
-			<h1>Poll Options</h1>
+			<h1 class="sectionTitle">Poll Options</h1>
 			<ul>
 				<li>An option</li>
 				<li>Some other option</li>
@@ -48,16 +48,27 @@
 			</ul>
 			<form action="./newPoll.html" method="post">
 				<label for="newOption">Add option</label>
-				<input type="text" id="addOption" name="addOption" />
-				<input type="submit" value="Add" />
+				<input
+					class="textInput"
+					type="text"
+					id="addOption"
+					name="addOption"
+				/>
+				<input class="buttonInput" type="submit" value="Add" />
 			</form>
 			<br />
-			<h1>Poll Settings</h1>
+			<h1 class="sectionTitle">Poll Settings</h1>
 			<form action="./newPoll.html" method="post">
 				<label for="pollName">Poll Name: </label>
-				<input type="text" id="pollName" name="pollName" />
+				<input
+					class="textInput"
+					type="text"
+					id="pollName"
+					name="pollName"
+				/>
 				<label for="voterCount">Maximum number of voters: </label>
 				<input
+					class="textInput"
 					type="number"
 					id="voterCount"
 					name="voterCount"
@@ -68,32 +79,36 @@
 					>Allow unlimited number of voters</label
 				>
 				<input
+					class="toggleInput"
 					type="checkbox"
 					id="unlimitedRegistration"
 					name="unlimitedRegistration"
 				/><br />
 				<label for="startDateTime">Voting opens: </label>
 				<input
+					class="textInput"
 					type="datetime"
 					id="startDateTime"
 					name="startDateTime"
 				/><br />
 				<label for="endDateTime">Voting closes: </label>
 				<input
+					class="textInput"
 					type="datetime"
 					id="endDateTime"
 					name="endDateTime"
 				/><br />
-				<input type="submit" value="Apply" />
+				<input class="buttonInput" type="submit" value="Apply" />
 			</form>
 			<br />
-			<h1>Launch Poll</h1>
+			<h1 class="sectionTitle">Launch Poll</h1>
 			<form action="./registerInPoll.html" method="post">
 				<label for="launchConfirmation"
 					>I understand that once launched, a poll cannot be changed,
 					and wish to launch this poll.</label
 				>
 				<input
+					class="confirmInput"
 					type="checkbox"
 					name="launchConfirmation"
 					id="launchConfirmation"
@@ -104,7 +119,9 @@
 		<footer>
 			<nav>
 				<span
-					><a href="https://github.com/matracy/startup/"
+					><a
+						class="sourceLink"
+						href="https://github.com/matracy/startup/"
 						>The source</a
 					>
 					is available on GitHub.</span
