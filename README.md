@@ -112,6 +112,9 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 		- [ ] sectionTitle
 		- [ ] instructionText
 		- [ ] pollOption
+		- [ ] preTitle
+		- [ ] pollWinner
+		- [ ] pollResults
 * Ensure that name is displayed in the application
   - [ ] account.html
   - [ ] createAccount.html
@@ -139,3 +142,4 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
   - [ ] pollResults.html
   - [ ] registerInPoll.html
   - [ ] signIn.html
+* Switch vote reporting to use `<meter>` rather than just a number
