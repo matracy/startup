@@ -123,13 +123,13 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
   - [ ] newPoll.html
   - [X] poll.html
   - [ ] pollResults.html
-  - [ ] registerInPoll.html
+  - [X] registerInPoll.html
   - [X] signIn.html
 * Verify the address of forum targets
   - [X] createAccount.html
-  - [ ] newPoll.html
+  - [X] newPoll.html
   - [ ] poll.html
   - [ ] pollResults.html
-  - [ ] registerInPoll.html
+  - [X] registerInPoll.html
   - [X] signIn.html
 * Switch vote reporting to use `<meter>` rather than just a number

@@ -130,6 +130,8 @@ label {
 }
 
 .confrimInput {
+	background: var(--secondayrAccentColor);
+	color: var(--mainAccentColor);
 }
 
 .rankInput {
@@ -175,6 +177,7 @@ label {
 	left: 0px;
 	color: #ffffff;
 	padding: 3px;
+	z-index: 100;
 }
 
 .formBypass :any-link {
