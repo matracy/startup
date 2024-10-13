@@ -127,6 +127,8 @@ label {
 }
 
 .toggleInput {
+	background: var(--primaryColor);
+	color: var(--mainAccentColor);
 }
 
 .confrimInput {
@@ -135,6 +137,8 @@ label {
 }
 
 .rankInput {
+	background: var(--primaryColor);
+	color: var(--mainAccentColor);
 }
 
 .buttonInput,

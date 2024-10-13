@@ -77,50 +77,29 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup CSS deliverable
 * Updated Simon deployment to CSS
+* Existing pages modified to add links to CSS pages in the `head` section
 * Minor footer changes
   - GitHub link moved from "the source" to "GitHub"
   - Added my name, despite my wishes, since that was part of this deliverable's specs
   - Removed inner `span` element from `nav`, as it was an only child
-### Additions
+* Headder changes
+  - headder on logged-in pages refactored to style easier
+ ### Additions
+* CSS style sheets created
+* Created form bypass links, since servers seem to redirect to `index.html` when they recieve `POST` data that they can't process rather than just ignoring the data.
 ### TODO
-* [ ] Make CSS styles
-	+ Elements
-		- [X] header
-	  - [X] footer
-	  - [X] main
-		- [X] label
-		- [X] nav
-	+ Classes
-	  - [X] navLink
-	  - [X] imgLink
-	  - [X] infoText
-	  - [X] imitationButton
-	  - [X] sourceLink
-		- [X] textInput
-		- [ ] buttonInput
-		- [ ] toggleInput
-		- [ ] confirmInput
-		- [ ] rankInput
-		- [X] sectionTitle
-		- [X] instructionText
-		- [X] pollOption
-		- [X] preTitle
-		- [X] pollWinner
-		- [X] pollResults
-		- [X] homeButton
-		- [X] accountHeading
 * Ensure that name is displayed in the application
   - [X] account.html
   - [X] createAccount.html
   - [X] index.html
-  - [ ] newPoll.html
+  - [X] newPoll.html
   - [X] poll.html
   - [ ] pollResults.html
-  - [ ] registerInPoll.html
+  - [X] registerInPoll.html
   - [X] signIn.html
 * Add form bypass links
   - [X] createAccount.html
-  - [ ] newPoll.html
+  - [X] newPoll.html
   - [X] poll.html
   - [ ] pollResults.html
   - [X] registerInPoll.html
@@ -128,7 +107,7 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * Verify the address of forum targets
   - [X] createAccount.html
   - [X] newPoll.html
-  - [ ] poll.html
+  - [X] poll.html
   - [ ] pollResults.html
   - [X] registerInPoll.html
   - [X] signIn.html
