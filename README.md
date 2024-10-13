@@ -88,3 +88,17 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 ### Additions
 * CSS style sheets created
 * Created form bypass links, since servers seem to redirect to `index.html` when they recieve `POST` data that they can't process rather than just ignoring the data.
+### Some remarks abou the submission requirements
+* #### Header, footer, and main content body
+  - These are much the same as they were in the HTML version, but are present and fully functional.
+* #### Navigation elements
+  - Most navigation is done through the header or form submissions
+  - As mentioned above, I have provided temporary links to bypass the forms since they don't work yet.
+* #### Responsive to window resizing
+  - From the begining, the site was designed to fit well into only a single column.  As a result of this, there is not really anything to move around on a resize.
+* #### Application elements
+  - These have been left largely unchanged since the HTML version of the site, with exceptions as mentioned above.
+* #### Application text content
+  - The text content is still the same stand-in text as it was in the HTML version.
+* #### Application images
+  - No image assets were added, removed, or changed since the HTML version.
