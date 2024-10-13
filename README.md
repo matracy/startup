@@ -87,28 +87,3 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
  ### Additions
 * CSS style sheets created
 * Created form bypass links, since servers seem to redirect to `index.html` when they recieve `POST` data that they can't process rather than just ignoring the data.
-### TODO
-* Ensure that name is displayed in the application
-  - [X] account.html
-  - [X] createAccount.html
-  - [X] index.html
-  - [X] newPoll.html
-  - [X] poll.html
-  - [ ] pollResults.html
-  - [X] registerInPoll.html
-  - [X] signIn.html
-* Add form bypass links
-  - [X] createAccount.html
-  - [X] newPoll.html
-  - [X] poll.html
-  - [ ] pollResults.html
-  - [X] registerInPoll.html
-  - [X] signIn.html
-* Verify the address of forum targets
-  - [X] createAccount.html
-  - [X] newPoll.html
-  - [X] poll.html
-  - [ ] pollResults.html
-  - [X] registerInPoll.html
-  - [X] signIn.html
-* Switch vote reporting to use `<meter>` rather than just a number

@@ -170,7 +170,9 @@ label {
 }
 
 .pollResults {
+	background: var(--mainAccentColor);
 	color: var(--defaultText);
+	width: 100%;
 }
 
 .formBypass {
