@@ -114,15 +114,14 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
   - [X] createAccount.html
   - [X] index.html
   - [ ] newPoll.html
-  - [ ] poll.html
+  - [X] poll.html
   - [ ] pollResults.html
   - [ ] registerInPoll.html
   - [X] signIn.html
 * Add form bypass links
-  - [ ] account.html
   - [X] createAccount.html
   - [ ] newPoll.html
-  - [ ] poll.html
+  - [X] poll.html
   - [ ] pollResults.html
   - [ ] registerInPoll.html
   - [X] signIn.html

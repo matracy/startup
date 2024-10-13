@@ -12,33 +12,33 @@
 	</head>
 	<body>
 		<header>
-			<nav>
-				<span>
-					<a class="imgLink" href="./index.html">
-						<img
-							src="./img-assets/logo-wide.svg"
-							alt="STV Online"
-						/>
-					</a>
-				</span>
-				<span class="navLink">
-					<a href="./index.html">Log out</a>
-				</span>
-			</nav>
+			<div class="homeButton">
+				<a href="./index.html">
+					<img
+						class="imgLink"
+						src="./img-assets/logo-wide.svg"
+						alt="STV Online"
+					/>
+				</a>
+			</div>
+			<div class="accountHeading">
+				<a href="./account.html">
+					<img
+						class="imgLink"
+						src="./img-assets/generig-pfp.svg"
+						alt="pfp"
+						width="50px"
+				/></a>
+				<p class="infoText">Voting as Jhon Doe</p>
+			</div>
 			<div>
-				<span>
-					<a class="imgLink" href="./account.html">
-						<img
-							src="./img-assets/generig-pfp.svg"
-							alt="pfp"
-							width="50px"
-					/></a>
-				</span>
-				<span class="infoText">
-					<p>Voting as Jhon Doe</p>
-				</span>
+				<a class="navLink" href="./index.html">Log out</a>
 			</div>
 		</header>
+		<nav class="formBypass">
+			<p><strong>Form bypass links</strong></p>
+			<a href="./poll.html">go to poll</a>
+		</nav>
 		<main>
 			<form action="./poll.html" method="post">
 				<label for="pollID">Poll ID:</label>
@@ -53,14 +53,12 @@
 			</form>
 		</main>
 		<footer>
+			<p class="infoText">Created by Marcus Tracy</p>
 			<nav>
-				<span
-					><a
-						class="sourceLink"
-						href="https://github.com/matracy/startup/"
-						>The source</a
-					>
-					is available on GitHub.</span
+				The source is available on<a
+					class="sourceLink"
+					href="https://github.com/matracy/startup/"
+					>GitHub</a
 				>
 			</nav>
 		</footer>
