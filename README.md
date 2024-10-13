@@ -84,6 +84,7 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
   - Removed inner `span` element from `nav`, as it was an only child
 * Headder changes
   - headder on logged-in pages refactored to style easier
- ### Additions
+* Poll results were changed from numeric display to `meter` display
+### Additions
 * CSS style sheets created
 * Created form bypass links, since servers seem to redirect to `index.html` when they recieve `POST` data that they can't process rather than just ignoring the data.

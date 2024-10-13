@@ -21,8 +21,9 @@ header {
 header nav {
 	display: flex;
 	flex-direction: row;
-	justify-content: right;
+	justify-content: left;
 	align-content: center;
+	width: 100%;
 }
 
 header div {
@@ -188,4 +189,13 @@ label {
 
 .formBypass :any-link {
 	color: inherit;
+}
+
+.homepageAccountLinks {
+	justify-content: right;
+}
+
+/* Compound element descriptions */
+.navLink > a {
+	text-decoration: none;
 }
