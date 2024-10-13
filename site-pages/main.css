@@ -10,15 +10,29 @@ header {
 	top: 0;
 	right: 0;
 	width: 100%;
-}
-
-header nav {
 	color: var(--primaryColor);
 	background-color: var(--mainAccentColor);
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
+	align-content: center;
+}
+
+header nav {
+	display: flex;
+	flex-direction: row;
 	justify-content: right;
 	align-content: center;
+}
+
+header div {
+	align-self: center;
+}
+
+header > div span {
+	align-self: center;
+	text-align: center;
+	justify-content: center;
 }
 
 main {
@@ -28,6 +42,7 @@ main {
 	align-content: center;
 	align-items: center;
 	height: 100%;
+	color: var(--defaultText);
 }
 
 footer {
@@ -59,23 +74,42 @@ label {
 }
 
 /* Class-based styles */
+.homeButton {
+	position: relative;
+	left: 2%;
+}
+
 .navLink {
 	border: 3px solid var(--secondayrAccentColor);
 	margin: 10px;
 	padding: 5px;
 	border-radius: var(--cornerSize);
-}
-
-.navLink :any-link {
 	text-decoration: none;
 	color: inherit;
 }
 
+.navLink > .imgLink {
+	border: none;
+	text-decoration: none;
+}
+
 .imgLink {
+	margin: auto;
+	text-align: center;
+}
+
+.accountHeading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	position: relative;
+	left: -3%;
 }
 
 .infoText {
 	font-size: 8pt;
+	color: inherit;
 }
 
 .sourceLink {
@@ -108,21 +142,29 @@ label {
 }
 
 .imitationButton {
+	border-radius: var(--cornerSize);
+	margin: 5px;
+	text-decoration: none;
 }
 
 .sectionTitle {
+	color: var(--defaultText);
 }
 
 .instructionText {
+	color: var(--defaultText);
 }
 
 .pollOption {
+	color: var(--defaultText);
 }
 
 .pollWinner {
+	color: var(--defaultText);
 }
 
 .pollResults {
+	color: var(--defaultText);
 }
 
 .formBypass {

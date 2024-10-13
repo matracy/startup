@@ -92,23 +92,25 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 		- [X] nav
 	+ Classes
 	  - [X] navLink
-	  - [ ] imgLink
+	  - [X] imgLink
 	  - [X] infoText
-	  - [ ] imitationButton
+	  - [X] imitationButton
 	  - [X] sourceLink
-		- [ ] textInput
+		- [X] textInput
 		- [ ] buttonInput
 		- [ ] toggleInput
 		- [ ] confirmInput
 		- [ ] rankInput
-		- [ ] sectionTitle
-		- [ ] instructionText
-		- [ ] pollOption
-		- [ ] preTitle
-		- [ ] pollWinner
-		- [ ] pollResults
+		- [X] sectionTitle
+		- [X] instructionText
+		- [X] pollOption
+		- [X] preTitle
+		- [X] pollWinner
+		- [X] pollResults
+		- [X] homeButton
+		- [X] accountHeading
 * Ensure that name is displayed in the application
-  - [ ] account.html
+  - [X] account.html
   - [X] createAccount.html
   - [X] index.html
   - [ ] newPoll.html
@@ -125,7 +127,6 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
   - [ ] registerInPoll.html
   - [X] signIn.html
 * Verify the address of forum targets
-  - [ ] account.html
   - [X] createAccount.html
   - [ ] newPoll.html
   - [ ] poll.html
