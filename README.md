@@ -112,4 +112,9 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup React deliverable
 * Updated Simon deployment to React
+* Refactored the following into page-independant components:
+	- header
+	- footer
+	- pollOption
+	- pollResult
 ### Additions
