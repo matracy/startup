@@ -122,4 +122,5 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 	- index (now landing)
 	- account home
 	- user registration
+	- createPoll
 ### Additions

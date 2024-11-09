@@ -3,13 +3,19 @@ function pollOption({ name, rank, increaseRank, decreaseRank }) {
 		<>
 			<div class="pollOption">
 				<span>
-					{name}: {rank}
-					<p class="imitationButton" onClick={increaseRank}>
-						+
-					</p>
-					<p class="imitationButton" onClick={decreaseRank}>
-						-
-					</p>
+					{name}
+					{{ rank } != null
+						? ": " +
+							{ rank } +
+							'\
+					<p class="imitationButton" onClick={increaseRank}>\
+						+\
+					</p>\
+					<p class="imitationButton" onClick={decreaseRank}>\
+						-\
+					</p>\
+					'
+						: null}
 				</span>
 			</div>
 		</>
