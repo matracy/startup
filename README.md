@@ -117,4 +117,6 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 	- footer
 	- pollOption
 	- pollResult
+* Migrated the following pages from HTML to JSX:
+	- index (now landing)
 ### Additions
