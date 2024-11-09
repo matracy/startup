@@ -102,3 +102,14 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
   - The text content is still the same stand-in text as it was in the HTML version.
 * #### Application images
   - No image assets were added, removed, or changed since the HTML version.
+
+## Startup React deliverable
+### TODO
+* Use Vite to set up template
+* Set up React router
+* Migrate content to React
+* Ensure that all non-backend components are fully functional
+### Modifications
+* Updated README.md to include modifications and deletions for Startup React deliverable
+* Updated Simon deployment to React
+### Additions
