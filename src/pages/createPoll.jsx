@@ -14,6 +14,7 @@ function CreatePoll({ redirecter }) {
 	});
 
 	function addOption() {
+		console.log("Adding option.");
 		options.push(pollOptions.addOption.value);
 		setOptions(options);
 	}

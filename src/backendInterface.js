@@ -15,7 +15,7 @@ function fetchOptions() {
 }
 
 function castVote(ballot) {
-	alert("castVote is NYI");
+	//This will only need to talk to the server
 }
 
 function fetchResults(poll) {
