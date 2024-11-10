@@ -1,26 +1,26 @@
 function Header({ isSignedIn, name }) {
-	if ({ isSignedIn }) {
+	if (isSignedIn) {
 		return (
 			<>
 				<header>
-					<div class="homeButton">
+					<div className="homeButton">
 						<a href="./index.html">
-							<img class="imgLink" src="./logo-wide.svg" alt="STV Online" />
+							<img className="imgLink" src="./logo-wide.svg" alt="STV Online" />
 						</a>
 					</div>
-					<div class="accountHeading">
+					<div className="accountHeading">
 						<a href="./account.html">
 							<img
-								class="imgLink"
+								className="imgLink"
 								src="./generic-pfp.svg"
 								alt="pfp"
 								width="50px"
 							/>
 						</a>
-						<p class="infoText">Voting as {name}</p>
+						<p className="infoText">Voting as {name}</p>
 					</div>
 					<div>
-						<a class="navLink" href="./index.html">
+						<a className="navLink" href="./index.html">
 							Log out
 						</a>
 					</div>
@@ -31,11 +31,11 @@ function Header({ isSignedIn, name }) {
 		return (
 			<>
 				<header>
-					<nav class="homepageAccountLinks">
-						<div class="navLink">
+					<nav className="homepageAccountLinks">
+						<div className="navLink">
 							<a href="./createAccount.html">Register</a>
 						</div>
-						<div class="navLink">
+						<div className="navLink">
 							<a href="./signIn.html">Login</a>
 						</div>
 					</nav>

@@ -1,22 +1,38 @@
 import { authenticateUser } from "../backendInterface";
 
+function authUser(callback) {
+	credentials = {};
+	credentials.username = Document.signin.name.value;
+	credentials.password = Document.signin.password.value;
+	authenticateUser(credentials, callback);
+}
+
 function SignIn({ notifyStateOfNewUser }) {
 	return (
 		<>
-			<form ction="javascript:registerNewUser({ notifyStateOfNewUser })">
-				<label for="name">Display name:</label>
-				<input class="textInput" type="text" id="name" name="name" required />
-				<br />
-				<label for="password">Password:</label>
+			<form
+				name="signin"
+				action="javascript:authUser({ notifyStateOfNewUser })"
+			>
+				<label htmlFor="name">Display name:</label>
 				<input
-					class="textInput"
+					className="textInput"
+					type="text"
+					id="name"
+					name="name"
+					required
+				/>
+				<br />
+				<label htmlFor="password">Password:</label>
+				<input
+					className="textInput"
 					type="password"
 					id="password"
 					name="password"
 					required
 				/>
 				<br />
-				<input class="buttonInput" type="submit" value="Log in" />
+				<input className="buttonInput" type="submit" value="Log in" />
 			</form>
 		</>
 	);

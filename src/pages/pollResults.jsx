@@ -14,10 +14,10 @@ function PollResults({ poll }) {
 	return (
 		<>
 			{/* <!-- Essentially this whole page will be stored on the server's database. --> */}
-			<p class="preTitle">The winner of this poll is:</p>
+			<p className="preTitle">The winner of this poll is:</p>
 			<br />
-			<h1 class="pollWinner">{poll.winner}</h1>
-			<p class="imitationButton" onClick={toggleResultView}>
+			<h1 className="pollWinner">{poll.winner}</h1>
+			<p className="imitationButton" onClick={toggleResultView}>
 				View {resultView == "Final Votes" ? "initial votes" : "final votes"}
 			</p>
 			{results.forEach((res) => {

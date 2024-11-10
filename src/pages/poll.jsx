@@ -35,7 +35,7 @@ function Poll({ poll }) {
 
 	return (
 		<>
-			<p class="instructionText">
+			<p className="instructionText">
 				Please rank all the choices in order of preference, with 1 being the
 				most prefered option.
 			</p>
@@ -49,7 +49,7 @@ function Poll({ poll }) {
 					);
 				})}
 				;
-				<input class="buttonInput" type="submit" value="Cast vote" />
+				<input className="buttonInput" type="submit" value="Cast vote" />
 			</form>
 		</>
 	);

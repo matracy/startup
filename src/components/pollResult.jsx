@@ -3,7 +3,7 @@ function pollResult({ name, numVotes }) {
 		<>
 			<span>
 				<p>{name} </p>
-				<meter class="pollResults" value={numVotes} />
+				<meter className="pollResults" value={numVotes} />
 			</span>
 		</>
 	);

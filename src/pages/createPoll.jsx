@@ -36,7 +36,7 @@ function CreatePoll() {
 	return (
 		<>
 			{/* <!-- The poll options and settings will be pulled from the server in realtime with a websocket --> */}
-			<h1 class="sectionTitle">Poll Options</h1>
+			<h1 className="sectionTitle">Poll Options</h1>
 			<ul>
 				{options.forEach((opt) => {
 					return (
@@ -47,19 +47,29 @@ function CreatePoll() {
 				})}
 			</ul>
 			<form name="options" action="javascript:addOption()">
-				<label for="newOption">Add option</label>
-				<input class="textInput" type="text" id="addOption" name="addOption" />
-				<input class="buttonInput" type="submit" value="Add" />
+				<label htmlFor="newOption">Add option</label>
+				<input
+					className="textInput"
+					type="text"
+					id="addOption"
+					name="addOption"
+				/>
+				<input className="buttonInput" type="submit" value="Add" />
 			</form>
 			<br />
-			<h1 class="sectionTitle">Poll Settings</h1>
+			<h1 className="sectionTitle">Poll Settings</h1>
 			<form name="pollSettings" action="javascript:saveSettings()">
-				<label for="pollName">Poll Name: </label>
-				<input class="textInput" type="text" id="pollName" name="pollName" />
-				<br />
-				<label for="voterCount">Maximum number of voters: </label>
+				<label htmlFor="pollName">Poll Name: </label>
 				<input
-					class="textInput"
+					className="textInput"
+					type="text"
+					id="pollName"
+					name="pollName"
+				/>
+				<br />
+				<label htmlFor="voterCount">Maximum number of voters: </label>
+				<input
+					className="textInput"
 					type="number"
 					id="voterCount"
 					name="voterCount"
@@ -67,48 +77,48 @@ function CreatePoll() {
 					min="1"
 				/>
 				<br />
-				<label for="unlimitedRegistration">
+				<label htmlFor="unlimitedRegistration">
 					Allow unlimited number of voters
 				</label>
 				<input
-					class="toggleInput"
+					className="toggleInput"
 					type="checkbox"
 					id="unlimitedRegistration"
 					name="unlimitedRegistration"
 				/>
 				<br />
-				<label for="startDateTime">Voting opens: </label>
+				<label htmlFor="startDateTime">Voting opens: </label>
 				<input
-					class="textInput"
+					className="textInput"
 					type="datetime"
 					id="startDateTime"
 					name="startDateTime"
 				/>
 				<br />
-				<label for="endDateTime">Voting closes: </label>
+				<label htmlFor="endDateTime">Voting closes: </label>
 				<input
-					class="textInput"
+					className="textInput"
 					type="datetime"
 					id="endDateTime"
 					name="endDateTime"
 				/>
 				<br />
-				<input class="buttonInput" type="submit" value="Apply" />
+				<input className="buttonInput" type="submit" value="Apply" />
 			</form>
 			<br />
-			<h1 class="sectionTitle">Launch Poll</h1>
+			<h1 className="sectionTitle">Launch Poll</h1>
 			<form name="pollLaunchConfirmation" action="javascript:launchPoll()">
-				<label for="launchConfirmation">
+				<label htmlFor="launchConfirmation">
 					I understand that once launched, a poll cannot be changed, and wish to
 					launch this poll.
 				</label>
 				<input
-					class="confirmInput"
+					className="confirmInput"
 					type="checkbox"
 					name="launchConfirmation"
 					id="launchConfirmation"
 				/>
-				<input class="buttonInput" type="submit" value="Launch poll" />
+				<input className="buttonInput" type="submit" value="Launch poll" />
 			</form>
 		</>
 	);

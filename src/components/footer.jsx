@@ -2,10 +2,10 @@ function Footer() {
 	return (
 		<>
 			<footer>
-				<p class="infoText">Created by Marcus Tracy</p>
+				<p className="infoText">Created by Marcus Tracy</p>
 				<nav>
 					The source is available on
-					<a class="sourceLink" href="https://github.com/matracy/startup/">
+					<a className="sourceLink" href="https://github.com/matracy/startup/">
 						GitHub
 					</a>
 				</nav>
