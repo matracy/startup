@@ -61,6 +61,16 @@ function AppWrapper() {
 						path="/signIn.html"
 						element={<SignIn notifyStateOfNewUser={setUser} />}
 					/>
+					<Route
+						path="/logout.html"
+						element={() => {
+							{
+								setUser({});
+							}
+							<Landing />;
+						}}
+						exact
+					/>
 					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 			</main>

@@ -20,7 +20,7 @@ function Header({ isSignedIn, name }) {
 						<p className="infoText">Voting as {name}</p>
 					</div>
 					<div>
-						<a className="navLink" href="./index.html">
+						<a className="navLink" href="./logout.html">
 							Log out
 						</a>
 					</div>

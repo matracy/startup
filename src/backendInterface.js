@@ -28,9 +28,9 @@ function registerToVote() {
 
 function fetchPolls(user) {
 	return [
-		{ name: "Poll A", winner: "Option 1" },
-		{ name: "Poll B", winner: "Option 2" },
-		{ name: "Poll C", winner: "Option 3" },
+		{ name: "Poll A", result: "Option 1" },
+		{ name: "Poll B", result: "Option 2" },
+		{ name: "Poll C", result: "Option 3" },
 	];
 }
 
