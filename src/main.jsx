@@ -53,10 +53,37 @@ function AppWrapper() {
 							/>
 						}
 					/>
-					<Route path="/createPoll.html" element={<CreatePoll />} />
-					<Route path="/poll.html" element={<Poll />} />
+					<Route
+						path="/createPoll.html"
+						element={
+							<CreatePoll
+								redirecter={() => {
+									navigateTo("/registerInPoll.html");
+								}}
+							/>
+						}
+					/>
+					<Route
+						path="/poll.html"
+						element={
+							<Poll
+								redirecter={() => {
+									navigateTo("/pollResults.html");
+								}}
+							/>
+						}
+					/>
 					<Route path="/pollResults.html" element={<PollResults />} />
-					<Route path="/registerInPoll.html" element={<RegisterInPoll />} />
+					<Route
+						path="/registerInPoll.html"
+						element={
+							<RegisterInPoll
+								redirecter={() => {
+									navigateTo("/poll.html");
+								}}
+							/>
+						}
+					/>
 					<Route
 						path="/signIn.html"
 						element={<SignIn notifyStateOfNewUser={setUser} />}

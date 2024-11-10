@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { fetchResults } from "../backendInterface";
+import { pollResult } from "../components/pollResult";
 
 function PollResults({ poll }) {
 	const [resultView, setResultView] = useState("Final Votes");
@@ -20,12 +21,13 @@ function PollResults({ poll }) {
 			<p className="imitationButton" onClick={toggleResultView}>
 				View {resultView == "Final Votes" ? "initial votes" : "final votes"}
 			</p>
-			{results.forEach((res) => {
+			{results.map((res) => {
 				return (
 					<>
-						pollResult(res.name,
-						{resultView == "Initial Votes" ? res.initialVotes : res.finalVotes}
-						)
+						{pollResult(
+							res.name,
+							resultView == "Initial Votes" ? res.initialVotes : res.finalVotes,
+						)}
 						<br />
 					</>
 				);

@@ -8,29 +8,36 @@ function areValuesUnique(obj) {
 	return values.length === uniqueValues.size;
 }
 
-function Poll({ poll }) {
+function Poll({ poll, redirecter }) {
 	const [options, setOptions] = useState(fetchOptions(poll));
 
 	function submitBallot() {
-		results = {};
-		options.forEach((opt) => {
+		var results = {};
+		options.map((opt) => {
 			results[opt.name] = opt.rank;
 		});
 		if (areValuesUnique(results)) {
 			castVote(results);
+			redirecter();
 		} else {
 			alert("Each option must have a unique rank.");
 		}
 	}
 
 	function incRank(name) {
-		options[name].rank += 1;
-		setOptions(options);
+		setOptions(
+			options.map((opt) => {
+				opt.name == name ? (opt.rank += 1) : (opt.rank += 0);
+			}),
+		);
 	}
 
 	function decRank(name) {
-		options[name].rank -= 1;
-		setOptions(options);
+		setOptions(
+			options.map((opt) => {
+				opt.name == name ? (opt.rank -= 1) : (opt.rank -= 0);
+			}),
+		);
 	}
 
 	return (
@@ -39,14 +46,22 @@ function Poll({ poll }) {
 				Please rank all the choices in order of preference, with 1 being the
 				most prefered option.
 			</p>
-			<form action="javascript:submitBallot()">
-				{options.forEach((opt) => {
-					return (
-						<>
-							pollOption(opt.name, opt.rank, incRank, decRank)
-							<br />
-						</>
-					);
+			<form
+				onSubmit={(e) => {
+					e.preventDefault();
+					submitBallot();
+				}}
+			>
+				{options.map((opt) => {
+					console.log(opt);
+					if (opt != null && opt != undefined) {
+						return (
+							<>
+								{pollOption(opt.name, opt.rank, incRank, decRank)}
+								<br />
+							</>
+						);
+					}
 				})}
 				;
 				<input className="buttonInput" type="submit" value="Cast vote" />

@@ -3,19 +3,23 @@ function registerNewUser(credentials, notifyCallback) {
 }
 
 function registerPoll(opts, config) {
-	//
+	//This will only need to talk to the server
 }
 
 function fetchOptions() {
-	return { "Option 1": 0, "Option 2": 0, "Option 3": 0 };
+	return [
+		{ name: "Option 1", rank: 0 },
+		{ name: "Option 2", rank: 0 },
+		{ name: "Option 3", rank: 0 },
+	];
 }
 
 function castVote(ballot) {
-	//
+	alert("castVote is NYI");
 }
 
 function fetchResults(poll) {
-	//
+	alert("fetchResults is NYI");
 }
 
 function authenticateUser(credentials, notifyCallback) {
@@ -23,7 +27,7 @@ function authenticateUser(credentials, notifyCallback) {
 }
 
 function registerToVote() {
-	//
+	//This will only need to talk to the server
 }
 
 function fetchPolls(user) {

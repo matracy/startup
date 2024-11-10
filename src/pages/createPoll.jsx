@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { pollOption } from "../components/pollOption";
 import { registerPoll } from "../backendInterface";
 
-function CreatePoll() {
+function CreatePoll({ redirecter }) {
 	const [options, setOptions] = useState([]);
 	const [settings, setSettings] = useState({
 		name: "My Poll",
@@ -13,23 +14,23 @@ function CreatePoll() {
 	});
 
 	function addOption() {
-		options.push(Document.options.addOption.value);
+		options.push(pollOptions.addOption.value);
 		setOptions(options);
 	}
 
 	function saveSettings() {
-		settings.name = Document.pollSettings.pollName.value;
-		settings.maxVoters = Document.pollSettings.voterCount.value;
-		settings.startDate = Document.pollSettings.startDateTime.value;
-		settings.endDate = Document.pollSettings.endDateTime.value;
-		settings.allowUnlimitedVoters =
-			Document.pollSettings.unlimitedRegistration.value;
+		settings.name = pollSettings.pollName.value;
+		settings.maxVoters = pollSettings.voterCount.value;
+		settings.startDate = pollSettings.startDateTime.value;
+		settings.endDate = pollSettings.endDateTime.value;
+		settings.allowUnlimitedVoters = pollSettings.unlimitedRegistration.value;
 		setSettings(settings);
 	}
 
 	function launchPoll() {
-		if (Document.pollLaunchConfirmation.launchConfirmation.value) {
+		if (pollLaunchConfirmation.launchConfirmation.value == "on") {
 			registerPoll(options, settings);
+			redirecter();
 		}
 	}
 
@@ -38,15 +39,21 @@ function CreatePoll() {
 			{/* <!-- The poll options and settings will be pulled from the server in realtime with a websocket --> */}
 			<h1 className="sectionTitle">Poll Options</h1>
 			<ul>
-				{options.forEach((opt) => {
+				{options.map((opt) => {
 					return (
 						<>
-							<li>pollOption(opt, null, null, null)</li>
+							<li>{pollOption(opt, null, null, null)}</li>
 						</>
 					);
 				})}
 			</ul>
-			<form name="options" action="javascript:addOption()">
+			<form
+				name="pollOptions"
+				onSubmit={(e) => {
+					e.preventDefault();
+					addOption();
+				}}
+			>
 				<label htmlFor="newOption">Add option</label>
 				<input
 					className="textInput"
@@ -58,7 +65,13 @@ function CreatePoll() {
 			</form>
 			<br />
 			<h1 className="sectionTitle">Poll Settings</h1>
-			<form name="pollSettings" action="javascript:saveSettings()">
+			<form
+				name="pollSettings"
+				onSubmit={(e) => {
+					e.preventDefault();
+					saveSettings();
+				}}
+			>
 				<label htmlFor="pollName">Poll Name: </label>
 				<input
 					className="textInput"
@@ -107,7 +120,15 @@ function CreatePoll() {
 			</form>
 			<br />
 			<h1 className="sectionTitle">Launch Poll</h1>
-			<form name="pollLaunchConfirmation" action="javascript:launchPoll()">
+			<form
+				name="pollLaunchConfirmation"
+				onSubmit={(e) => {
+					e.preventDefault();
+					launchPoll();
+					const navigateTo = useNavigate();
+					navigateTo("/poll.html");
+				}}
+			>
 				<label htmlFor="launchConfirmation">
 					I understand that once launched, a poll cannot be changed, and wish to
 					launch this poll.
