@@ -109,6 +109,26 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * [X] Set up React router
 * [X] Migrate content to React
 * [ ] Ensure that all non-backend components are fully functional
+  - [X] CSS works as intended
+  - [X] Registration remembers given username
+  - [X] Registration redirects to account home 
+  - [ ] login remembers given username
+  - [ ] login redirects to account home
+  - [X] Account home displays results of past polls
+  - [ ] New poll creation works as expected
+    + [ ] Can add options to poll
+    + [ ] Launch confirmation is checked
+    + [X] launch redirects as expected
+  - [X] Voter registration works as expected
+  - [ ] polling works as expected
+    + [ ] poll options are visable
+    + [ ] increment and decrement change the rank
+    + [ ] submitting ballot redirects as expected
+  - [ ] detailed poll results viewing works as expected
+    + [ ] winner is displayed
+    + [ ] results all render
+    + [ ] expected behavior from initial/total vote toggel
+* [X] logout works as expected
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup React deliverable
 * Updated Simon deployment to React
