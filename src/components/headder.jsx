@@ -1,22 +1,18 @@
-function header({ isSignedIn, name }) {
+function Header({ isSignedIn, name }) {
 	if ({ isSignedIn }) {
 		return (
 			<>
 				<header>
 					<div class="homeButton">
 						<a href="./index.html">
-							<img
-								class="imgLink"
-								src="./img-assets/logo-wide.svg"
-								alt="STV Online"
-							/>
+							<img class="imgLink" src="./logo-wide.svg" alt="STV Online" />
 						</a>
 					</div>
 					<div class="accountHeading">
 						<a href="./account.html">
 							<img
 								class="imgLink"
-								src="./img-assets/generig-pfp.svg"
+								src="./generic-pfp.svg"
 								alt="pfp"
 								width="50px"
 							/>
@@ -48,4 +44,4 @@ function header({ isSignedIn, name }) {
 		);
 	}
 }
-export { header };
+export { Header };

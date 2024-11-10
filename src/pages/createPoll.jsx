@@ -2,7 +2,7 @@ import { useState } from "react";
 import { pollOption } from "../components/pollOption";
 import { registerPoll } from "../backendInterface";
 
-function createPoll() {
+function CreatePoll() {
 	const [options, setOptions] = useState([]);
 	const [settings, setSettings] = useState({
 		name: "My Poll",
@@ -114,4 +114,4 @@ function createPoll() {
 	);
 }
 
-export { createPoll };
+export { CreatePoll };

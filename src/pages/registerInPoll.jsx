@@ -4,7 +4,7 @@ function register() {
 	registerToVote(Document.registration.pollID.value);
 }
 
-function registerInPoll() {
+function RegisterInPoll() {
 	return (
 		<>
 			<form name="registration" action="javascript:register()">
@@ -23,4 +23,4 @@ function registerInPoll() {
 	);
 }
 
-export { registerInPoll };
+export { RegisterInPoll };

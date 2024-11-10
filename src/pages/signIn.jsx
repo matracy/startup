@@ -1,6 +1,6 @@
 import { authenticateUser } from "../backendInterface";
 
-function signIn({ notifyStateOfNewUser }) {
+function SignIn({ notifyStateOfNewUser }) {
 	return (
 		<>
 			<form ction="javascript:registerNewUser({ notifyStateOfNewUser })">
@@ -22,4 +22,4 @@ function signIn({ notifyStateOfNewUser }) {
 	);
 }
 
-export { signIn };
+export { SignIn };

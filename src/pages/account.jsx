@@ -1,6 +1,6 @@
 import { pollSumary } from "../components/pollSumary";
 
-function account({ polls }) {
+function Account({ polls }) {
 	return (
 		<>
 			<div>
@@ -8,7 +8,7 @@ function account({ polls }) {
 				<table>polls.forEach(pollSumary)</table>
 			</div>
 			<div>
-				<a class="imitationButton" href="./newPoll.html">
+				<a class="imitationButton" href="./createPoll.html">
 					Create new poll
 				</a>
 			</div>
@@ -21,4 +21,4 @@ function account({ polls }) {
 	);
 }
 
-export { account };
+export { Account };

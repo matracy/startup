@@ -8,7 +8,7 @@ function areValuesUnique(obj) {
 	return values.length === uniqueValues.size;
 }
 
-function poll({ poll }) {
+function Poll({ poll }) {
 	const [options, setOptions] = useState(fetchOptions(poll));
 
 	function submitBallot() {
@@ -55,4 +55,4 @@ function poll({ poll }) {
 	);
 }
 
-export { poll };
+export { Poll };

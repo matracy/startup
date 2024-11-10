@@ -1,32 +1,35 @@
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./main.css";
-import { account } from "./pages/account.jsx";
-import { createAccount } from "./pages/createAccount.jsx";
-import { createPoll } from "./pages/createPoll.jsx";
-import { landing } from "./pages/landing.jsx";
-import { poll } from "./pages/poll.jsx";
-import { pollResults } from "./pages/pollResults.jsx";
-import { registerInPoll } from "./pages/registerInPoll.jsx";
-import { signIn } from "./pages/signIn.jsx";
+import { Account } from "./pages/account.jsx";
+import { CreateAccount } from "./pages/createAccount.jsx";
+import { CreatePoll } from "./pages/createPoll.jsx";
+import { Landing } from "./pages/landing.jsx";
+import { Poll } from "./pages/poll.jsx";
+import { PollResults } from "./pages/pollResults.jsx";
+import { RegisterInPoll } from "./pages/registerInPoll.jsx";
+import { SignIn } from "./pages/signIn.jsx";
+import { Header } from "./components/headder.jsx";
+import { Footer } from "./components/footer.jsx";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById("root"));
 root.render(
 	<BrowserRouter>
-		<div className="app">
-			<main>
-				<Routes>
-					<Route path="/" element={<landing />} exact />
-					<Route path="/account" element={<account />} />
-					<Route path="/createAccount" element={<createAccount />} />
-					<Route path="/newPoll" element={<newPoll />} />
-					<Route path="/poll" element={<poll />} />
-					<Route path="/pollResults" element={<pollResults />} />
-					<Route path="/registerInPoll" element={<registerInPoll />} />
-					<Route path="/signIn" element={<signIn />} />
-					<Route path="*" element={<Navigate to="/" replace />} />
-				</Routes>
-			</main>
-		</div>
+		<Header />
+		<main>
+			<Routes>
+				<Route path="/" element={<Landing />} exact />
+				<Route path="/account" element={<Account />} />
+				<Route path="/createAccount" element={<CreateAccount />} />
+				<Route path="/createPoll" element={<CreatePoll />} />
+				<Route path="/poll" element={<Poll />} />
+				<Route path="/pollResults" element={<PollResults />} />
+				<Route path="/registerInPoll" element={<RegisterInPoll />} />
+				<Route path="/signIn" element={<SignIn />} />
+				<Route path="*" element={<Navigate to="/" replace />} />
+			</Routes>
+		</main>
+		<Footer />
 	</BrowserRouter>,
 );

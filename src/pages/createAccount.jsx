@@ -1,6 +1,6 @@
 import { registerNewUser } from "../backendInterface";
 
-function createAccount({ notifyStateOfNewUser }) {
+function CreateAccount({ notifyStateOfNewUser }) {
 	return (
 		<>
 			<form ction="javascript:registerNewUser({ notifyStateOfNewUser })">
@@ -31,4 +31,4 @@ function createAccount({ notifyStateOfNewUser }) {
 	);
 }
 
-export { createAccount };
+export { CreateAccount };

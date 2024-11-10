@@ -1,9 +1,9 @@
-function landing() {
+function Landing() {
 	return (
 		<>
-			<img src="./img-assets/logo-square.svg" alt="STV Online" width="75%" />
+			<img src="./logo-square.svg" alt="STV Online" width="75%" />
 		</>
 	);
 }
 
-export { landing };
+export { Landing };
