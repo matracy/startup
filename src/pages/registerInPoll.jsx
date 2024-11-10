@@ -1,13 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { registerToVote } from "../backendInterface";
 
-function register() {
-	registerToVote(Document.registration.pollID.value);
-}
-
-function RegisterInPoll() {
+function RegisterInPoll({ redirecter }) {
 	return (
 		<>
-			<form name="registration" action="javascript:register()">
+			<form
+				name="registration"
+				onSubmit={(e) => {
+					e.preventDefault();
+					registerToVote(registration.pollID.value);
+					redirecter();
+				}}
+			>
 				<label htmlFor="pollID">Poll ID:</label>
 				<input
 					className="textInput"
