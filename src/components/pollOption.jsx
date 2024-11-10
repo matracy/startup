@@ -8,10 +8,10 @@ function pollOption({ name, rank, increaseRank, decreaseRank }) {
 						? ": " +
 							{ rank } +
 							'\
-					<p class="imitationButton" onClick={increaseRank}>\
+					<p class="imitationButton" onClick={increaseRank({name})}>\
 						+\
 					</p>\
-					<p class="imitationButton" onClick={decreaseRank}>\
+					<p class="imitationButton" onClick={decreaseRank({name})}>\
 						-\
 					</p>\
 					'

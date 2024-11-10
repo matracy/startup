@@ -105,10 +105,10 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 
 ## Startup React deliverable
 ### TODO
-* Use Vite to set up template
-* Set up React router
-* Migrate content to React
-* Ensure that all non-backend components are fully functional
+* [X] Use Vite to set up template
+* [X] Set up React router
+* [ ] Migrate content to React
+* [ ] Ensure that all non-backend components are fully functional
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup React deliverable
 * Updated Simon deployment to React
@@ -123,4 +123,5 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 	- account home
 	- user registration
 	- createPoll
+	- poll
 ### Additions
