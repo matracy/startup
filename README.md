@@ -107,7 +107,7 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 ### TODO
 * [X] Use Vite to set up template
 * [X] Set up React router
-* [ ] Migrate content to React
+* [X] Migrate content to React
 * [ ] Ensure that all non-backend components are fully functional
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup React deliverable
