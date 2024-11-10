@@ -1,9 +1,9 @@
 import { authenticateUser } from "../backendInterface";
 
 function authUser(callback) {
-	credentials = {};
-	credentials.username = Document.signin.name.value;
-	credentials.password = Document.signin.password.value;
+	var credentials = {};
+	credentials.username = signin.name.value;
+	credentials.password = signin.password.value;
 	authenticateUser(credentials, callback);
 }
 
@@ -12,7 +12,10 @@ function SignIn({ notifyStateOfNewUser }) {
 		<>
 			<form
 				name="signin"
-				action="javascript:authUser({ notifyStateOfNewUser })"
+				onSubmit={(e) => {
+					e.preventDefault();
+					authUser({ notifyStateOfNewUser });
+				}}
 			>
 				<label htmlFor="name">Display name:</label>
 				<input

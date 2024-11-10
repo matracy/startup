@@ -1,13 +1,11 @@
 import { registerNewUser } from "../backendInterface";
 
 function registerUser(callback) {
-	if (
-		Document.register.password.value == Document.register.confirmPassword.value
-	) {
-		credentials = {};
-		credentials.username = Document.register.name.value;
-		credentials.password = Document.register.password.value;
-		authenticateUser(credentials, callback);
+	if (register.password.value == register.confirmPassword.value) {
+		var credentials = {};
+		credentials.username = register.name.value;
+		credentials.password = register.password.value;
+		registerNewUser(credentials, callback);
 	} else {
 		alert("Passwords must match.");
 	}
@@ -18,7 +16,10 @@ function CreateAccount({ notifyStateOfNewUser }) {
 		<>
 			<form
 				name="register"
-				action="javascript:registerUser({ notifyStateOfNewUser })"
+				onSubmit={(e) => {
+					e.preventDefault();
+					registerUser({ notifyStateOfNewUser });
+				}}
 			>
 				<label htmlFor="name">Display name:</label>
 				<input
