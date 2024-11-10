@@ -125,4 +125,5 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 	- create poll
 	- poll
 	- poll results
+	- register in poll
 ### Additions
