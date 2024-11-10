@@ -18,7 +18,7 @@ function CreateAccount({ notifyStateOfNewUser }) {
 				name="register"
 				onSubmit={(e) => {
 					e.preventDefault();
-					registerUser({ notifyStateOfNewUser });
+					registerUser(notifyStateOfNewUser);
 				}}
 			>
 				<label htmlFor="name">Display name:</label>

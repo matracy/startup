@@ -18,6 +18,7 @@ import { RegisterInPoll } from "./pages/registerInPoll.jsx";
 import { SignIn } from "./pages/signIn.jsx";
 import { Header } from "./components/headder.jsx";
 import { Footer } from "./components/footer.jsx";
+import { fetchPolls } from "./backendInterface.js";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -26,12 +27,9 @@ function AppWrapper() {
 	const navigateTo = useNavigate();
 
 	function isSignedIn() {
-		console.log("User: " + user);
 		if (user == null) {
-			console.log("User was null.");
 			return false;
 		}
-		console.log("User had key length " + Object.keys(user).length);
 		return Object.keys(user).length > 0;
 	}
 	return (
@@ -40,14 +38,17 @@ function AppWrapper() {
 			<main>
 				<Routes>
 					<Route path="/" element={<Landing />} exact />
-					<Route path="/account.html" element={<Account />} />
+					<Route
+						path="/account.html"
+						element={<Account polls={fetchPolls(user)} />}
+					/>
 					<Route
 						path="/createAccount.html"
 						element={
 							<CreateAccount
 								notifyStateOfNewUser={(usr) => {
 									setUser(usr);
-									navigateTo("/");
+									navigateTo("/account.html");
 								}}
 							/>
 						}

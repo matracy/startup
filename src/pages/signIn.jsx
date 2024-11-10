@@ -14,7 +14,7 @@ function SignIn({ notifyStateOfNewUser }) {
 				name="signin"
 				onSubmit={(e) => {
 					e.preventDefault();
-					authUser({ notifyStateOfNewUser });
+					authUser(notifyStateOfNewUser);
 				}}
 			>
 				<label htmlFor="name">Display name:</label>
