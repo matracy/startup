@@ -35,24 +35,22 @@ function poll({ poll }) {
 
 	return (
 		<>
-			<main>
-				<p class="instructionText">
-					Please rank all the choices in order of preference, with 1 being the
-					most prefered option.
-				</p>
-				<form action="javascript:submitBallot()">
-					{options.forEach((opt) => {
-						return (
-							<>
-								pollOption(opt.name, opt.rank, incRank, decRank)
-								<br />
-							</>
-						);
-					})}
-					;
-					<input class="buttonInput" type="submit" value="Cast vote" />
-				</form>
-			</main>
+			<p class="instructionText">
+				Please rank all the choices in order of preference, with 1 being the
+				most prefered option.
+			</p>
+			<form action="javascript:submitBallot()">
+				{options.forEach((opt) => {
+					return (
+						<>
+							pollOption(opt.name, opt.rank, incRank, decRank)
+							<br />
+						</>
+					);
+				})}
+				;
+				<input class="buttonInput" type="submit" value="Cast vote" />
+			</form>
 		</>
 	);
 }

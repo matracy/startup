@@ -11,27 +11,23 @@ function pollResults({ poll }) {
 
 	return (
 		<>
-			<main>
-				{/* <!-- Essentially this whole page will be stored on the server's database. --> */}
-				<p class="preTitle">The winner of this poll is:</p>
-				<br />
-				<h1 class="pollWinner">{poll.winner}</h1>
-				<p class="imitationButton" onClick={setResultView}>
-					View {resultView == "Final Votes" ? "initial votes" : "final votes"}
-				</p>
-				{results.forEach((res) => {
-					return (
-						<>
-							pollResult(res.name,
-							{resultView == "Initial Votes"
-								? res.initialVotes
-								: res.finalVotes}
-							)
-							<br />
-						</>
-					);
-				})}
-			</main>
+			{/* <!-- Essentially this whole page will be stored on the server's database. --> */}
+			<p class="preTitle">The winner of this poll is:</p>
+			<br />
+			<h1 class="pollWinner">{poll.winner}</h1>
+			<p class="imitationButton" onClick={setResultView}>
+				View {resultView == "Final Votes" ? "initial votes" : "final votes"}
+			</p>
+			{results.forEach((res) => {
+				return (
+					<>
+						pollResult(res.name,
+						{resultView == "Initial Votes" ? res.initialVotes : res.finalVotes}
+						)
+						<br />
+					</>
+				);
+			})}
 		</>
 	);
 }
