@@ -19,11 +19,15 @@ function castVote(ballot) {
 }
 
 function fetchResults(poll) {
-	alert("fetchResults is NYI");
+	return [
+		{ name: "Option 1", initialVotes: 1, finalVotes: 2 },
+		{ name: "Option 2", initialVotes: 1, finalVotes: 1 },
+		{ name: "Option 3", initialVotes: 1, finalVotes: 0 },
+	];
 }
 
 function authenticateUser(credentials, notifyCallback) {
-	notifyCallback({ name: credentials.name });
+	notifyCallback({ name: credentials.username });
 }
 
 function registerToVote() {

@@ -9,7 +9,7 @@ function areValuesUnique(obj) {
 }
 
 function Poll({ poll, redirecter }) {
-	const [options, setOptions] = useState(fetchOptions(poll));
+	const [options, setOptions] = useState(() => fetchOptions(poll));
 
 	function submitBallot() {
 		var results = {};
@@ -25,19 +25,19 @@ function Poll({ poll, redirecter }) {
 	}
 
 	function incRank(name) {
-		setOptions(
-			options.map((opt) => {
-				opt.name == name ? (opt.rank += 1) : (opt.rank += 0);
-			}),
-		);
+		var newOpts = [...options];
+		newOpts.forEach((opt) => {
+			opt.name == name ? (opt.rank += 1) : (opt.rank += 0);
+		});
+		setOptions(newOpts);
 	}
 
 	function decRank(name) {
-		setOptions(
-			options.map((opt) => {
-				opt.name == name ? (opt.rank -= 1) : (opt.rank -= 0);
-			}),
-		);
+		var newOpts = [...options];
+		newOpts.forEach((opt) => {
+			opt.name == name ? (opt.rank -= 1) : (opt.rank -= 0);
+		});
+		setOptions(newOpts);
 	}
 
 	return (
@@ -52,18 +52,19 @@ function Poll({ poll, redirecter }) {
 					submitBallot();
 				}}
 			>
-				{options.map((opt) => {
-					console.log(opt);
-					if (opt != null && opt != undefined) {
-						return (
-							<>
-								{pollOption(opt.name, opt.rank, incRank, decRank)}
-								<br />
-							</>
-						);
-					}
-				})}
-				;
+				<ul>
+					{options.map((opt) => {
+						if (opt != null && opt != undefined) {
+							return (
+								<>
+									<li key={opt.name}>
+										{pollOption(opt.name, opt.rank, incRank, decRank)}
+									</li>
+								</>
+							);
+						}
+					})}
+				</ul>
 				<input className="buttonInput" type="submit" value="Cast vote" />
 			</form>
 		</>

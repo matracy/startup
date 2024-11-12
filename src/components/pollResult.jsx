@@ -1,4 +1,4 @@
-function pollResult({ name, numVotes }) {
+function pollResult(name, numVotes) {
 	return (
 		<>
 			<span>

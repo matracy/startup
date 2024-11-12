@@ -14,9 +14,9 @@ function CreatePoll({ redirecter }) {
 	});
 
 	function addOption() {
-		console.log("Adding option.");
-		options.push(pollOptions.addOption.value);
-		setOptions(options);
+		var newOpts = [...options];
+		newOpts.push(pollOptions.addOption.value);
+		setOptions(newOpts);
 	}
 
 	function saveSettings() {
@@ -24,12 +24,13 @@ function CreatePoll({ redirecter }) {
 		settings.maxVoters = pollSettings.voterCount.value;
 		settings.startDate = pollSettings.startDateTime.value;
 		settings.endDate = pollSettings.endDateTime.value;
-		settings.allowUnlimitedVoters = pollSettings.unlimitedRegistration.value;
+		settings.allowUnlimitedVoters = pollSettings.unlimitedRegistration.checked;
 		setSettings(settings);
 	}
 
 	function launchPoll() {
-		if (pollLaunchConfirmation.launchConfirmation.value == "on") {
+		if (pollLaunchConfirmation.launchConfirmation.checked) {
+			saveSettings();
 			registerPoll(options, settings);
 			redirecter();
 		}
@@ -43,7 +44,7 @@ function CreatePoll({ redirecter }) {
 				{options.map((opt) => {
 					return (
 						<>
-							<li>{pollOption(opt, null, null, null)}</li>
+							<li key={opt.name}>{pollOption(opt, null, null, null)}</li>
 						</>
 					);
 				})}

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { pollSumary } from "../components/pollSumary";
 
 function Account({ polls }) {
@@ -8,14 +9,14 @@ function Account({ polls }) {
 				<table>{polls.map(pollSumary)}</table>
 			</div>
 			<div>
-				<a className="imitationButton" href="./createPoll.html">
+				<Link className="imitationButton" to="/createPoll.html">
 					Create new poll
-				</a>
+				</Link>
 			</div>
 			<div>
-				<a className="imitationButton" href="./registerInPoll.html">
+				<Link className="imitationButton" to="/registerInPoll.html">
 					Register to vote
-				</a>
+				</Link>
 			</div>
 		</>
 	);

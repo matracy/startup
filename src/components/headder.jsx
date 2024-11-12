@@ -1,28 +1,41 @@
-function Header({ isSignedIn, name }) {
-	if (isSignedIn) {
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { GlobalState } from "../main";
+
+function isSignedIn() {
+	const user = useContext(GlobalState).user;
+	if (user == null || user == undefined) {
+		return false;
+	}
+	return Object.keys(user).length > 0;
+}
+
+function Header() {
+	const user = useContext(GlobalState).user;
+	if (isSignedIn()) {
 		return (
 			<>
 				<header>
 					<div className="homeButton">
-						<a href="./index.html">
+						<Link to="/index.html">
 							<img className="imgLink" src="./logo-wide.svg" alt="STV Online" />
-						</a>
+						</Link>
 					</div>
 					<div className="accountHeading">
-						<a href="./account.html">
+						<Link to="/account.html">
 							<img
 								className="imgLink"
 								src="./generic-pfp.svg"
 								alt="pfp"
 								width="50px"
 							/>
-						</a>
-						<p className="infoText">Voting as {name}</p>
+						</Link>
+						<p className="infoText">Voting as {user.name}</p>
 					</div>
 					<div>
-						<a className="navLink" href="./logout.html">
+						<Link className="navLink" to="/logout.html">
 							Log out
-						</a>
+						</Link>
 					</div>
 				</header>
 			</>
@@ -33,10 +46,10 @@ function Header({ isSignedIn, name }) {
 				<header>
 					<nav className="homepageAccountLinks">
 						<div className="navLink">
-							<a href="./createAccount.html">Register</a>
+							<Link to="/createAccount.html">Register</Link>
 						</div>
 						<div className="navLink">
-							<a href="./signIn.html">Login</a>
+							<Link to="/signIn.html">Login</Link>
 						</div>
 					</nav>
 				</header>
