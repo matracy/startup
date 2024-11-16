@@ -9,13 +9,8 @@ const authRouter = express.Router();
 
 // register user
 authRouter.post("/", (req, res) => {
-	const { credentials } = req.body;
-	if (
-		!credentials ||
-		!credentials.name ||
-		!credentials.email ||
-		!credentials.password
-	) {
+	const { name, email, password } = req.headers["credentials"];
+	if (!name || !email || !password) {
 		return res
 			.status(400)
 			.json({ message: "name, email, and password are required" });
@@ -26,13 +21,13 @@ authRouter.post("/", (req, res) => {
 
 // authenticate user
 authRouter.get("/", (req, res) => {
-	const { credentials } = req.body;
-	if (!credentials || !credentials.name || !credentials.password) {
+	const { name, email } = req.headers["credentials"];
+	if (!name || !password) {
 		return res.status(400).json({ message: "name and password are required" });
 	}
-	if (authUser(Credentials.name, credentials.password)) {
-		const token = issueToken(credentials.name);
-		res.json({ name: credentials.name, token: token });
+	if (authUser(name, password)) {
+		const token = issueToken(name);
+		res.json({ name: name, token: token });
 	} else {
 		return res.status(401).json({ message: "Invalid credentials" });
 	}
@@ -40,7 +35,7 @@ authRouter.get("/", (req, res) => {
 
 // logout user
 authRouter.delete("/", (req, res) => {
-	const { token } = req.body;
+	const token = req.headers["authToken"];
 	if (!token) {
 		return res.status(400).json({ message: "authToken is required." });
 	} else {
