@@ -131,8 +131,6 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * Confirm expected level of functionality of app
   - for pages that require codes, should I modify pages to deliver codes, or just make all codes accepted?
   - does the backend need to do anything other than be callable and provide responses?
-* Create service endpoints
-  - Get user's polls -> GET /api/user
 * Fill out helper-functions for the endpoint handlers
 * Set frontend to use API rather than mocks
 * Modify logout to use API
@@ -144,3 +142,4 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * Created backend service endpoints
   - /api/auth
   - /api/poll/*
+ - /api/user
