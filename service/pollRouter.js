@@ -37,7 +37,7 @@ pollRouter.patch("/", (req, res) => {
 	if (!poll) {
 		return res.status(404).json({ message: "no poll with matching pollID" });
 	}
-	const ballot = res.body;
+	const ballot = req.body;
 	if (!ballot) {
 		return res.status(400).json({ message: "ballot is required" });
 	}
@@ -71,7 +71,7 @@ pollRouter.post("/register", (req, res) => {
 	if (!poll) {
 		return res.status(404).json({ message: "no poll with matching pollID" });
 	}
-	const { registrationNumber } = res.body;
+	const { registrationNumber } = req.body;
 	if (!registrationNumber) {
 		return res.status(400).json({ message: "registration number is required" });
 	}
@@ -89,7 +89,7 @@ pollRouter.post("/create", (req, res) => {
 	if (!token || !validateToken(token)) {
 		return res.status(401).json({ message: "invalid credentials" });
 	}
-	const { options, settings } = res.body;
+	const { options, settings } = req.body;
 	if (!options || !settings) {
 		return res
 			.status(400)
