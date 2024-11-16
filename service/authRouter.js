@@ -4,6 +4,7 @@ const {
 	issueToken,
 	revokeToken,
 	authUser,
+	registerUser,
 } = require("./authServices");
 const authRouter = express.Router();
 
@@ -15,6 +16,7 @@ authRouter.post("/", (req, res) => {
 			.status(400)
 			.json({ message: "name, email, and password are required" });
 	}
+	registerUser(name, email, password);
 	const token = issueToken(name);
 	res.json({ name: name, token: token });
 });
