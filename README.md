@@ -142,4 +142,6 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * Created backend service endpoints
   - /api/auth
   - /api/poll/*
- - /api/user
+  - /api/user
+* implimented basic authentication logic
+* implimented basic polling logic

@@ -1,5 +1,5 @@
 const express = require("express");
-const { validateToken } = require("./authServices");
+const { validateToken, getUser } = require("./authServices");
 const {
 	lookupPoll,
 	countBallot,
@@ -48,7 +48,7 @@ pollRouter.patch("/", (req, res) => {
 		return res.status(400).json({ message: "must vote on all options" });
 	}
 	//now that validation is done, actually cast the vote
-	if (countBallot(ballot)) {
+	if (countBallot(ballot, pollID, getUser(token))) {
 		res.status(202).send();
 	} else {
 		return res.status(500).json({ message: "Error processing ballot." });
