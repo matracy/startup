@@ -129,9 +129,6 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 ### TODO
 * Check with TAs about which side needs to call the thirdparty API
 * Create service endpoints
-  - Register new user -> POST /api/auth
-  - Authenticate returning user -> GET /api/auth
-  - Logout -> DELETE /api/auth
   - Get user's polls -> GET /api/user
   - Get poll info -> GET /api/poll
   - Cast vote -> PATCH /api/poll
@@ -146,3 +143,4 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * Added server config to Vite
 ### Additions
 * Created backend service endpoints
+  - /api/auth
