@@ -8,6 +8,7 @@ const {
 	fetchParticipation,
 	patchParticipation,
 } = require("./dbServices");
+const { v4 } = require("uuid");
 
 const { updatePoll } = require("./STVMagic");
 
@@ -77,6 +78,7 @@ function createPoll(options, settings) {
 		allowUnlimitedVoters: settings.allowUnlimitedVoters,
 	};
 	addPoll(newPoll);
+	const registrationNumber = v4();
 	addRegistrationInfo(registrationNumber, registrationInfo);
 	return { pollID: newPoll.id, registrationNumber: registrationNumber };
 }
