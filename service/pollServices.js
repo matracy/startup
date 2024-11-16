@@ -27,7 +27,7 @@ function countBallot(ballot, pollID, username) {
 		patchParticipation(username, pollsParticipatedIn);
 		poll.ballots.push(ballot);
 		updatePoll(poll);
-		patchPoll(poll);
+		patchPoll(pollID, poll);
 		return true;
 	} catch (err) {
 		console.log(`Error counting ballot: ${err}`);
@@ -77,7 +77,7 @@ function createPoll(options, settings) {
 		allowUnlimitedVoters: settings.allowUnlimitedVoters,
 	};
 	addPoll(newPoll);
-	addRegistrationInfo(registrationInfo);
+	addRegistrationInfo(registrationNumber, registrationInfo);
 	return newPoll.id;
 }
 

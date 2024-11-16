@@ -127,11 +127,9 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 
 ## Startup Service deliverable
 ### TODO
-* Check with TAs about which side needs to call the thirdparty API
-* Confirm expected level of functionality of app
-  - for pages that require codes, should I modify pages to deliver codes, or just make all codes accepted?
-  - does the backend need to do anything other than be callable and provide responses?
-* Fill out helper-functions for the endpoint handlers
+* Add backend third-party API call
+* Make database handlers return dummy data
+* Add way to distribute codes to users
 * Set frontend to use API rather than mocks
 * Modify logout to use API
 ### Modifications
@@ -146,3 +144,4 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * implimented basic authentication logic
 * implimented basic polling logic
 * implimented STV scoring for polls
+* mocked out database
