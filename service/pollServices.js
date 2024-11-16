@@ -78,7 +78,7 @@ function createPoll(options, settings) {
 	};
 	addPoll(newPoll);
 	addRegistrationInfo(registrationNumber, registrationInfo);
-	return newPoll.id;
+	return { pollID: newPoll.id, registrationNumber: registrationNumber };
 }
 
 module.exportts = {

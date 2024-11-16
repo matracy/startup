@@ -18,7 +18,9 @@ pollRouter.get("/", (req, res) => {
 	if (!poll) {
 		return res.status(404).json({ message: "no poll with matching pollID" });
 	}
-	res.status(200).json(poll);
+	res
+		.status(200)
+		.json({ id: pollID, options: poll.options, result: poll.result });
 });
 
 // Cast vote
@@ -81,7 +83,7 @@ pollRouter.post("/register", (req, res) => {
 	}
 });
 
-// - Create poll -> POST /api/poll/create
+// Create poll
 pollRouter.post("/create", (req, res) => {
 	const token = req.headers["authToken"];
 	if (!token || !validateToken(token)) {
@@ -93,11 +95,13 @@ pollRouter.post("/create", (req, res) => {
 			.status(400)
 			.json({ message: "options and settings are required" });
 	}
-	const newPoll = createPoll(options, settings);
-	if (!newPoll) {
+	const { newPoll, registrationNumber } = createPoll(options, settings);
+	if (!newPoll || !registrationNumber) {
 		return res.status(500).json({ message: "could not create new poll" });
 	} else {
-		res.status(200).json({ pollID: newPoll });
+		res
+			.status(200)
+			.json({ pollID: newPoll, registrationNumber: registrationNumber });
 	}
 });
 
