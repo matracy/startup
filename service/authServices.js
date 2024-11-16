@@ -14,7 +14,7 @@ function validateToken(token) {
 		return false;
 	}
 	if (expiration - Date.now() < 10 * 60 * 1000) {
-		patchToken({ id: token, expiration: Date.now() + 3600 * 1000 });
+		patchToken(token, { expiration: Date.now() + 3600 * 1000 });
 	}
 	return true;
 }
