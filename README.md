@@ -124,3 +124,15 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 	- signin page
 ### Additions
 * Logout now has its own JSX "page"
+
+## Startup Service deliverable
+### TODO
+* Organize API
+* Create service endpoints
+* Set frontend to use API rather than mocks
+### Modifications
+* Updated README.md to include modifications and deletions for Startup Service deliverable
+* Updated Simon deployment to React
+* Added server config to Vite
+### Additions
+* Created backend service endpoints
