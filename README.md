@@ -127,9 +127,19 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 
 ## Startup Service deliverable
 ### TODO
-* Organize API
+* Check with TAs about which side needs to call the thirdparty API
 * Create service endpoints
+  - Register new user -> POST /api/auth
+  - Authenticate returning user -> GET /api/auth
+  - Logout -> DELETE /api/auth
+  - Get user's polls -> GET /api/user
+  - Get poll info -> GET /api/poll
+  - Cast vote -> PATCH /api/poll
+  - Register to vote -> POST /api/poll/register
+  - Create poll -> POST /api/poll/create
+* Fill out helper-functions for the endpoint handlers
 * Set frontend to use API rather than mocks
+* Modify logout to use API
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup Service deliverable
 * Updated Simon deployment to React
