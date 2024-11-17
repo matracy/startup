@@ -1,5 +1,6 @@
 const express = require("express");
 const uuid = require("uuid");
+const { colorMagic } = require("./colorMagic");
 const { authRouter } = require("./authRouter");
 const { pollRouter } = require("./pollRouter");
 const { userHandler } = require("./userHandler");
@@ -20,4 +21,22 @@ app.use(`/api`, apiRouter);
 //set up sub-routers
 apiRouter.use("/auth", authRouter);
 apiRouter.use("/poll", pollRouter);
-apiRouter.use("/user", userHandler);
+apiRouter.get("/user", userHandler);
+
+//apply user-specified port setting
+app.listen(port, () => {
+	console.log(`Listening on port ${port}`);
+});
+
+//This is the bit that uses third-party API calls.
+const interval = 60 * 1000; // refresh every minute
+const timer = setInterval(async () => {
+	colorMagic();
+}, interval);
+
+timer.unref(); //don't hold things open if this is the only timer in the module that hasn't fired yet
+
+//potential bugfix incase of HTTP 502 on deploy
+// app.use((_req, res) => {
+// 	res.sendFile("index.html", { root: "public" });
+// });
