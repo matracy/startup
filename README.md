@@ -127,21 +127,22 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 
 ## Startup Service deliverable
 ### TODO
-* Add backend third-party API call
-* Make database handlers return dummy data
-* Add way to distribute codes to users
-* Set frontend to use API rather than mocks
+* Add way for frontend to distribute codes to users
+* Fix frontend interactions with backendInterface (all functions have new signatures)
 * Modify logout to use API
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup Service deliverable
 * Updated Simon deployment to React
 * Added server config to Vite
+* Set frontend to use API rather than mocks
 ### Additions
 * Created backend service endpoints
   - /api/auth
+  - /api/poll
   - /api/poll/*
   - /api/user
 * implimented basic authentication logic
 * implimented basic polling logic
 * implimented STV scoring for polls
 * mocked out database
+* Colors are now dynamicly funished by 3rd-party API

@@ -29,10 +29,7 @@ app.listen(port, () => {
 });
 
 //This is the bit that uses third-party API calls.
-const interval = 60 * 1000; // refresh every minute
-const timer = setInterval(async () => {
-	colorMagic();
-}, interval);
+colorMagic();
 
 timer.unref(); //don't hold things open if this is the only timer in the module that hasn't fired yet
 
