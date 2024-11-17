@@ -61,13 +61,13 @@ function authenticateUser(credentials, notifyCallback) {
 	notifyCallback({ name: rjson.name, token: rjson.token });
 }
 
-function registerToVote(registrationNumber, authToken, notifyCallback) {
+function registerToVote(registrationNumber, authToken) {
 	const response = fetch(`${baseURL}/poll/register`, {
 		method: "POST",
 		headers: { authToken: authToken },
 		body: JSON.stringify({ registrationNumber: registrationNumber }),
 	});
-	notifyCallback({ pollID: response.json.pollID });
+	return response.json.pollID;
 }
 
 function fetchPolls(authToken) {
@@ -89,6 +89,13 @@ function fetchPolls(authToken) {
 	return pollInfo;
 }
 
+function signOut(token) {
+	const response = fetch(`${baseURL}/auth`, {
+		method: "DELETE",
+		headers: { authToken: authToken },
+	});
+}
+
 export {
 	registerNewUser,
 	registerPoll,
@@ -98,4 +105,5 @@ export {
 	authenticateUser,
 	registerToVote,
 	fetchPolls,
+	signOut,
 };

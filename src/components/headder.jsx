@@ -11,7 +11,7 @@ function isSignedIn() {
 }
 
 function Header() {
-	const user = useContext(GlobalState).user;
+	const username = useContext(GlobalState).name;
 	if (isSignedIn()) {
 		return (
 			<>
@@ -30,7 +30,7 @@ function Header() {
 								width="50px"
 							/>
 						</Link>
-						<p className="infoText">Voting as {user.name}</p>
+						<p className="infoText">Voting as {username}</p>
 					</div>
 					<div>
 						<Link className="navLink" to="/logout.html">

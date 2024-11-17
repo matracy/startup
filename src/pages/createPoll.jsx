@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { pollOption } from "../components/pollOption";
 import { registerPoll } from "../backendInterface";
 
-function CreatePoll({ redirecter }) {
+function CreatePoll({ redirecter, authToken }) {
 	const [options, setOptions] = useState([]);
 	const [settings, setSettings] = useState({
 		name: "My Poll",
@@ -31,8 +31,7 @@ function CreatePoll({ redirecter }) {
 	function launchPoll() {
 		if (pollLaunchConfirmation.launchConfirmation.checked) {
 			saveSettings();
-			registerPoll(options, settings);
-			redirecter();
+			registerPoll(options, settings, authToken, redirecter);
 		}
 	}
 

@@ -8,7 +8,7 @@ function areValuesUnique(obj) {
 	return values.length === uniqueValues.size;
 }
 
-function Poll({ poll, redirecter }) {
+function Poll({ poll, redirecter, authToken }) {
 	const [options, setOptions] = useState(() => fetchOptions(poll));
 
 	function submitBallot() {
@@ -17,7 +17,7 @@ function Poll({ poll, redirecter }) {
 			results[opt.name] = opt.rank;
 		});
 		if (areValuesUnique(results)) {
-			castVote(results);
+			castVote(poll, results, authToken);
 			redirecter();
 		} else {
 			alert("Each option must have a unique rank.");

@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react";
+import { createContext } from "react";
 import { createRoot } from "react-dom/client";
 import {
 	BrowserRouter,
@@ -18,15 +18,31 @@ import { RegisterInPoll } from "./pages/registerInPoll.jsx";
 import { SignIn } from "./pages/signIn.jsx";
 import { Header } from "./components/headder.jsx";
 import { Footer } from "./components/footer.jsx";
-import { fetchPolls } from "./backendInterface.js";
+import { fetchPolls, signOut } from "./backendInterface.js";
 import { Logout } from "./pages/logout.jsx";
 
 const root = createRoot(document.getElementById("root"));
-export const GlobalState = createContext({ user: {}, poll: {} });
-const user = GlobalState.user;
+export const GlobalState = createContext({
+	name: null,
+	pollID: null,
+	authToken: null,
+	registrationNumber: null,
+});
 
-function setUser(usr) {
-	GlobalState.user = usr;
+function setName(name) {
+	GlobalState.name = name;
+}
+
+function setAuthToken(token) {
+	GlobalState.authToken = token;
+}
+
+function setPoll(pollID) {
+	GlobalState.pollID = pollID;
+}
+
+function setRegistration(num) {
+	GlobalState.registrationNumber = num;
 }
 
 function AppWrapper() {
@@ -41,14 +57,15 @@ function AppWrapper() {
 						<Route path="/" element={<Landing />} exact />
 						<Route
 							path="/account.html"
-							element={<Account polls={fetchPolls(user)} />}
+							element={<Account polls={fetchPolls(GlobalState.authToken)} />}
 						/>
 						<Route
 							path="/createAccount.html"
 							element={
 								<CreateAccount
-									notifyStateOfNewUser={(usr) => {
-										setUser(usr);
+									notifyStateOfNewUser={(name, authToken) => {
+										setName(usr);
+										setAuthToken(authToken);
 										navigateTo("/account.html");
 									}}
 								/>
@@ -58,9 +75,12 @@ function AppWrapper() {
 							path="/createPoll.html"
 							element={
 								<CreatePoll
-									redirecter={() => {
+									redirecter={({ pollID, registrationNumber }) => {
+										setPoll(pollID);
+										setRegistration(registrationNumber);
 										navigateTo("/registerInPoll.html");
 									}}
+									authToken={GlobalState.authToken}
 								/>
 							}
 						/>
@@ -68,25 +88,28 @@ function AppWrapper() {
 							path="/poll.html"
 							element={
 								<Poll
-									poll="some-hardcoded-poll"
+									poll={GlobalState.pollID}
 									redirecter={() => {
 										navigateTo("/pollResults.html");
 									}}
+									authToken={GlobalState.authToken}
 								/>
 							}
 						/>
 						<Route
 							path="/pollResults.html"
-							element={<PollResults poll={{ result: "Option 1" }} />}
+							element={<PollResults poll={GlobalState.pollID} />}
 						/>
 						<Route
 							path="/registerInPoll.html"
 							element={
 								<RegisterInPoll
-									poll="some-hardcoded-poll"
-									redirecter={() => {
+									poll={GlobalState.pollID}
+									redirecter={(pollID) => {
+										setPoll(pollID);
 										navigateTo("/poll.html");
 									}}
+									authToken={GlobalState.authToken}
 								/>
 							}
 						/>
@@ -94,8 +117,9 @@ function AppWrapper() {
 							path="/signIn.html"
 							element={
 								<SignIn
-									notifyStateOfNewUser={(usr) => {
-										setUser(usr);
+									notifyStateOfNewUser={(name, authToken) => {
+										setName(usr);
+										setAuthToken(authToken);
 										navigateTo("/account.html");
 									}}
 								/>
@@ -106,7 +130,9 @@ function AppWrapper() {
 							element={
 								<Logout
 									redirecter={() => {
-										setUser({});
+										signOut(GlobalState.authToken);
+										setUser(null);
+										setAuthToken(null);
 										navigateTo("/");
 									}}
 								/>
