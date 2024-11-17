@@ -20,6 +20,7 @@ import { Header } from "./components/headder.jsx";
 import { Footer } from "./components/footer.jsx";
 import { fetchPolls, signOut } from "./backendInterface.js";
 import { Logout } from "./pages/logout.jsx";
+import { CodeFloat } from "./components/codeFloat.jsx";
 
 const root = createRoot(document.getElementById("root"));
 export const GlobalState = createContext({
@@ -52,6 +53,7 @@ function AppWrapper() {
 		<>
 			<GlobalState.Provider value={GlobalState}>
 				<Header />
+				<CodeFloat />
 				<main>
 					<Routes>
 						<Route path="/" element={<Landing />} exact />

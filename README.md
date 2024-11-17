@@ -126,8 +126,6 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * Logout now has its own JSX "page"
 
 ## Startup Service deliverable
-### TODO
-* Add way for frontend to display registration number to users
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup Service deliverable
 * Updated Simon deployment to React

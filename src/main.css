@@ -187,6 +187,17 @@ label {
 	z-index: 100;
 }
 
+.codeDisplay {
+	background-color: var(--primaryColor);
+	border: 3px solid var(--mainAccentColor);
+	position: fixed;
+	top: 50%;
+	left: 0px;
+	color: var(--defaultText);
+	padding: 3px;
+	z-index: 100;
+}
+
 .formBypass :any-link {
 	color: inherit;
 }
