@@ -32,7 +32,7 @@ function voidToken(tokenID) {
 }
 
 function addUser(user) {
-	users[user.name] = { email: email, password: password };
+	users[user.name] = { email: user.email, password: user.password };
 	participationInfo[user.name] = [];
 }
 

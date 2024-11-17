@@ -1,5 +1,4 @@
 import { express } from "express";
-import { uuid } from "uuid";
 import { colorMagic } from "./colorMagic";
 import { authRouter } from "./authRouter";
 import { pollRouter } from "./pollRouter";
@@ -31,8 +30,6 @@ app.listen(port, () => {
 
 //This is the bit that uses third-party API calls.
 colorMagic();
-
-timer.unref(); //don't hold things open if this is the only timer in the module that hasn't fired yet
 
 //potential bugfix incase of HTTP 502 on deploy
 // app.use((_req, res) => {

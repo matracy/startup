@@ -1,6 +1,5 @@
 import { express } from "express";
 import {
-	validateToken,
 	issueToken,
 	revokeToken,
 	authUser,
@@ -23,7 +22,7 @@ authRouter.post("/", (req, res) => {
 
 // authenticate user
 authRouter.get("/", (req, res) => {
-	const { name, email } = req.headers["credentials"];
+	const { name, password } = req.headers["credentials"];
 	if (!name || !password) {
 		return res.status(400).json({ message: "name and password are required" });
 	}

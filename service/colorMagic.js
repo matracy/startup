@@ -28,7 +28,7 @@ function convertColorListToStringList(lst) {
 
 async function regenerateColors() {
 	try {
-		const colorResponse = awaitfetch("http://colormind.io/api/", {
+		const response = await fetch("http://colormind.io/api/", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/x-www-form-urlencoded",
@@ -69,6 +69,8 @@ async function colorMagic() {
 	const timer = setInterval(async () => {
 		regenerateColors();
 	}, interval);
+	timer.unref(); //don't hold things open if this is the only timer in the module that hasn't fired yet
+	return timer;
 }
 
 module.exports = { colorMagic };

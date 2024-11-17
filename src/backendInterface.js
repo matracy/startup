@@ -16,7 +16,10 @@ function registerPoll(opts, config, authToken, notifyCallback) {
 		headers: { authToken: authToken },
 	});
 	const rjson = response.json;
-	notifyCallback({ pollID: newPoll, registrationNumber: registrationNumber });
+	notifyCallback({
+		pollID: rjson.pollID,
+		registrationNumber: rjson.registrationNumber,
+	});
 }
 
 function fetchOptions(pollID) {
@@ -36,12 +39,11 @@ function castVote(pollID, ballot, authToken) {
 	ballot.forEach((opt) => {
 		formattedBallot[opt] = opt.rank;
 	});
-	const response = fetch(`${baseURL}/poll`, {
+	fetch(`${baseURL}/poll`, {
 		method: "PATCH",
 		body: JSON.stringify(formattedBallot),
 		headers: { pollID: pollID, authToken: authToken },
 	});
-	const rjson = response.json;
 }
 
 function fetchResults(pollID) {
@@ -90,9 +92,9 @@ function fetchPolls(authToken) {
 }
 
 function signOut(token) {
-	const response = fetch(`${baseURL}/auth`, {
+	fetch(`${baseURL}/auth`, {
 		method: "DELETE",
-		headers: { authToken: authToken },
+		headers: { authToken: token },
 	});
 }
 

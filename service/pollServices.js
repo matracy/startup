@@ -37,8 +37,14 @@ function countBallot(ballot, pollID, username) {
 }
 
 function registerToVote(registrationNumber) {
-	const { pollID, openDate, closeDate, maxVoters, currentVoters } =
-		fetchRegistrationInfo(registrationNumber);
+	var {
+		pollID,
+		openDate,
+		closeDate,
+		maxVoters,
+		currentVoters,
+		allowUnlimitedVoters,
+	} = fetchRegistrationInfo(registrationNumber);
 	const currTime = Date.now();
 	if (
 		!pollID ||
