@@ -19,4 +19,4 @@ function CodeFloat() {
 	}
 }
 
-module.exports = { CodeFloat };
+export { CodeFloat };
