@@ -41,4 +41,4 @@ function updatePoll(poll) {
 	poll.result = sortByValue(finalVotes)[1];
 }
 
-module.exports = { updatePoll };
+export { updatePoll };

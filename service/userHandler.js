@@ -1,5 +1,5 @@
-const { validateToken, getUser } = require("./authServices");
-const { getPollsVotedIn } = require("./pollServices");
+import { validateToken, getUser } from "./authServices";
+import { getPollsVotedIn } from "./pollServices";
 
 function userHandler(req, res) {
 	const token = req.headers["authToken"];

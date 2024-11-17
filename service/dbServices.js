@@ -1,10 +1,10 @@
-const {
+import {
 	users,
 	tokens,
 	polls,
 	participationInfo,
 	registrationInfo,
-} = require("./dummyData");
+} from "./dummyData";
 
 function mintToken(token) {
 	tokens[token.id] = { name: token.name, expiration: token.expiration };
@@ -123,7 +123,7 @@ function patchParticipation(username, newData) {
 	participationInfo[username] = newData;
 }
 
-module.exports = {
+export {
 	mintToken,
 	fetchToken,
 	patchToken,

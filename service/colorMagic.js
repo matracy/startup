@@ -1,4 +1,4 @@
-const { fs } = require("fs");
+import { fs } from "fs";
 
 const interval = 60 * 1000; // refresh every minute
 const filename = "dynamic-colors.css";

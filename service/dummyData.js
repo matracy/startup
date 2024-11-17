@@ -4,4 +4,4 @@ const polls = {};
 const participationInfo = {};
 const registrationInfo = {};
 
-module.exports = { users, tokens, polls, participationInfo, registrationInfo };
+export { users, tokens, polls, participationInfo, registrationInfo };

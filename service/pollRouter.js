@@ -1,11 +1,11 @@
-const express = require("express");
-const { validateToken, getUser } = require("./authServices");
-const {
+import { express } from "express";
+import { validateToken, getUser } from "./authServices";
+import {
 	lookupPoll,
 	countBallot,
 	registerToVote,
 	createPoll,
-} = require("./pollServices");
+} from "./pollServices";
 const pollRouter = express.Router();
 
 // Get poll info
@@ -105,4 +105,4 @@ pollRouter.post("/create", (req, res) => {
 	}
 });
 
-module.exports = { pollRouter };
+export { pollRouter };

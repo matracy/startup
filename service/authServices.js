@@ -1,12 +1,12 @@
-const {
+import {
 	mintToken,
 	fetchToken,
 	patchToken,
 	voidToken,
 	addUser,
 	fetchUser,
-} = require("./dbServices");
-const { v4 } = require("uuid");
+} from "./dbServices";
+import { v4 } from "uuid";
 
 function validateToken(token) {
 	const { expiration } = fetchToken(token);
@@ -46,7 +46,7 @@ function registerUser(name, email, password) {
 	addUser({ name: name, email: email, password: password });
 }
 
-module.exports = {
+export {
 	validateToken,
 	issueToken,
 	revokeToken,

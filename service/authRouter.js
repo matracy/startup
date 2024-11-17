@@ -1,11 +1,11 @@
-const express = require("express");
-const {
+import { express } from "express";
+import {
 	validateToken,
 	issueToken,
 	revokeToken,
 	authUser,
 	registerUser,
-} = require("./authServices");
+} from "./authServices";
 const authRouter = express.Router();
 
 // register user
@@ -47,4 +47,4 @@ authRouter.delete("/", (req, res) => {
 	}
 });
 
-module.exports = { authRouter };
+export { authRouter };

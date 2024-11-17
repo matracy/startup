@@ -1,9 +1,10 @@
-const express = require("express");
-const uuid = require("uuid");
-const { colorMagic } = require("./colorMagic");
-const { authRouter } = require("./authRouter");
-const { pollRouter } = require("./pollRouter");
-const { userHandler } = require("./userHandler");
+import { express } from "express";
+import { uuid } from "uuid";
+import { colorMagic } from "./colorMagic";
+import { authRouter } from "./authRouter";
+import { pollRouter } from "./pollRouter";
+import { userHandler } from "./userHandler";
+
 const app = express();
 
 // Allow user to specify the port
