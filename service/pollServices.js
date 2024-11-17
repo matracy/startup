@@ -7,10 +7,10 @@ import {
 	addRegistrationInfo,
 	fetchParticipation,
 	patchParticipation,
-} from "./dbServices";
+} from "./dbServices.js";
 import { v4 } from "uuid";
 
-import { updatePoll } from "./STVMagic";
+import { updatePoll } from "./STVMagic.js";
 
 function lookupPoll(pollID) {
 	return fetchPoll(pollID);

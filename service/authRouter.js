@@ -1,11 +1,11 @@
-import { express } from "express";
+import Router from "express";
 import {
 	issueToken,
 	revokeToken,
 	authUser,
 	registerUser,
-} from "./authServices";
-const authRouter = express.Router();
+} from "./authServices.js";
+const authRouter = Router();
 
 // register user
 authRouter.post("/", (req, res) => {

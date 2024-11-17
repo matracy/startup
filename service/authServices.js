@@ -5,7 +5,7 @@ import {
 	voidToken,
 	addUser,
 	fetchUser,
-} from "./dbServices";
+} from "./dbServices.js";
 import { v4 } from "uuid";
 
 function validateToken(token) {

@@ -1,4 +1,4 @@
-import { fs } from "fs";
+import { writeFile } from "fs";
 
 const interval = 60 * 1000; // refresh every minute
 const filename = "dynamic-colors.css";
@@ -51,7 +51,7 @@ async function regenerateColors() {
 			--defaultText: #${colorStrings[3]};
 }`;
 
-		fs.writeFile(
+		writeFile(
 			`${fileRelPath}${filename}`,
 			`${fileWarningHeader}\n${body}`,
 			(err) => {
@@ -73,4 +73,4 @@ async function colorMagic() {
 	return timer;
 }
 
-module.exports = { colorMagic };
+export { colorMagic };

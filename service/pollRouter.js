@@ -1,11 +1,11 @@
-import { express } from "express";
-import { validateToken, getUser } from "./authServices";
+import * as express from "express";
+import { validateToken, getUser } from "./authServices.js";
 import {
 	lookupPoll,
 	countBallot,
 	registerToVote,
 	createPoll,
-} from "./pollServices";
+} from "./pollServices.js";
 const pollRouter = express.Router();
 
 // Get poll info

@@ -4,7 +4,7 @@ import {
 	polls,
 	participationInfo,
 	registrationInfo,
-} from "./dummyData";
+} from "./dummyData.js";
 
 function mintToken(token) {
 	tokens[token.id] = { name: token.name, expiration: token.expiration };
