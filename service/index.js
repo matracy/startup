@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { colorMagic } from "./colorMagic.js";
 import { authRouter } from "./authRouter.js";
 import { pollRouter } from "./pollRouter.js";
@@ -14,15 +15,19 @@ app.listen(port, () => {
 });
 
 //potential bugfix incase of HTTP 502 on deploy
-app.use((_req, res) => {
-	res.sendFile("index.html", { root: "public" });
-});
+// app.use((_req, res) => {
+// 	res.sendFile("index.html", { root: "public" });
+// });
 
 // JSON body parsing
 app.use(express.json());
 
 // front-end static content hosting
 app.use(express.static("public"));
+
+//Since we don't care about CORS but the browser does, allow everything.
+app.use(cors());
+app.options("*", cors());
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);

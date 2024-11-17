@@ -1,4 +1,5 @@
 import * as express from "express";
+import cors from "cors";
 import { validateToken, getUser } from "./authServices.js";
 import {
 	lookupPoll,
@@ -7,6 +8,10 @@ import {
 	createPoll,
 } from "./pollServices.js";
 const pollRouter = express.Router();
+
+//Since we don't care about CORS but the browser does, allow everything.
+pollRouter.use(cors());
+pollRouter.options("*", cors());
 
 // Get poll info
 pollRouter.get("/", (req, res) => {

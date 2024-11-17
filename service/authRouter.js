@@ -1,4 +1,5 @@
 import Router from "express";
+import cors from "cors";
 import {
 	issueToken,
 	revokeToken,
@@ -6,6 +7,10 @@ import {
 	registerUser,
 } from "./authServices.js";
 const authRouter = Router();
+
+//Since we don't care about CORS but the browser does, allow everything.
+authRouter.use(cors());
+authRouter.options("*", cors());
 
 // register user
 authRouter.post("/", (req, res) => {
