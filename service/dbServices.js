@@ -32,7 +32,7 @@ function voidToken(tokenID) {
 }
 
 function addUser(user) {
-	users[user.name] = { email: user.email, password: user.password };
+	users[user.name] = user.password;
 	participationInfo[user.name] = [];
 }
 
@@ -41,7 +41,7 @@ function fetchUser(username) {
 	if (!usr) {
 		return undefined;
 	}
-	return { name: username, email: usr.email, password: usr.password };
+	return { name: username, password: usr };
 }
 
 function addPoll(poll) {

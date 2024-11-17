@@ -42,8 +42,8 @@ function authUser(name, password) {
 	return true;
 }
 
-function registerUser(name, email, password) {
-	addUser({ name: name, email: email, password: password });
+function registerUser(name, password) {
+	addUser({ name: name, password: password });
 }
 
 export {

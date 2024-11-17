@@ -14,26 +14,24 @@ authRouter.options("*", cors());
 
 // register user
 authRouter.post("/", (req, res) => {
-	const { name, email, password } = req.headers["credentials"];
-	if (!name || !email || !password) {
-		return res
-			.status(400)
-			.json({ message: "name, email, and password are required" });
+	const { username, password } = JSON.parse(req.headers["credentials"]);
+	if (!username || !password) {
+		return res.status(400).json({ message: "name and password are required" });
 	}
-	registerUser(name, email, password);
-	const token = issueToken(name);
-	res.json({ name: name, token: token });
+	registerUser(username, password);
+	const token = issueToken(username);
+	res.json({ name: username, token: token });
 });
 
 // authenticate user
 authRouter.get("/", (req, res) => {
-	const { name, password } = req.headers["credentials"];
-	if (!name || !password) {
+	const { username, password } = JSON.parse(req.headers["credentials"]);
+	if (!username || !password) {
 		return res.status(400).json({ message: "name and password are required" });
 	}
-	if (authUser(name, password)) {
-		const token = issueToken(name);
-		res.json({ name: name, token: token });
+	if (authUser(username, password)) {
+		const token = issueToken(username);
+		res.json({ name: username, token: token });
 	} else {
 		return res.status(401).json({ message: "Invalid credentials" });
 	}
