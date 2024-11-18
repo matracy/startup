@@ -59,14 +59,24 @@ function AppWrapper() {
 						<Route path="/" element={<Landing />} exact />
 						<Route
 							path="/account.html"
-							element={<Account polls={fetchPolls(GlobalState.authToken)} />}
+							element={
+								<Account
+									polls={() => {
+										if (!GlobalState.authToken) {
+											return [];
+										} else {
+											return fetchPolls(GlobalState.authToken);
+										}
+									}}
+								/>
+							}
 						/>
 						<Route
 							path="/createAccount.html"
 							element={
 								<CreateAccount
 									notifyStateOfNewUser={(name, authToken) => {
-										setName(usr);
+										setName(name);
 										setAuthToken(authToken);
 										navigateTo("/account.html");
 									}}
@@ -77,7 +87,7 @@ function AppWrapper() {
 							path="/createPoll.html"
 							element={
 								<CreatePoll
-									redirecter={({ pollID, registrationNumber }) => {
+									redirecter={(pollID, registrationNumber) => {
 										setPoll(pollID);
 										setRegistration(registrationNumber);
 										navigateTo("/registerInPoll.html");
@@ -120,7 +130,7 @@ function AppWrapper() {
 							element={
 								<SignIn
 									notifyStateOfNewUser={(name, authToken) => {
-										setName(usr);
+										setName(name);
 										setAuthToken(authToken);
 										navigateTo("/account.html");
 									}}

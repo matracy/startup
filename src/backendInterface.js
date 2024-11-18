@@ -1,29 +1,27 @@
-const baseURL = "https://stvonline.someplaceto.click/api";
+// const baseURL = "https://stvonline.someplaceto.click/api";
+const baseURL = "http://localhost:4000/api";
 
-function registerNewUser(credentials, notifyCallback) {
-	const response = fetch(`${baseURL}/auth`, {
+async function registerNewUser(credentials, notifyCallback) {
+	const response = await fetch(`${baseURL}/auth`, {
 		method: "POST",
-		headers: { credentials: credentials },
+		headers: { credentials: JSON.stringify(credentials) },
 	});
-	const rjson = response.json;
-	notifyCallback({ name: rjson.name, token: rjson.token });
+	const rjson = await response.json();
+	notifyCallback(rjson.name, rjson.token);
 }
 
-function registerPoll(opts, config, authToken, notifyCallback) {
-	const response = fetch(`${baseURL}/poll/create`, {
+async function registerPoll(opts, config, authToken, notifyCallback) {
+	const response = await fetch(`${baseURL}/poll/create`, {
 		method: "POST",
 		body: JSON.stringify({ opttions: opts, settings: config }),
 		headers: { authToken: authToken },
 	});
-	const rjson = response.json;
-	notifyCallback({
-		pollID: rjson.pollID,
-		registrationNumber: rjson.registrationNumber,
-	});
+	const rjson = await response.json();
+	notifyCallback(rjson.pollID, rjson.registrationNumber);
 }
 
-function fetchOptions(pollID) {
-	const response = fetch(`${baseURL}/poll`, {
+async function fetchOptions(pollID) {
+	const response = await fetch(`${baseURL}/poll`, {
 		method: "GET",
 		headers: { pollID: pollID },
 	});
@@ -34,7 +32,7 @@ function fetchOptions(pollID) {
 	return parsedOptions;
 }
 
-function castVote(pollID, ballot, authToken) {
+async function castVote(pollID, ballot, authToken) {
 	var formattedBallot = {};
 	ballot.forEach((opt) => {
 		formattedBallot[opt] = opt.rank;
@@ -46,25 +44,25 @@ function castVote(pollID, ballot, authToken) {
 	});
 }
 
-function fetchResults(pollID) {
-	const response = fetch(`${baseURL}/poll`, {
+async function fetchResults(pollID) {
+	const response = await fetch(`${baseURL}/poll`, {
 		method: "GET",
 		headers: { pollID: pollID },
 	});
 	return response.json.options;
 }
 
-function authenticateUser(credentials, notifyCallback) {
-	const response = fetch(`${baseURL}/auth`, {
+async function authenticateUser(credentials, notifyCallback) {
+	const response = await fetch(`${baseURL}/auth`, {
 		method: "GET",
-		headers: { credentials: credentials },
+		headers: { credentials: JSON.stringify(credentials) },
 	});
-	const rjson = response.json;
-	notifyCallback({ name: rjson.name, token: rjson.token });
+	const rjson = await response.json();
+	notifyCallback(rjson.name, rjson.token);
 }
 
-function registerToVote(registrationNumber, authToken) {
-	const response = fetch(`${baseURL}/poll/register`, {
+async function registerToVote(registrationNumber, authToken) {
+	const response = await fetch(`${baseURL}/poll/register`, {
 		method: "POST",
 		headers: { authToken: authToken },
 		body: JSON.stringify({ registrationNumber: registrationNumber }),
@@ -72,14 +70,21 @@ function registerToVote(registrationNumber, authToken) {
 	return response.json.pollID;
 }
 
-function fetchPolls(authToken) {
-	const response = fetch(`${baseURL}/user`, {
+async function fetchPolls(authToken) {
+	if (!authToken) {
+		return undefined;
+	}
+	const response = await fetch(`${baseURL}/user`, {
 		method: "GET",
 		headers: { authToken: authToken },
 	});
+	if (!response.ok) {
+		return [];
+	}
 	var pollInfo = [];
-	response.json.forEach((pollID) => {
-		const pollResults = fetch(`${baseURL}/poll`, {
+	response.json.forEach(async (pollID) => {
+		console.log(`Fetching results for ${pollID}`);
+		const pollResults = await fetch(`${baseURL}/poll`, {
 			method: "GET",
 			headers: { pollID: pollID },
 		});
@@ -88,10 +93,11 @@ function fetchPolls(authToken) {
 			result: pollResults.json.result,
 		});
 	});
+	console.log(pollInfo);
 	return pollInfo;
 }
 
-function signOut(token) {
+async function signOut(token) {
 	fetch(`${baseURL}/auth`, {
 		method: "DELETE",
 		headers: { authToken: token },

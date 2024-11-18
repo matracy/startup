@@ -6,7 +6,7 @@ function Account({ polls }) {
 		<>
 			<div>
 				<h2 className="sectionTitle">Past polls</h2>
-				<table>{polls.map(pollSumary)}</table>
+				<table>{polls().map(pollSumary)}</table>
 			</div>
 			<div>
 				<Link className="imitationButton" to="/createPoll.html">
