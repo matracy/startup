@@ -42,6 +42,7 @@ async function regenerateColors() {
 			throw new Error(`Response status: ${response.status}`);
 		}
 		const colors = await response.json()["result"];
+		console.log(`got ${colors} from colormind.`);
 		const colorStrings = convertColorListToStringList(colors);
 
 		const body = `:root {

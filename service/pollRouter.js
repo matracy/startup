@@ -15,7 +15,7 @@ pollRouter.options("*", cors());
 
 // Get poll info
 pollRouter.get("/", (req, res) => {
-	const pollID = req.headers["pollID"];
+	const pollID = req.headers["pollid"];
 	if (!pollID) {
 		return res.status(400).json({ message: "pollID is required" });
 	}
@@ -30,11 +30,11 @@ pollRouter.get("/", (req, res) => {
 
 // Cast vote
 pollRouter.patch("/", (req, res) => {
-	const token = req.headers["authToken"];
+	const token = req.headers["authtoken"];
 	if (!token || !validateToken(token)) {
 		return res.status(401).json({ message: "invalid credentials" });
 	}
-	const pollID = req.headers["pollID"];
+	const pollID = req.headers["pollid"];
 	if (!pollID) {
 		return res.status(400).json({ message: "pollID is required" });
 	}
@@ -64,11 +64,11 @@ pollRouter.patch("/", (req, res) => {
 
 // Register to vote
 pollRouter.post("/register", (req, res) => {
-	const token = req.headers["authToken"];
+	const token = req.headers["authtoken"];
 	if (!token || !validateToken(token)) {
 		return res.status(401).json({ message: "invalid credentials" });
 	}
-	const pollID = req.headers["pollID"];
+	const pollID = req.headers["pollid"];
 	if (!pollID) {
 		return res.status(400).json({ message: "pollID is required" });
 	}
@@ -90,7 +90,7 @@ pollRouter.post("/register", (req, res) => {
 
 // Create poll
 pollRouter.post("/create", (req, res) => {
-	const token = req.headers["authToken"];
+	const token = req.headers["authtoken"];
 	if (!token || !validateToken(token)) {
 		return res.status(401).json({ message: "invalid credentials" });
 	}

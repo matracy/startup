@@ -39,7 +39,7 @@ authRouter.get("/", (req, res) => {
 
 // logout user
 authRouter.delete("/", (req, res) => {
-	const token = req.headers["authToken"];
+	const token = req.headers["authtoken"];
 	if (!token) {
 		return res.status(400).json({ message: "authToken is required." });
 	} else {
