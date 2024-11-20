@@ -1,15 +1,20 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerToVote } from "../backendInterface";
+import { GlobalState } from "../main";
 
-function RegisterInPoll({ redirecter, authToken }) {
+function RegisterInPoll({ redirecter }) {
+	const authToken = useContext(GlobalState).authToken;
 	return (
 		<>
 			<form
 				name="registration"
 				onSubmit={(e) => {
 					e.preventDefault();
-					redirecter(
-						registerToVote(registration.registrationNumber.value, authToken),
+					registerToVote(
+						registration.registrationNumber.value,
+						authToken,
+						redirecter,
 					);
 				}}
 			>

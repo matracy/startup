@@ -20,7 +20,7 @@ async function registerPoll(opts, config, authToken, notifyCallback) {
 	notifyCallback(rjson.pollID, rjson.registrationNumber);
 }
 
-async function fetchOptions(pollID) {
+async function fetchOptions(pollID, notifyCallback) {
 	const response = await fetch(`${baseURL}/poll`, {
 		method: "GET",
 		headers: { pollID: pollID },
@@ -29,7 +29,7 @@ async function fetchOptions(pollID) {
 	response.json.options.forEach((opt) => {
 		parsedOptions.push({ name: opt.name, rank: 0 });
 	});
-	return parsedOptions;
+	notifyCallback(parsedOptions);
 }
 
 async function castVote(pollID, ballot, authToken) {
@@ -44,12 +44,12 @@ async function castVote(pollID, ballot, authToken) {
 	});
 }
 
-async function fetchResults(pollID) {
+async function fetchResults(pollID, notifyCallback) {
 	const response = await fetch(`${baseURL}/poll`, {
 		method: "GET",
 		headers: { pollID: pollID },
 	});
-	return response.json.options;
+	notifyCallback(response.json.options);
 }
 
 async function authenticateUser(credentials, notifyCallback) {
@@ -61,29 +61,29 @@ async function authenticateUser(credentials, notifyCallback) {
 	notifyCallback(rjson.name, rjson.token);
 }
 
-async function registerToVote(registrationNumber, authToken) {
+async function registerToVote(registrationNumber, authToken, notifyCallback) {
 	const response = await fetch(`${baseURL}/poll/register`, {
 		method: "POST",
 		headers: { authToken: authToken },
 		body: JSON.stringify({ registrationNumber: registrationNumber }),
 	});
-	return response.json.pollID;
+	notifyCallback(response.json.pollID);
 }
 
-async function fetchPolls(authToken) {
+async function fetchPolls(authToken, callback) {
 	if (!authToken) {
-		return undefined;
+		callback(undefined);
 	}
 	const response = await fetch(`${baseURL}/user`, {
 		method: "GET",
 		headers: { authToken: authToken },
 	});
 	if (!response.ok) {
-		return [];
+		callback([]);
 	}
 	var pollInfo = [];
-	response.json.forEach(async (pollID) => {
-		console.log(`Fetching results for ${pollID}`);
+	const rjson = await response.json();
+	rjson.forEach(async (pollID) => {
 		const pollResults = await fetch(`${baseURL}/poll`, {
 			method: "GET",
 			headers: { pollID: pollID },
@@ -93,8 +93,7 @@ async function fetchPolls(authToken) {
 			result: pollResults.json.result,
 		});
 	});
-	console.log(pollInfo);
-	return pollInfo;
+	callback(pollInfo);
 }
 
 async function signOut(token) {

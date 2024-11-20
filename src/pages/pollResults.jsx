@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { fetchResults } from "../backendInterface";
 import { pollResult } from "../components/pollResult";
+import { GlobalState } from "../main";
 
-function PollResults({ poll }) {
+function PollResults() {
+	const poll = useContext(GlobalState).pollID;
 	const [resultView, setResultView] = useState("Final Votes");
-	var results = fetchResults(poll);
-	var totalVotes = 0;
-	results.forEach((res) => {
-		totalVotes += res.initialVotes;
-	});
+	const [results, setResults] = useState([]);
+	const [totalVotes, setTotalVotes] = useState(0);
+	useEffect(() => {
+		fetchResults(poll, (res) => {
+			setResults(res);
+		});
+		var votes = 0;
+		results.forEach((res) => {
+			votes += res.initialVotes;
+		});
+		setTotalVotes(votes);
+	}, [results]);
 
 	function toggleResultView() {
 		setResultView(

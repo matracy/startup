@@ -1,12 +1,22 @@
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { pollSumary } from "../components/pollSumary";
+import { fetchPolls } from "../backendInterface";
+import { GlobalState } from "../main";
 
-function Account({ polls }) {
+function Account() {
+	const authToken = useContext(GlobalState).authToken;
+	const [pollList, setPollList] = useState([]);
+	useEffect(() => {
+		fetchPolls(authToken, (info) => {
+			setPollList(info);
+		});
+	}, [authToken]);
 	return (
 		<>
 			<div>
 				<h2 className="sectionTitle">Past polls</h2>
-				<table>{polls().map(pollSumary)}</table>
+				<table>{pollList.map(pollSumary)}</table>
 			</div>
 			<div>
 				<Link className="imitationButton" to="/createPoll.html">

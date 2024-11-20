@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { fetchOptions, castVote } from "../backendInterface";
 import { pollOption } from "../components/pollOption";
+import { GlobalState } from "../main";
 
 function areValuesUnique(obj) {
 	const values = Object.values(obj);
@@ -8,8 +9,15 @@ function areValuesUnique(obj) {
 	return values.length === uniqueValues.size;
 }
 
-function Poll({ poll, redirecter, authToken }) {
-	const [options, setOptions] = useState(() => fetchOptions(poll));
+function Poll({ redirecter }) {
+	const authToken = useContext(GlobalState).authToken;
+	const poll = useContext(GlobalState).pollID;
+	const [options, setOptions] = useState([]);
+	useEffect(() => {
+		fetchOptions(poll, (opts) => {
+			setOptions(opts);
+		});
+	}, [options]);
 
 	function submitBallot() {
 		var results = {};

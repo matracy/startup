@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { GlobalState } from "../main";
 
 function isSignedIn() {
-	const user = useContext(GlobalState).user;
-	if (user == null || user == undefined) {
+	const name = useContext(GlobalState).name;
+	const token = useContext(GlobalState).authToken;
+	if (!name || !token) {
 		return false;
 	}
-	return Object.keys(user).length > 0;
+	return true;
 }
 
 function Header() {

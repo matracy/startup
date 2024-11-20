@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { pollOption } from "../components/pollOption";
 import { registerPoll } from "../backendInterface";
+import { GlobalState } from "../main";
 
-function CreatePoll({ redirecter, authToken }) {
+function CreatePoll({ redirecter }) {
+	const authToken = useContext(GlobalState).authToken;
 	const [options, setOptions] = useState([]);
 	const [settings, setSettings] = useState({
 		name: "My Poll",

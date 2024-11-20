@@ -18,7 +18,7 @@ import { RegisterInPoll } from "./pages/registerInPoll.jsx";
 import { SignIn } from "./pages/signIn.jsx";
 import { Header } from "./components/headder.jsx";
 import { Footer } from "./components/footer.jsx";
-import { fetchPolls, signOut } from "./backendInterface.js";
+import { signOut } from "./backendInterface.js";
 import { Logout } from "./pages/logout.jsx";
 import { CodeFloat } from "./components/codeFloat.jsx";
 
@@ -57,20 +57,7 @@ function AppWrapper() {
 				<main>
 					<Routes>
 						<Route path="/" element={<Landing />} exact />
-						<Route
-							path="/account.html"
-							element={
-								<Account
-									polls={() => {
-										if (!GlobalState.authToken) {
-											return [];
-										} else {
-											return fetchPolls(GlobalState.authToken);
-										}
-									}}
-								/>
-							}
-						/>
+						<Route path="/account.html" element={<Account />} exact />
 						<Route
 							path="/createAccount.html"
 							element={
@@ -82,6 +69,7 @@ function AppWrapper() {
 									}}
 								/>
 							}
+							exact
 						/>
 						<Route
 							path="/createPoll.html"
@@ -92,9 +80,9 @@ function AppWrapper() {
 										setRegistration(registrationNumber);
 										navigateTo("/registerInPoll.html");
 									}}
-									authToken={GlobalState.authToken}
 								/>
 							}
+							exact
 						/>
 						<Route
 							path="/poll.html"
@@ -104,26 +92,22 @@ function AppWrapper() {
 									redirecter={() => {
 										navigateTo("/pollResults.html");
 									}}
-									authToken={GlobalState.authToken}
 								/>
 							}
+							exact
 						/>
-						<Route
-							path="/pollResults.html"
-							element={<PollResults poll={GlobalState.pollID} />}
-						/>
+						<Route path="/pollResults.html" element={<PollResults />} exact />
 						<Route
 							path="/registerInPoll.html"
 							element={
 								<RegisterInPoll
-									poll={GlobalState.pollID}
 									redirecter={(pollID) => {
 										setPoll(pollID);
 										navigateTo("/poll.html");
 									}}
-									authToken={GlobalState.authToken}
 								/>
 							}
+							exact
 						/>
 						<Route
 							path="/signIn.html"
@@ -136,6 +120,7 @@ function AppWrapper() {
 									}}
 								/>
 							}
+							exact
 						/>
 						<Route
 							path="/logout.html"
@@ -143,7 +128,7 @@ function AppWrapper() {
 								<Logout
 									redirecter={() => {
 										signOut(GlobalState.authToken);
-										setUser(null);
+										setName(null);
 										setAuthToken(null);
 										navigateTo("/");
 									}}
