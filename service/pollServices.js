@@ -12,56 +12,64 @@ import { v4 } from "uuid";
 
 import { updatePoll } from "./STVMagic.js";
 
-function lookupPoll(pollID) {
-	return fetchPoll(pollID);
+function lookupPoll(pollID, callback) {
+	fetchPoll(pollID, callback);
 }
 
-function getPollsVotedIn(user) {
-	return fetchParticipation(user);
+function getPollsVotedIn(user, callback) {
+	fetchParticipation(user, callback);
 }
 
-function countBallot(ballot, pollID, username) {
-	try {
-		var poll = lookupPoll(pollID);
-		var pollsParticipatedIn = getPollsVotedIn(username);
-		pollsParticipatedIn.push(pollID);
-		patchParticipation(username, pollsParticipatedIn);
-		poll.ballots.push(ballot);
-		updatePoll(poll);
-		patchPoll(pollID, poll);
-		return true;
-	} catch (err) {
-		console.log(`Error counting ballot: ${err}`);
-		return false;
-	}
+function countBallot(ballot, pollID, username, callback) {
+	getPollsVotedIn(username, (pollsVotedIn) => {
+		lookupPoll(pollID, (poll) => {
+			try {
+				pollsParticipatedIn.push(pollID);
+				patchParticipation(username, pollsParticipatedIn);
+				poll.ballots.push(ballot);
+				updatePoll(poll);
+				patchPoll(pollID, poll);
+				callback(true);
+			} catch (err) {
+				console.log(`Error counting ballot: ${err}`);
+				callback(false);
+			}
+		});
+	});
 }
 
-function registerToVote(registrationNumber) {
-	var {
-		pollID,
-		openDate,
-		closeDate,
-		maxVoters,
-		currentVoters,
-		allowUnlimitedVoters,
-	} = fetchRegistrationInfo(registrationNumber);
-	const currTime = Date.now();
-	if (
-		!pollID ||
-		openDate > currTime ||
-		currTime > closeDate ||
-		(!allowUnlimitedVoters && maxVoters - currentVoters <= 0)
-	) {
-		return undefined;
-	}
-	currentVoters += 1;
-	try {
-		patchRegistrationInfo(registrationNumber, { currentVoters: currentVoters });
-		return pollID;
-	} catch (err) {
-		console.log(`Error registering to vote: ${err}`);
-		return undefined;
-	}
+function registerToVote(registrationNumber, callback) {
+	fetchRegistrationInfo(
+		registrationNumber,
+		({
+			pollID,
+			openDate,
+			closeDate,
+			maxVoters,
+			currentVoters,
+			allowUnlimitedVoters,
+		}) => {
+			const currTime = Date.now();
+			if (
+				!pollID ||
+				openDate > currTime ||
+				currTime > closeDate ||
+				(!allowUnlimitedVoters && maxVoters - currentVoters <= 0)
+			) {
+				callback(undefined);
+			}
+			currentVoters += 1;
+			try {
+				patchRegistrationInfo(registrationNumber, {
+					currentVoters: currentVoters,
+				});
+				callback(pollID);
+			} catch (err) {
+				console.log(`Error registering to vote: ${err}`);
+				callback(undefined);
+			}
+		},
+	);
 }
 
 function createPoll(options, settings) {

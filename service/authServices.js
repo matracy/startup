@@ -8,15 +8,16 @@ import {
 } from "./dbServices.js";
 import { v4 } from "uuid";
 
-function validateToken(token) {
-	const { expiration } = fetchToken(token);
-	if (!expiration || expiration < Date.now()) {
-		return false;
-	}
-	if (expiration - Date.now() < 10 * 60 * 1000) {
-		patchToken(token, { expiration: Date.now() + 3600 * 1000 });
-	}
-	return true;
+function validateToken(token, callback) {
+	fetchToken(token, ({ expiration }) => {
+		if (!expiration || expiration < Date.now()) {
+			callback(false);
+		}
+		if (expiration - Date.now() < 10 * 60 * 1000) {
+			patchToken(token, { expiration: Date.now() + 3600 * 1000 });
+		}
+		callback(true);
+	});
 }
 
 function issueToken(name) {
@@ -29,17 +30,19 @@ function revokeToken(token) {
 	voidToken(token);
 }
 
-function getUser(token) {
-	const { name } = fetchToken(token);
-	return name;
+function getUser(token, callback) {
+	fetchToken(token, ({ name }) => {
+		callback(name);
+	});
 }
 
-function authUser(name, password) {
-	const { storedPassword } = fetchUser(name);
-	if (!storedPassword || password != storedPassword) {
-		return false;
-	}
-	return true;
+function authUser(name, password, callback) {
+	fetchUser(name, ({ storedPassword }) => {
+		if (!storedPassword || password != storedPassword) {
+			callback(false);
+		}
+		callback(true);
+	});
 }
 
 function registerUser(name, password) {
