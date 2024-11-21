@@ -29,12 +29,15 @@ authRouter.get("/", (req, res) => {
 	if (!username || !password) {
 		return res.status(400).json({ message: "name and password are required" });
 	}
-	if (authUser(username, password)) {
-		const token = issueToken(username);
-		res.json({ name: username, token: token });
-	} else {
-		return res.status(401).json({ message: "Invalid credentials" });
-	}
+	control;
+	authUser(username, password, (isAuthed) => {
+		if (isAuthed) {
+			const token = issueToken(username);
+			res.json({ name: username, token: token });
+		} else {
+			return res.status(401).json({ message: "Invalid credentials" });
+		}
+	});
 });
 
 // logout user
