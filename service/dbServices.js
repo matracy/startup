@@ -1,5 +1,5 @@
-const { MongoClient } = require("mongodb");
-const config = require("./dbConfig.json");
+import MongoClient from "mongodb";
+import { config } from "./dbConfig.js";
 const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
 const dbName = "STVOnline";
 
