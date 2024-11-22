@@ -4,6 +4,7 @@ import { colorMagic } from "./colorMagic.js";
 import { authRouter } from "./authRouter.js";
 import { pollRouter } from "./pollRouter.js";
 import { userHandler } from "./userHandler.js";
+import { pingDB } from "./dbServices.js";
 
 const app = express();
 
@@ -39,3 +40,6 @@ apiRouter.get("/user", userHandler);
 
 //This is the bit that uses third-party API calls.
 colorMagic();
+
+//test database connection
+pingDB();
