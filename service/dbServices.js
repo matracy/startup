@@ -1,11 +1,11 @@
-import MongoClient from "mongodb";
+import { MongoClient } from "mongodb";
 import { config } from "./dbConfig.js";
 const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
 const dbName = "STVOnline";
 
 async function pingDB() {
+	const client = new MongoClient(url);
 	try {
-		const client = new MongoClient(url);
 		const db = client.db(dbName);
 		await client.connect();
 		await db.command({ ping: 1 });
@@ -19,20 +19,38 @@ async function pingDB() {
 
 function readFromDB(collection, query) {
 	const client = new MongoClient(url);
-	const db = client.db(dbName);
-	return db.collection(collection).find(query);
+	try {
+		const db = client.db(dbName);
+		return db.collection(collection).find(query);
+	} catch (err) {
+		conosle.log(`Error reading from database: ${err}`);
+	} finally {
+		client.close();
+	}
 }
 
 function writeToDB(collection, query, update) {
 	const client = new MongoClient(url);
-	const db = client.db(dbName);
-	db.collection(collection).updateOne(query, update, { upsert: true });
+	try {
+		const db = client.db(dbName);
+		db.collection(collection).updateOne(query, update, { upsert: true });
+	} catch (err) {
+		conosle.log(`Error writing to database: ${err}`);
+	} finally {
+		client.close();
+	}
 }
 
 function deleteFromDB(collection, query) {
 	const client = new MongoClient(url);
-	const db = client.db(dbName);
-	db.collection(collection).deleteMany(query);
+	try {
+		const db = client.db(dbName);
+		db.collection(collection).deleteMany(query);
+	} catch (err) {
+		conosle.log(`Error deleting from database: ${err}`);
+	} finally {
+		client.close();
+	}
 }
 
 function mintToken(token) {

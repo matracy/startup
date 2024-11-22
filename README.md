@@ -128,10 +128,10 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 ## Startup Service deliverable
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup Service deliverable
-* Updated Simon deployment to React
+* Updated Simon deployment to include services
 * Added server config to Vite
 * Set frontend to use API rather than mocks
-* Colors are now dynamicly funished by 3rd-party API
+* Colors are now dynamicly furnished by 3rd-party API
 ### Additions
 * Created backend service endpoints
   - /api/auth
@@ -141,4 +141,16 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * implimented basic authentication logic
 * implimented basic polling logic
 * implimented STV scoring for polls
-* mocked out database
+
+## Startup Login deliverable
+## TODO
+* Update Simon deployment to include database
+* Verify that credentials behave as expected
+* Verify that data is persistant
+* Verify that authorization requirements work
+### Modifications
+* Updated README.md to include modifications and deletions for Startup Login deliverable
+* Re-worked about 50% of the backend codebase to use callbacks since I can't opt-in to blocking function calls
+### Additions
+* Created database for backend
+* Configured database via un-tracked JSON file
