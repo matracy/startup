@@ -21,7 +21,7 @@ function getPollsVotedIn(user, callback) {
 }
 
 function countBallot(ballot, pollID, username, callback) {
-	getPollsVotedIn(username, (pollsVotedIn) => {
+	getPollsVotedIn(username, (pollsParticipatedIn) => {
 		lookupPoll(pollID, (poll) => {
 			try {
 				pollsParticipatedIn.push(pollID);

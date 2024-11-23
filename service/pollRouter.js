@@ -19,7 +19,7 @@ pollRouter.get("/", (req, res) => {
 	if (!pollID) {
 		return res.status(400).json({ message: "pollID is required" });
 	}
-	const poll = lookupPoll(pollID, (poll) => {
+	lookupPoll(pollID, (poll) => {
 		if (!poll) {
 			return res.status(404).json({ message: "no poll with matching pollID" });
 		}

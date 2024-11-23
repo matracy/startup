@@ -144,11 +144,14 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 
 ## Startup Login deliverable
 ## TODO
+* TA help:
+  - registration doesn't write token to database, but login does
+  - login sets headers after sending response, but no code sets headers
 * Update Simon deployment to include database
 * Re-work dbServices.js so that connection is not closed before cursor is done being read
 * Verify that credentials behave as expected
-* Verify that data is persistant
 * Verify that authorization requirements work
+  - Visiting page directly should not crash server
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup Login deliverable
 * Re-worked about 50% of the backend codebase to use callbacks since I can't opt-in to blocking function calls
