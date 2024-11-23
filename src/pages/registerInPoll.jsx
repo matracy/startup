@@ -1,10 +1,13 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { registerToVote } from "../backendInterface";
 import { GlobalState } from "../main";
 
 function RegisterInPoll({ redirecter }) {
 	const authToken = useContext(GlobalState).authToken;
+	if (!authToken) {
+		return <Navigate to="/" replace />;
+	}
 	return (
 		<>
 			<form

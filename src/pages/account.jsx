@@ -1,11 +1,14 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { pollSumary } from "../components/pollSumary";
 import { fetchPolls } from "../backendInterface";
 import { GlobalState } from "../main";
 
 function Account() {
 	const authToken = useContext(GlobalState).authToken;
+	if (!authToken) {
+		return <Navigate to="/" replace />;
+	}
 	const [pollList, setPollList] = useState([]);
 	useEffect(() => {
 		fetchPolls(authToken, (info) => {

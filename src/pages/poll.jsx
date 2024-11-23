@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { Navigate } from "react-router-dom";
 import { fetchOptions, castVote } from "../backendInterface";
 import { pollOption } from "../components/pollOption";
 import { GlobalState } from "../main";
@@ -11,6 +12,9 @@ function areValuesUnique(obj) {
 
 function Poll({ redirecter }) {
 	const authToken = useContext(GlobalState).authToken;
+	if (!authToken) {
+		return <Navigate to="/" replace />;
+	}
 	const poll = useContext(GlobalState).pollID;
 	const [options, setOptions] = useState([]);
 	useEffect(() => {
