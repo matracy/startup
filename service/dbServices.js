@@ -43,11 +43,7 @@ function readFromDB(collection, query, resultHandler) {
 function writeToDB(collection, query, update) {
 	const db = dbInstance.getDB();
 	try {
-		if (collection == "tokens") {
-		}
 		db.collection(collection).updateOne(query, update, { upsert: true });
-		if (collection == "tokens") {
-		}
 	} catch (err) {
 		console.log(`Error writing to database: ${err}`);
 	}
