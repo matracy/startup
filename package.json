@@ -4,7 +4,7 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "bash -c 'node service/index.js & vite'",
+		"dev": "bash -c \"sed -i 's/\\.\\/public\\//\\/home\\/cs260-builder\\/startup\\/public\\//' ./service/colorMagic.js && bash -c 'node service/index.js & vite'\"",
 		"build": "vite build",
 		"lint": "eslint .",
 		"preview": "vite preview"
