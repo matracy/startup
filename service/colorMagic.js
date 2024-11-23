@@ -23,6 +23,7 @@ function convertColorResponseToStringList(colorResponse) {
 		let start = pos * 3;
 		res.push([hexPairs[start] + hexPairs[start + 1] + hexPairs[start + 2]]);
 	}
+	res.reverse(); //Colormind.io likes give light-to-dark ordering, but we want darkmode.
 	return res;
 }
 
@@ -37,9 +38,6 @@ async function regenerateColors() {
 			},
 			body: '{"model":"ui"}',
 		});
-		//example result:
-		// {"result":[[246,247,244],[145,119,90],[115,153,163],[107,84,80],[62,66,75]]}
-		// For some reason, the code sees the above as 246, 247, 244, 145, 119, 90, 115, 153, 163, 107, 84, 80, 62, 66, 75
 
 		if (!response.ok) {
 			throw new Error(`Response status: ${response.status}`);
