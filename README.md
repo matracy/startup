@@ -145,6 +145,7 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 ## Startup Login deliverable
 ## TODO
 * Update Simon deployment to include database
+* Re-work dbServices.js so that connection is not closed before cursor is done being read
 * Verify that credentials behave as expected
 * Verify that data is persistant
 * Verify that authorization requirements work

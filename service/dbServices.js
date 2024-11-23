@@ -1,10 +1,28 @@
 import { MongoClient } from "mongodb";
 import { config } from "./dbConfig.js";
-const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
+const dbURL = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
 const dbName = "STVOnline";
 
+class DBSingleton {
+	constructor(url, name) {
+		if (DBSingleton._instance) {
+			return DBSingleton._instance;
+		}
+		DBSingleton._instance = this;
+		this.client = new MongoClient(url);
+		this.connection = this.client.db(name);
+		this.client.connect();
+	}
+
+	getClient() {
+		return this.client;
+	}
+}
+
+const dbInstance = new DBSingleton(dbURL, dbName);
+
 async function pingDB() {
-	const client = new MongoClient(url);
+	const client = dbInstance.getClient();
 	try {
 		const db = client.db(dbName);
 		await client.connect();
@@ -12,32 +30,26 @@ async function pingDB() {
 		console.log("Successfully pinged database.");
 	} catch (err) {
 		console.dir(err);
-	} finally {
-		await client.close();
 	}
 }
 
-function readFromDB(collection, query) {
-	const client = new MongoClient(url);
+function readFromDB(collection, query, resultHandler) {
+	const client = dbInstance.getClient();
 	try {
 		const db = client.db(dbName);
-		return db.collection(collection).find(query);
+		resultHandler(db.collection(collection).find(query));
 	} catch (err) {
 		conosle.log(`Error reading from database: ${err}`);
-	} finally {
-		client.close();
 	}
 }
 
 function writeToDB(collection, query, update) {
-	const client = new MongoClient(url);
+	const client = dbInstance.getClient();
 	try {
 		const db = client.db(dbName);
 		db.collection(collection).updateOne(query, update, { upsert: true });
 	} catch (err) {
 		conosle.log(`Error writing to database: ${err}`);
-	} finally {
-		client.close();
 	}
 }
 
@@ -58,12 +70,13 @@ function mintToken(token) {
 }
 
 async function fetchToken(tokenID, callback) {
-	var tokenCursor = readFromDB("tokens", { id: tokenID });
-	if (await tokenCursor.hasNext()) {
-		callback(await tokenCursor.next());
-	} else {
-		callback(undefined);
-	}
+	readFromDB("tokens", { id: tokenID }, async (tokenCursor) => {
+		if (await tokenCursor.hasNext()) {
+			callback(await tokenCursor.next());
+		} else {
+			callback(undefined);
+		}
+	});
 }
 
 function patchToken(tokenID, newData) {
@@ -86,12 +99,13 @@ function addUser(user) {
 }
 
 async function fetchUser(username, callback) {
-	var userCursor = readFromDB("users", { name: username });
-	if (await userCursor.hasNext()) {
-		callback(await userCursor.next());
-	} else {
-		callback(undefined);
-	}
+	readFromDB("users", { name: username }, async (userCursor) => {
+		if (await userCursor.hasNext()) {
+			callback(await userCursor.next());
+		} else {
+			callback(undefined);
+		}
+	});
 }
 
 function addPoll(poll) {
@@ -112,23 +126,29 @@ function patchPoll(pollID, newData) {
 }
 
 async function fetchPoll(pollID, callback) {
-	var pollCursor = readFromDB("polls", { id: pollID });
-	if (await pollCursor.hasNext()) {
-		callback(await pollCursor.next());
-	} else {
-		callback(undefined);
-	}
+	readFromDB("polls", { id: pollID }, async (pollCursor) => {
+		if (await pollCursor.hasNext()) {
+			callback(await pollCursor.next());
+		} else {
+			callback(undefined);
+		}
+	});
 }
 
 async function fetchRegistrationInfo(registrationNumber, callback) {
-	var registrationCursor = readFromDB("registration", {
-		number: registrationNumber,
-	});
-	if (await registrationCursor.hasNext()) {
-		callback(await registrationCursor.next());
-	} else {
-		callback(undefined);
-	}
+	readFromDB(
+		"registration",
+		{
+			number: registrationNumber,
+		},
+		async (registrationCursor) => {
+			if (await registrationCursor.hasNext()) {
+				callback(await registrationCursor.next());
+			} else {
+				callback(undefined);
+			}
+		},
+	);
 }
 
 function patchRegistrationInfo(registrationNumber, newData) {
@@ -148,12 +168,17 @@ function addRegistrationInfo(number, info) {
 }
 
 async function fetchParticipation(username, callback) {
-	var participationCursor = readFromDB("participation", { name: username });
-	if (await participationCursor.hasNext()) {
-		callback(await participationCursor.next());
-	} else {
-		callback(undefined);
-	}
+	readFromDB(
+		"participation",
+		{ name: username },
+		async (participationCursor) => {
+			if (await participationCursor.hasNext()) {
+				callback(await participationCursor.next());
+			} else {
+				callback(undefined);
+			}
+		},
+	);
 }
 
 function patchParticipation(username, newData) {
