@@ -9,15 +9,20 @@ import {
 import { v4 } from "uuid";
 
 function validateToken(token, callback) {
-	fetchToken(token, ({ expiration }) => {
-		if (!expiration || expiration < Date.now()) {
-			callback(false);
-		}
-		if (expiration - Date.now() < 10 * 60 * 1000) {
-			patchToken(token, { expiration: Date.now() + 3600 * 1000 });
-		}
-		callback(true);
-	});
+	// making a request with no token can result in the being called with the string "undefined", and we also want to guard against the value `undefined`
+	if (token + "" == "undefined") {
+		callback(false);
+	} else {
+		fetchToken(token, ({ expiration }) => {
+			if (!expiration || expiration < Date.now()) {
+				callback(false);
+			}
+			if (expiration - Date.now() < 10 * 60 * 1000) {
+				patchToken(token, { expiration: Date.now() + 3600 * 1000 });
+			}
+			callback(true);
+		});
+	}
 }
 
 function issueToken(name) {
@@ -36,12 +41,13 @@ function getUser(token, callback) {
 	});
 }
 
-function authUser(name, password, callback) {
-	fetchUser(name, ({ storedPassword }) => {
-		if (!storedPassword || password != storedPassword) {
+function authUser(name, providedPassword, callback) {
+	fetchUser(name, ({ password }) => {
+		if (!password || password != providedPassword) {
 			callback(false);
+		} else {
+			callback(true);
 		}
-		callback(true);
 	});
 }
 

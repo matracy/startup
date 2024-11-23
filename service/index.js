@@ -6,6 +6,9 @@ import { pollRouter } from "./pollRouter.js";
 import { userHandler } from "./userHandler.js";
 import { pingDB } from "./dbServices.js";
 
+//FOR DEBUG ONLY
+// import { logHTTPRequestResponse } from "./injectableLogger.js";
+
 const app = express();
 
 // Allow user to specify the port
@@ -15,10 +18,8 @@ app.listen(port, () => {
 	console.log(`Listening on port ${port}`);
 });
 
-//potential bugfix incase of HTTP 502 on deploy
-// app.use((_req, res) => {
-// 	res.sendFile("index.html", { root: "public" });
-// });
+//FOR DEBUG ONLY
+// app.use(logHTTPRequestResponse);
 
 // JSON body parsing
 app.use(express.json());

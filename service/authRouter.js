@@ -29,7 +29,6 @@ authRouter.get("/", (req, res) => {
 	if (!username || !password) {
 		return res.status(400).json({ message: "name and password are required" });
 	}
-	control;
 	authUser(username, password, (isAuthed) => {
 		if (isAuthed) {
 			const token = issueToken(username);

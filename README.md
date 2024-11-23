@@ -141,20 +141,24 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * implimented basic authentication logic
 * implimented basic polling logic
 * implimented STV scoring for polls
+### A note on the development timeline
+The backend was not in a functional state when this deliverable was due, mostly because I had attempted to persist data natively in JavaScript rather than returning mocked data.
+There were also issues about the frontend and backend disagreeing on the names of various keys, but I like to think that I would have caught these if I wasn't hung up on the data unexpectedly not persisting.
+After missing the due-date for the deliverable, I decided that the easiest path would simply be to complete the Login deliverable, and submit both at the same time.
+After all, the Login deliverable only concerns proper persistance of information, but this is everything else.
+Because of this, it should be able to grade them independantly, despite concurrent development.
 
 ## Startup Login deliverable
 ## TODO
-* TA help:
-  - registration doesn't write token to database, but login does
-  - login sets headers after sending response, but no code sets headers
 * Update Simon deployment to include database
-* Re-work dbServices.js so that connection is not closed before cursor is done being read
-* Verify that credentials behave as expected
-* Verify that authorization requirements work
-  - Visiting page directly should not crash server
+* bad poll creation request should not result in redirect
+* visiting a page that requires authorization should re-direct to landing if user is unauthorized
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup Login deliverable
 * Re-worked about 50% of the backend codebase to use callbacks since I can't opt-in to blocking function calls
 ### Additions
 * Created database for backend
 * Configured database via un-tracked JSON file
+### A note on the development timeline
+As mentioned in the coresponding note for the Service deliverable, development for this deliverable was concurrent with the Service deliverable.
+I don't anticipate this causing grading issues, as persistance of data is a (mostly) separate concern from functionality of the website and the rubrics seem rather independant of eachother.

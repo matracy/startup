@@ -10,22 +10,20 @@ class DBSingleton {
 		}
 		DBSingleton._instance = this;
 		this.client = new MongoClient(url);
-		this.connection = this.client.db(name);
 		this.client.connect();
+		this.db = this.client.db(name);
 	}
 
-	getClient() {
-		return this.client;
+	getDB() {
+		return this.db;
 	}
 }
 
 const dbInstance = new DBSingleton(dbURL, dbName);
 
 async function pingDB() {
-	const client = dbInstance.getClient();
+	const db = dbInstance.getDB();
 	try {
-		const db = client.db(dbName);
-		await client.connect();
 		await db.command({ ping: 1 });
 		console.log("Successfully pinged database.");
 	} catch (err) {
@@ -34,34 +32,33 @@ async function pingDB() {
 }
 
 function readFromDB(collection, query, resultHandler) {
-	const client = dbInstance.getClient();
+	const db = dbInstance.getDB();
 	try {
-		const db = client.db(dbName);
 		resultHandler(db.collection(collection).find(query));
 	} catch (err) {
-		conosle.log(`Error reading from database: ${err}`);
+		console.log(`Error reading from database: ${err}`);
 	}
 }
 
 function writeToDB(collection, query, update) {
-	const client = dbInstance.getClient();
+	const db = dbInstance.getDB();
 	try {
-		const db = client.db(dbName);
+		if (collection == "tokens") {
+		}
 		db.collection(collection).updateOne(query, update, { upsert: true });
+		if (collection == "tokens") {
+		}
 	} catch (err) {
-		conosle.log(`Error writing to database: ${err}`);
+		console.log(`Error writing to database: ${err}`);
 	}
 }
 
 function deleteFromDB(collection, query) {
-	const client = new MongoClient(url);
+	const db = dbInstance.getDB();
 	try {
-		const db = client.db(dbName);
 		db.collection(collection).deleteMany(query);
 	} catch (err) {
-		conosle.log(`Error deleting from database: ${err}`);
-	} finally {
-		client.close();
+		console.log(`Error deleting from database: ${err}`);
 	}
 }
 
