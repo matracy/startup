@@ -14,6 +14,7 @@ async function registerNewUser(credentials, notifyCallback) {
 async function registerPoll(opts, config, authToken, notifyCallback) {
 	config.startDate = new Date(config.startDate).getTime();
 	config.endDate = new Date(config.endDate).getTime();
+	config.maxVoters = parseInt(config.maxVoters);
 	const response = await fetch(`${baseURL}/poll/create`, {
 		method: "POST",
 		body: JSON.stringify({ options: opts, settings: config }),
@@ -78,7 +79,8 @@ async function registerToVote(registrationNumber, authToken, notifyCallback) {
 		body: JSON.stringify({ registrationNumber: registrationNumber }),
 	});
 	if (response.ok) {
-		notifyCallback(response.json.pollID);
+		const rjson = await response.json();
+		notifyCallback(rjson.pollID);
 	}
 }
 

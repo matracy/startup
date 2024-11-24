@@ -18,9 +18,11 @@ function Poll({ redirecter }) {
 	const poll = useContext(GlobalState).pollID;
 	const [options, setOptions] = useState([]);
 	useEffect(() => {
-		fetchOptions(poll, (opts) => {
-			setOptions(opts);
-		});
+		if (poll) {
+			fetchOptions(poll, (opts) => {
+				setOptions(opts);
+			});
+		}
 	}, [options]);
 
 	function submitBallot() {

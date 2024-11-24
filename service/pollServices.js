@@ -56,27 +56,26 @@ function registerToVote(registrationNumber, callback) {
 				currTime > closeDate ||
 				(!allowUnlimitedVoters && maxVoters - currentVoters <= 0)
 			) {
-				callback(undefined);
+				return callback(undefined);
 			}
 			currentVoters += 1;
 			try {
 				patchRegistrationInfo(registrationNumber, {
 					currentVoters: currentVoters,
 				});
-				callback(pollID);
+				return callback(pollID);
 			} catch (err) {
 				console.log(`Error registering to vote: ${err}`);
-				callback(undefined);
+				return callback(undefined);
 			}
 		},
 	);
 }
 
 function createPoll(options, settings) {
-	var formattedOpts = {};
+	var formattedOpts = [];
 	options.forEach((opt) => {
-		formattedOpts[opt].initialVotes = 0;
-		formattedOpts[opt].finalVotes = 0;
+		formattedOpts.push({ name: opt, initialVotes: 0, finalVotes: 0 });
 	});
 	const newPoll = {
 		id: settings.name,
@@ -85,8 +84,8 @@ function createPoll(options, settings) {
 	};
 	const registrationInfo = {
 		pollID: settings.name,
-		openDate: settings.openDate,
-		closeDate: settings.closeDate,
+		openDate: settings.startDate,
+		closeDate: settings.endDate,
 		maxVoters: settings.maxVoters,
 		currentVoters: 0,
 		allowUnlimitedVoters: settings.allowUnlimitedVoters,

@@ -88,33 +88,22 @@ pollRouter.post("/register", (req, res) => {
 	if (!token) {
 		return res.status(401).json({ message: "invalid credentials" });
 	} else {
-		const pollID = req.headers["pollid"];
-		if (!pollID) {
-			return res.status(400).json({ message: "pollID is required" });
+		const regNum = req.body["registrationNumber"];
+		if (!regNum) {
+			return res
+				.status(400)
+				.json({ message: "registration number is required" });
 		} else {
 			validateToken(token, (isValid) => {
 				if (isValid) {
-					lookupPoll(pollID, (poll) => {
-						if (!poll) {
-							return res
-								.status(404)
-								.json({ message: "no poll with matching pollID" });
-						}
-						const { registrationNumber } = req.body;
-						if (!registrationNumber) {
+					registerToVote(regNum, (unlockedPoll) => {
+						if (!unlockedPoll) {
 							return res
 								.status(400)
-								.json({ message: "registration number is required" });
+								.json({ message: "invalid registration number" });
+						} else {
+							return res.status(200).json({ pollID: unlockedPoll });
 						}
-						registerToVote(registrationNumber, (unlockedPoll) => {
-							if (!unlockedPoll) {
-								return res
-									.status(400)
-									.json({ message: "invalid registration number" });
-							} else {
-								res.status(200).json({ pollID: unlockedPoll });
-							}
-						});
 					});
 				} else {
 					return res.status(401).json({ message: "invalid credentials" });
@@ -138,13 +127,13 @@ pollRouter.post("/create", (req, res) => {
 						.status(400)
 						.json({ message: "options and settings are required" });
 				}
-				const { newPoll, registrationNumber } = createPoll(options, settings);
-				if (!newPoll || !registrationNumber) {
+				const { pollID, registrationNumber } = createPoll(options, settings);
+				if (!pollID || !registrationNumber) {
 					return res.status(500).json({ message: "could not create new poll" });
 				} else {
 					res
 						.status(200)
-						.json({ pollID: newPoll, registrationNumber: registrationNumber });
+						.json({ pollID: pollID, registrationNumber: registrationNumber });
 				}
 			} else {
 				return res.status(401).json({ message: "invalid credentials" });
