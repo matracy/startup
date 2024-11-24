@@ -18,7 +18,7 @@ function Poll({ redirecter }) {
 	const poll = useContext(GlobalState).pollID;
 	const [options, setOptions] = useState([]);
 	useEffect(() => {
-		if (poll) {
+		if (poll && options.length == 0) {
 			fetchOptions(poll, (opts) => {
 				setOptions(opts);
 			});
