@@ -12,6 +12,8 @@ async function registerNewUser(credentials, notifyCallback) {
 }
 
 async function registerPoll(opts, config, authToken, notifyCallback) {
+	config.startDate = new Date(config.startDate).getTime();
+	config.endDate = new Date(config.endDate).getTime();
 	const response = await fetch(`${baseURL}/poll/create`, {
 		method: "POST",
 		body: JSON.stringify({ opttions: opts, settings: config }),

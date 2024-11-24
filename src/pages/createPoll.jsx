@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "../datepicker.css";
 import { pollOption } from "../components/pollOption";
 import { registerPoll } from "../backendInterface";
 import { GlobalState } from "../main";
@@ -9,6 +11,9 @@ function CreatePoll({ redirecter }) {
 	if (!authToken) {
 		return <Navigate to="/" replace />;
 	}
+	const navigateTo = useNavigate();
+	const [startDate, setStartDate] = useState();
+	const [endDate, setEndDate] = useState();
 	const [options, setOptions] = useState([]);
 	const [settings, setSettings] = useState({
 		name: "My Poll",
@@ -22,13 +27,14 @@ function CreatePoll({ redirecter }) {
 		var newOpts = [...options];
 		newOpts.push(pollOptions.addOption.value);
 		setOptions(newOpts);
+		pollOptions.addOption.value = "";
 	}
 
 	function saveSettings() {
 		settings.name = pollSettings.pollName.value;
 		settings.maxVoters = pollSettings.voterCount.value;
-		settings.startDate = pollSettings.startDateTime.value;
-		settings.endDate = pollSettings.endDateTime.value;
+		settings.startDate = startDate;
+		settings.endDate = endDate;
 		settings.allowUnlimitedVoters = pollSettings.unlimitedRegistration.checked;
 		setSettings(settings);
 	}
@@ -107,19 +113,21 @@ function CreatePoll({ redirecter }) {
 				/>
 				<br />
 				<label htmlFor="startDateTime">Voting opens: </label>
-				<input
+				<DatePicker
 					className="textInput"
-					type="datetime"
 					id="startDateTime"
 					name="startDateTime"
+					selected={startDate}
+					onChange={(date) => setStartDate(date)}
 				/>
 				<br />
 				<label htmlFor="endDateTime">Voting closes: </label>
-				<input
+				<DatePicker
 					className="textInput"
-					type="datetime"
 					id="endDateTime"
 					name="endDateTime"
+					selected={endDate}
+					onChange={(date) => setEndDate(date)}
 				/>
 				<br />
 				<input className="buttonInput" type="submit" value="Apply" />
@@ -131,8 +139,6 @@ function CreatePoll({ redirecter }) {
 				onSubmit={(e) => {
 					e.preventDefault();
 					launchPoll();
-					const navigateTo = useNavigate();
-					navigateTo("/poll.html");
 				}}
 			>
 				<label htmlFor="launchConfirmation">

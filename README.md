@@ -132,6 +132,7 @@ My 3rd-party API of choice is [colormind.io], and cannot be included represented
 * Added server config to Vite
 * Set frontend to use API rather than mocks
 * Colors are now dynamicly furnished by 3rd-party API
+* Changed createPoll.jsx to use 3rd-party datepicker component library, as the native HTML type="date" wasn't working
 ### Additions
 * Created backend service endpoints
   - /api/auth
@@ -151,7 +152,6 @@ Because of this, it should be able to grade them independantly, despite concurre
 ## Startup Login deliverable
 ## TODO
 * Update Simon deployment to include database
-* bad request should not result in redirect
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup Login deliverable
 * Re-worked about 50% of the backend codebase to use callbacks since I can't opt-in to blocking function calls
