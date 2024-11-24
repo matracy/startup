@@ -150,8 +150,6 @@ After all, the Login deliverable only concerns proper persistance of information
 Because of this, it should be able to grade them independantly, despite concurrent development.
 
 ## Startup Login deliverable
-## TODO
-* Update Simon deployment to include database
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup Login deliverable
 * Re-worked about 50% of the backend codebase to use callbacks since I can't opt-in to blocking function calls

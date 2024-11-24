@@ -42,8 +42,8 @@ function getUser(token, callback) {
 }
 
 function authUser(name, providedPassword, callback) {
-	fetchUser(name, ({ password }) => {
-		if (!password || password != providedPassword) {
+	fetchUser(name, (user) => {
+		if (!user || user.password != providedPassword) {
 			callback(false);
 		} else {
 			callback(true);
