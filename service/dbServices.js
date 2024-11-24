@@ -147,7 +147,7 @@ async function fetchRegistrationInfo(registrationNumber, callback) {
 function patchRegistrationInfo(registrationNumber, newData) {
 	writeToDB(
 		"registration",
-		{ numer: registrationNumber },
+		{ number: registrationNumber },
 		{ $set: { ...newData, number: registrationNumber } },
 	);
 }

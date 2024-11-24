@@ -11,16 +11,20 @@ import { v4 } from "uuid";
 function validateToken(token, callback) {
 	// making a request with no token can result in the being called with the string "undefined", and we also want to guard against the value `undefined`
 	if (token + "" == "undefined") {
-		callback(false);
+		return callback(false);
 	} else {
-		fetchToken(token, ({ expiration }) => {
+		fetchToken(token, (response) => {
+			if (response + "" == "undefined") {
+				return callback(false);
+			}
+			const expiration = response.expiration;
 			if (!expiration || expiration < Date.now()) {
-				callback(false);
+				return callback(false);
 			}
 			if (expiration - Date.now() < 10 * 60 * 1000) {
 				patchToken(token, { expiration: Date.now() + 3600 * 1000 });
 			}
-			callback(true);
+			return callback(true);
 		});
 	}
 }
