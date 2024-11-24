@@ -56,7 +56,8 @@ async function fetchResults(pollID, notifyCallback) {
 		method: "GET",
 		headers: { pollID: pollID },
 	});
-	notifyCallback(response.json.options);
+	const rjson = await response.json();
+	notifyCallback(rjson.options);
 }
 
 async function authenticateUser(credentials, notifyCallback) {
@@ -93,7 +94,7 @@ async function fetchPolls(authToken, callback) {
 	}
 	var pollInfo = [];
 	const rjson = await response.json();
-	rjson["polls"].forEach(async (pollID) => {
+	rjson.forEach(async (pollID) => {
 		const pollResults = await fetch(`${baseURL}/poll`, {
 			method: "GET",
 			headers: { pollID: pollID },
