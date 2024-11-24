@@ -10,6 +10,13 @@ function areValuesUnique(obj) {
 	return values.length === uniqueValues.size;
 }
 
+function valueRangesAreValid(results) {
+	const values = Object.values(results);
+	return values.reduce((acc, val) => {
+		return val >= 1 && acc;
+	}, true);
+}
+
 function Poll({ redirecter }) {
 	const authToken = useContext(GlobalState).authToken;
 	if (!authToken) {
@@ -30,11 +37,11 @@ function Poll({ redirecter }) {
 		options.map((opt) => {
 			results[opt.name] = opt.rank;
 		});
-		if (areValuesUnique(results)) {
+		if (areValuesUnique(results) && valueRangesAreValid(results)) {
 			castVote(poll, results, authToken);
 			redirecter();
 		} else {
-			alert("Each option must have a unique rank.");
+			alert("Each option must have a unique rank greater than 0.");
 		}
 	}
 
