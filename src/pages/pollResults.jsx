@@ -1,10 +1,14 @@
 import { useState, useEffect, useContext } from "react";
+import { Navigate } from "react-router-dom";
 import { fetchResults } from "../backendInterface";
 import { pollResult } from "../components/pollResult";
 import { GlobalState } from "../main";
 
 function PollResults() {
 	const poll = useContext(GlobalState).pollID;
+	if (!poll) {
+		return <Navigate to="/" replace />;
+	}
 	const [resultView, setResultView] = useState("Final Votes");
 	const [results, setResults] = useState([]);
 	const [totalVotes, setTotalVotes] = useState(0);

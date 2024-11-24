@@ -40,13 +40,9 @@ async function fetchOptions(pollID, notifyCallback) {
 }
 
 async function castVote(pollID, ballot, authToken) {
-	var formattedBallot = {};
-	ballot.forEach((opt) => {
-		formattedBallot[opt] = opt.rank;
-	});
 	fetch(`${baseURL}/poll`, {
 		method: "PATCH",
-		body: JSON.stringify(formattedBallot),
+		body: JSON.stringify(ballot),
 		headers: {
 			pollID: pollID,
 			authToken: authToken,

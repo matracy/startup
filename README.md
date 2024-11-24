@@ -159,7 +159,3 @@ Because of this, it should be able to grade them independantly, despite concurre
 ### A note on the development timeline
 As mentioned in the coresponding note for the Service deliverable, development for this deliverable was concurrent with the Service deliverable.
 I don't anticipate this causing grading issues, as persistance of data is a (mostly) separate concern from functionality of the website and the rubrics seem rather independant of eachother.
-
-
-# TODO
-* When voting, options don't retain incremented status
