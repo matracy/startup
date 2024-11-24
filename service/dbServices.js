@@ -166,7 +166,8 @@ async function fetchParticipation(username, callback) {
 		{ name: username },
 		async (participationCursor) => {
 			if (await participationCursor.hasNext()) {
-				callback(await participationCursor.next());
+				const rawParticipationResult = await participationCursor.next();
+				callback(rawParticipationResult.polls);
 			} else {
 				callback(undefined);
 			}
