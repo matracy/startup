@@ -16,8 +16,8 @@ async function registerPoll(opts, config, authToken, notifyCallback) {
 	config.endDate = new Date(config.endDate).getTime();
 	const response = await fetch(`${baseURL}/poll/create`, {
 		method: "POST",
-		body: JSON.stringify({ opttions: opts, settings: config }),
-		headers: { authToken: authToken },
+		body: JSON.stringify({ options: opts, settings: config }),
+		headers: { authToken: authToken, "Content-Type": "application/json" },
 	});
 	const rjson = await response.json();
 	if (response.ok) {
@@ -32,7 +32,6 @@ async function fetchOptions(pollID, notifyCallback) {
 	});
 	var parsedOptions = [];
 	const rjson = await response.json();
-	console.log(`Poll options query produced ${JSON.stringify(rjson)}`);
 	rjson.options.forEach((opt) => {
 		parsedOptions.push({ name: opt.name, rank: 0 });
 	});
@@ -47,7 +46,11 @@ async function castVote(pollID, ballot, authToken) {
 	fetch(`${baseURL}/poll`, {
 		method: "PATCH",
 		body: JSON.stringify(formattedBallot),
-		headers: { pollID: pollID, authToken: authToken },
+		headers: {
+			pollID: pollID,
+			authToken: authToken,
+			"Content-Type": "application/json",
+		},
 	});
 }
 
@@ -71,7 +74,7 @@ async function authenticateUser(credentials, notifyCallback) {
 async function registerToVote(registrationNumber, authToken, notifyCallback) {
 	const response = await fetch(`${baseURL}/poll/register`, {
 		method: "POST",
-		headers: { authToken: authToken },
+		headers: { authToken: authToken, "Content-Type": "application/json" },
 		body: JSON.stringify({ registrationNumber: registrationNumber }),
 	});
 	if (response.ok) {
