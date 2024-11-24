@@ -9,22 +9,35 @@ function sortByValue(obj) {
 }
 
 function countVotes(ballots, validOptions) {
+	//FIXME why does this make votes[opt] undefined?
 	var votes = {};
+	console.log(
+		`Valid options for this counting cycle are ${JSON.stringify(validOptions)}`,
+	);
 	ballots.forEach((ballot) => {
-		const preferredOption = ballot.filter((opt) => {
-			opt in validOptions;
-		})[0];
+		console.log(`Filtering ballot ${JSON.stringify(ballot)}`);
+		const filteredOpts = ballot.filter((opt) => {
+			return validOptions.includes(opt);
+		});
+		console.log(`Filtered options are ${JSON.stringify(filteredOpts)}`);
+		const preferredOption = filteredOpts[0];
 		if (votes[preferredOption]) {
 			votes[preferredOption] += 1;
 		} else {
 			votes[preferredOption] = 0;
 		}
+		console.log(
+			`Set votes for ${preferredOption} to ${votes[preferredOption]}`,
+		);
 	});
 	return votes;
 }
 
 function updatePoll(poll) {
-	var options = Object.keys(poll.options);
+	var options = [];
+	poll.options.forEach((opt) => {
+		options.push(opt.name);
+	});
 	const sortedBallots = [];
 	poll.ballots.forEach((ballot) => {
 		sortedBallots.push(sortByValue(ballot));
@@ -36,10 +49,14 @@ function updatePoll(poll) {
 		finalVotes = countVotes(sortedBallots, sortByValue(finalVotes).slice(1));
 	}
 	options.forEach((opt) => {
-		poll.options[opt].initialVotes = initialVotes[opt];
-		poll.options[opt].finalVotes = finalVotes[opt];
+		console.log(
+			`Setting [${opt}] to have ${initialVotes[opt]} initial votes and ${finalVotes[opt]} final votes`,
+		);
+		poll.options[opt].initialVotes = initialVotes[opt] ? initialVotes[opt] : 0;
+		poll.options[opt].finalVotes = finalVotes[opt] ? finalVotes[opt] : 0;
 	});
-	poll.result = sortByValue(finalVotes)[1];
+	poll.result = sortByValue(finalVotes)[1]; //NOTE: least popular candidates are sorted sooner
+	console.log(`Final state of poll: ${JSON.stringify(poll)}`);
 }
 
 export { updatePoll };

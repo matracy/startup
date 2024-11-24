@@ -22,12 +22,17 @@ function getPollsVotedIn(user, callback) {
 
 function countBallot(ballot, pollID, username, callback) {
 	getPollsVotedIn(username, (pollsParticipatedIn) => {
+		console.log(
+			`pollsParticipated in is a ${typeof pollsParticipatedIn} with value ${JSON.stringify(pollsParticipatedIn)}`,
+		);
 		lookupPoll(pollID, (poll) => {
 			try {
 				pollsParticipatedIn.push(pollID);
+				console.log(`Polls participated in: ${pollsParticipatedIn}`);
 				patchParticipation(username, pollsParticipatedIn);
 				poll.ballots.push(ballot);
 				updatePoll(poll);
+				console.log(`Poll as seen by countBallot: ${JSON.stringify(poll)}`);
 				patchPoll(pollID, poll);
 				callback(true);
 			} catch (err) {

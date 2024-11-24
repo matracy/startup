@@ -181,6 +181,9 @@ function patchParticipation(username, newData) {
 		{ name: username },
 		{ $set: { ...newData, name: username } },
 	);
+	console.log(
+		`Sent patch {$set: ${JSON.stringify({ ...newData, name: username })}}`,
+	);
 }
 
 export {

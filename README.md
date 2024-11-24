@@ -148,6 +148,8 @@ There were also issues about the frontend and backend disagreeing on the names o
 After missing the due-date for the deliverable, I decided that the easiest path would simply be to complete the Login deliverable, and submit both at the same time.
 After all, the Login deliverable only concerns proper persistance of information, but this is everything else.
 Because of this, it should be able to grade them independantly, despite concurrent development.
+### Notice of out-of-order submission
+As of 23 November 2024, this deliverable is not entirely ready (see TODO section), but I don't think its incompleteness should hold back the completed Login deliverable.
 
 ## Startup Login deliverable
 ### Modifications
@@ -159,3 +161,9 @@ Because of this, it should be able to grade them independantly, despite concurre
 ### A note on the development timeline
 As mentioned in the coresponding note for the Service deliverable, development for this deliverable was concurrent with the Service deliverable.
 I don't anticipate this causing grading issues, as persistance of data is a (mostly) separate concern from functionality of the website and the rubrics seem rather independant of eachother.
+### Notice of out-of-order submission
+This deliverable is demonstratably complete - despite the fact that be backend is not entirely bug-free - so I am submitting it before it too becomes late.
+
+# TODO
+* polls should be marked as participated in (why is pollsParticipatedIn an object?)
+* counting ballots does not actually count them
