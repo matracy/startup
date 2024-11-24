@@ -2,8 +2,8 @@ function logHTTPRequestResponse(req, res, next) {
 	//simple bookkeeping
 	const endpoint = req.url;
 	const method = req.method;
-	const reqBodyHolder = req.body;
-	const reqHeadersHolder = req.headers;
+	const reqBodyHolder = JSON.stringify(req.body);
+	const reqHeadersHolder = JSON.stringify(req.headers);
 	const timestamp = Date.now();
 
 	console.log(`[${timestamp}] [${method} ${endpoint}]`);
@@ -13,7 +13,7 @@ function logHTTPRequestResponse(req, res, next) {
 	//response has been decided, thus allowing us to capture it for logging despire the middleware having already finished execution.
 
 	function injectableLogger(bodyToSend) {
-		const logMessage = `[${timestamp}] [${method} ${endpoint}]: Status ${res.statusCode}\nRequest:\n\t${JSON.stringify(reqHeadersHolder)}\n\t${JSON.stringify(reqBodyHolder)}\nResponse: ${JSON.stringify(bodyToSend)}`;
+		const logMessage = `[${timestamp}] [${method} ${endpoint}]: Status ${res.statusCode}\nRequest:\nH:\t${reqHeadersHolder}\nB:\t${reqBodyHolder}\nResponse: ${JSON.stringify(bodyToSend)}`;
 		console.log(logMessage);
 	}
 
