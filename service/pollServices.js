@@ -48,7 +48,7 @@ function registerToVote(registrationNumber, callback) {
 		if (!poll) {
 			return callback(undefined);
 		}
-		const {
+		let {
 			pollID,
 			openDate,
 			closeDate,
