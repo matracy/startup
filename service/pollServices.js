@@ -44,37 +44,38 @@ function countBallot(ballot, pollID, username, callback) {
 }
 
 function registerToVote(registrationNumber, callback) {
-	fetchRegistrationInfo(
-		registrationNumber,
-		({
+	fetchRegistrationInfo(registrationNumber, (poll) => {
+		if (!poll) {
+			return callback(undefined);
+		}
+		const {
 			pollID,
 			openDate,
 			closeDate,
 			maxVoters,
 			currentVoters,
 			allowUnlimitedVoters,
-		}) => {
-			const currTime = Date.now();
-			if (
-				!pollID ||
-				openDate > currTime ||
-				currTime > closeDate ||
-				(!allowUnlimitedVoters && maxVoters - currentVoters <= 0)
-			) {
-				return callback(undefined);
-			}
-			currentVoters += 1;
-			try {
-				patchRegistrationInfo(registrationNumber, {
-					currentVoters: currentVoters,
-				});
-				return callback(pollID);
-			} catch (err) {
-				console.log(`Error registering to vote: ${err}`);
-				return callback(undefined);
-			}
-		},
-	);
+		} = poll;
+		const currTime = Date.now();
+		if (
+			!pollID ||
+			openDate > currTime ||
+			currTime > closeDate ||
+			(!allowUnlimitedVoters && maxVoters - currentVoters <= 0)
+		) {
+			return callback(undefined);
+		}
+		currentVoters += 1;
+		try {
+			patchRegistrationInfo(registrationNumber, {
+				currentVoters: currentVoters,
+			});
+			return callback(pollID);
+		} catch (err) {
+			console.log(`Error registering to vote: ${err}`);
+			return callback(undefined);
+		}
+	});
 }
 
 function createPoll(options, settings) {
