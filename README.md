@@ -150,6 +150,7 @@ After all, the Login deliverable only concerns proper persistance of information
 Because of this, it should be able to grade them independantly, despite concurrent development.
 ### Notice of out-of-order submission
 As of 23 November 2024, this deliverable is not entirely ready (see TODO section), but I don't think its incompleteness should hold back the completed Login deliverable.
+Update: As of 26 November 2024, this portion seems to be ready.
 
 ## Startup Login deliverable
 ### Modifications
@@ -165,5 +166,6 @@ I don't anticipate this causing grading issues, as persistance of data is a (mos
 This deliverable is demonstratably complete - despite the fact that be backend is not entirely bug-free - so I am submitting it before it too becomes late.
 
 # TODO
-* polls should be marked as participated in (why is pollsParticipatedIn an object?)
-* counting ballots does not actually count them
+* Poll results page does not stop making GET requests to /api/poll
+* Poll results page does not show poll winner
+* Account home does not display list of polls participated in

@@ -45,7 +45,8 @@ function updatePoll(poll) {
 		opt.initialVotes = initialVotes[opt.name] ? initialVotes[opt.name] : 0;
 		opt.finalVotes = finalVotes[opt.name] ? finalVotes[opt.name] : 0;
 	});
-	poll.result = sortByValue(finalVotes)[1]; //NOTE: least popular candidates are sorted sooner
+	const endScores = sortByValue(finalVotes);
+	poll.result = endScores[endScores.length - 1]; //NOTE: least popular candidates are sorted sooner
 	return poll;
 }
 
