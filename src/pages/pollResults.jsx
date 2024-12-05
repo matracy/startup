@@ -17,6 +17,9 @@ function PollResults() {
 		fetchResults(poll, (res) => {
 			setResults(res);
 		});
+	}, [poll]);
+
+	useEffect(() => {
 		var votes = 0;
 		results.forEach((res) => {
 			votes += res.initialVotes;

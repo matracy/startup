@@ -164,6 +164,3 @@ As mentioned in the coresponding note for the Service deliverable, development f
 I don't anticipate this causing grading issues, as persistance of data is a (mostly) separate concern from functionality of the website and the rubrics seem rather independant of eachother.
 ### Notice of out-of-order submission
 This deliverable is demonstratably complete - despite the fact that be backend is not entirely bug-free - so I am submitting it before it too becomes late.
-
-# TODO
-* Poll results page does not stop making GET requests to /api/poll
