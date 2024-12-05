@@ -1,3 +1,5 @@
+import { pollResult } from "./components/pollResult";
+
 const baseURL = "https://stvonline.someplaceto.click/api";
 
 async function registerNewUser(credentials, notifyCallback) {
@@ -33,10 +35,16 @@ async function fetchOptions(pollID, notifyCallback) {
 	});
 	var parsedOptions = [];
 	const rjson = await response.json();
+	function countingCallback() {
+		//ensure that the callback is not fired before we finish processing the options
+		if (parsedOptions.length == rjson.options.length) {
+			notifyCallback(parsedOptions);
+		}
+	}
 	rjson.options.forEach((opt) => {
 		parsedOptions.push({ name: opt.name, rank: 0 });
+		countingCallback();
 	});
-	notifyCallback(parsedOptions);
 }
 
 async function castVote(pollID, ballot, authToken) {
@@ -94,17 +102,24 @@ async function fetchPolls(authToken, callback) {
 	}
 	var pollInfo = [];
 	const rjson = await response.json();
+	function countingCallback() {
+		//ensure that the callback is not fired before we finish processing the results
+		if (pollInfo.length == rjson.length) {
+			callback(pollInfo);
+		}
+	}
 	rjson.forEach(async (pollID) => {
 		const pollResults = await fetch(`${baseURL}/poll`, {
 			method: "GET",
 			headers: { pollID: pollID },
 		});
+		const rjson = await pollResults.json();
 		pollInfo.push({
-			name: pollResults.json.id,
-			result: pollResults.json.result,
+			name: rjson.id,
+			result: rjson.result,
 		});
+		countingCallback();
 	});
-	return callback(pollInfo);
 }
 
 async function signOut(token) {
