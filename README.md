@@ -151,6 +151,7 @@ Because of this, it should be able to grade them independantly, despite concurre
 ### Notice of out-of-order submission
 As of 23 November 2024, this deliverable is not entirely ready (see TODO section), but I don't think its incompleteness should hold back the completed Login deliverable.
 Update: As of 26 November 2024, this portion seems to be ready.
+Update: As of 05 December, this submission is finally actually ready.
 
 ## Startup Login deliverable
 ### Modifications
