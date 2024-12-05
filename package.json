@@ -4,7 +4,7 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "bash << 'END'\nsed -i 's/\\.\\/public\\//\\/home\\/cs260-builder\\/startup\\/public\\//' ./service/colorMagic.js\nsed -i 's/s:\\/\\/stvonline\\.someplaceto\\.click/:\\/\\/localhost:4000/' ./src/backendInterface.js\nvite build\nnode service/index.js & vite\nEND",
+		"dev": "bash << 'END'\nsed -i 's/\\.\\/public\\//\\/home\\/cs260-builder\\/startup\\/public\\//' ./service/colorMagic.js\nvite build\nnode service/index.js & vite\nEND",
 		"build": "vite build",
 		"lint": "eslint .",
 		"preview": "vite preview"
