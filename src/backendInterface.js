@@ -1,6 +1,6 @@
 import { pollResult } from "./components/pollResult";
 
-const baseURL = "https://stvonline.someplaceto.click/api";
+const baseURL = "/api";
 
 async function registerNewUser(credentials, notifyCallback) {
 	const response = await fetch(`${baseURL}/auth`, {
