@@ -167,4 +167,3 @@ This deliverable is demonstratably complete - despite the fact that be backend i
 
 # TODO
 * Poll results page does not stop making GET requests to /api/poll
-* Poll results page does not show poll winner

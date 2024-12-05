@@ -12,6 +12,7 @@ function PollResults() {
 	const [resultView, setResultView] = useState("Final Votes");
 	const [results, setResults] = useState([]);
 	const [totalVotes, setTotalVotes] = useState(0);
+	const [winner, setWinner] = useState("");
 	useEffect(() => {
 		fetchResults(poll, (res) => {
 			setResults(res);
@@ -21,6 +22,17 @@ function PollResults() {
 			votes += res.initialVotes;
 		});
 		setTotalVotes(votes);
+		var currWinner = results.reduce(
+			(acc, opt) => {
+				if (opt.finalVotes > acc.numVotes) {
+					return { name: opt.name, numVotes: opt.finalVotes };
+				} else {
+					return acc;
+				}
+			},
+			{ name: "", numVotes: -1 },
+		);
+		setWinner(currWinner.name);
 	}, [results]);
 
 	function toggleResultView() {
@@ -34,7 +46,7 @@ function PollResults() {
 			{/* <!-- Essentially this whole page will be stored on the server's database. --> */}
 			<p className="preTitle">The winner of this poll is:</p>
 			<br />
-			<h1 className="pollWinner">{poll.result}</h1>
+			<h1 className="pollWinner">{winner}</h1>
 			<p className="imitationButton" onClick={toggleResultView}>
 				View {resultView == "Final Votes" ? "initial votes" : "final votes"}
 			</p>
