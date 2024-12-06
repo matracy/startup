@@ -156,6 +156,7 @@ Update: As of 05 December, this submission is finally actually ready.
 ## Startup Login deliverable
 ### Modifications
 * Updated README.md to include modifications and deletions for Startup Login deliverable
+* Updated Simon deployment to Login version
 * Re-worked about 50% of the backend codebase to use callbacks since I can't opt-in to blocking function calls
 ### Additions
 * Created database for backend
@@ -165,3 +166,22 @@ As mentioned in the coresponding note for the Service deliverable, development f
 I don't anticipate this causing grading issues, as persistance of data is a (mostly) separate concern from functionality of the website and the rubrics seem rather independant of eachother.
 ### Notice of out-of-order submission
 This deliverable is demonstratably complete - despite the fact that be backend is not entirely bug-free - so I am submitting it before it too becomes late.
+
+## Startup Websocket deliverable
+### Modifications
+* Updated README.md to include modifications and deletions for Startup Websocket deliverable
+* Updated Simon deployment to include websockets
+### Additions
+
+## TODO
+* Add backend websockets
+	- listeners
+	- handlers
+	- dead connection detection and cleanup
+* Add frontend websockets
+	- Initiate connection
+	- handlers
+* Add UI to interact with websockets
+	- Input box
+	- send button
+	- response box
