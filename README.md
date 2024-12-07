@@ -175,7 +175,4 @@ This deliverable is demonstratably complete - despite the fact that be backend i
 * backend is now capable of listening for and accepting websockets
 
 ## TODO
-* Add UI to interact with websockets
-	- Input box
-	- send button
-	- response box
+* Verify functionality of new websocket features

@@ -21,6 +21,7 @@ import { Footer } from "./components/footer.jsx";
 import { signOut } from "./backendInterface.js";
 import { Logout } from "./pages/logout.jsx";
 import { CodeFloat } from "./components/codeFloat.jsx";
+import { EchoBox } from "./components/echoBox.jsx";
 
 const root = createRoot(document.getElementById("root"));
 export const GlobalState = createContext({
@@ -139,6 +140,7 @@ function AppWrapper() {
 						<Route path="*" element={<Navigate to="/" replace />} />
 					</Routes>
 				</main>
+				<EchoBox />
 				<Footer />
 			</GlobalState.Provider>
 		</>

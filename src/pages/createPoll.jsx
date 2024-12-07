@@ -66,7 +66,7 @@ function CreatePoll({ redirecter }) {
 					addOption();
 				}}
 			>
-				<label htmlFor="newOption">Add option</label>
+				<label htmlFor="addOption">Add option</label>
 				<input
 					className="textInput"
 					type="text"
