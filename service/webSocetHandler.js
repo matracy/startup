@@ -14,7 +14,6 @@ function handleWebSocket(server) {
 	wss.on("connection", (ws) => {
 		//register echo callback
 		ws.on("message", (msg) => {
-			connection.alive = true;
 			ws.send(msg);
 		});
 	});

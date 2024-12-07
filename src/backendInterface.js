@@ -1,5 +1,3 @@
-import { pollResult } from "./components/pollResult";
-
 const baseURL = "/api";
 
 async function registerNewUser(credentials, notifyCallback) {

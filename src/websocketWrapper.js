@@ -6,12 +6,6 @@ class WebsocketWrapper {
 		this.socket = new WebSocket(
 			`${protocol}://${window.location.hostname}:${port}/ws`,
 		);
-		this.socket.onopen = (event) => {
-			//pass
-		};
-		this.socket.onclose = (event) => {
-			//pass
-		};
 		this.socket.onmessage = async (msg) => {
 			this.msgCallback(JSON.parse(await msg.data.text()));
 		};
