@@ -5,21 +5,20 @@ import { authRouter } from "./authRouter.js";
 import { pollRouter } from "./pollRouter.js";
 import { userHandler } from "./userHandler.js";
 import { pingDB } from "./dbServices.js";
-
-//FOR DEBUG ONLY
-// import { logHTTPRequestResponse } from "./injectableLogger.js";
+import { handleWebSocket } from "./webSocetHandler.js";
 
 const app = express();
 
 // Allow user to specify the port
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
-//apply user-specified port setting
-app.listen(port, () => {
-	console.log(`Listening on port ${port}`);
-});
 
-//FOR DEBUG ONLY
-// app.use(logHTTPRequestResponse);
+//deal with websockets
+handleWebSocket(
+	//apply user-specified port setting
+	app.listen(port, () => {
+		console.log(`Listening on port ${port}`);
+	}),
+);
 
 // JSON body parsing
 app.use(express.json());
