@@ -172,15 +172,9 @@ This deliverable is demonstratably complete - despite the fact that be backend i
 * Updated README.md to include modifications and deletions for Startup Websocket deliverable
 * Updated Simon deployment to include websockets
 ### Additions
+* backend is now capable of listening for and accepting websockets
 
 ## TODO
-* Add backend websockets
-	- listeners
-	- handlers
-	- dead connection detection and cleanup
-* Add frontend websockets
-	- Initiate connection
-	- handlers
 * Add UI to interact with websockets
 	- Input box
 	- send button
