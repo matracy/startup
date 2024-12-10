@@ -7,9 +7,9 @@ function isSignedIn() {
 	const token = useContext(GlobalState).authToken;
 	return !(!name || !token);
 }
-const [echoResponse, setEchoResponse] = useState();
 
 function EchoBox() {
+	const [echoResponse, setEchoResponse] = useState();
 	if (isSignedIn()) {
 		var soc = useContext(GlobalState).echoSocket;
 		if (!soc) {
@@ -21,7 +21,7 @@ function EchoBox() {
 					name="EchoBox"
 					onSubmit={(e) => {
 						e.preventDefault();
-						echo();
+						soc.send(JSON.stringify(userMessage.value));
 					}}
 				>
 					<input
