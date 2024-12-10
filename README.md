@@ -173,6 +173,5 @@ This deliverable is demonstratably complete - despite the fact that be backend i
 * Updated Simon deployment to include websockets
 ### Additions
 * backend is now capable of listening for and accepting websockets
-
-## TODO
-* Verify functionality of new websocket features
+* frontend now has ability to recieve user text, send it over a websocket, and display the response
+  - NOTE: Due to the random color palette, the response may be hard to read at times, but should appear below the echo box
