@@ -1,12 +1,12 @@
-import {
+const {
 	mintToken,
 	fetchToken,
 	patchToken,
 	voidToken,
 	addUser,
 	fetchUser,
-} from "./dbServices.js";
-import { v4 } from "uuid";
+} = require("./dbServices.js");
+const { v4 } = require("uuid");
 
 function validateToken(token, callback) {
 	// making a request with no token can result in the being called with the string "undefined", and we also want to guard against the value `undefined`
@@ -59,7 +59,7 @@ function registerUser(name, password) {
 	addUser({ name: name, password: password });
 }
 
-export {
+module.exports = {
 	validateToken,
 	issueToken,
 	revokeToken,

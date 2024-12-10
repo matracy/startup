@@ -1,12 +1,12 @@
-import * as express from "express";
-import cors from "cors";
-import { validateToken, getUser } from "./authServices.js";
-import {
+const express = require("express");
+const cors = require("cors");
+const { validateToken, getUser } = require("./authServices.js");
+const {
 	lookupPoll,
 	countBallot,
 	registerToVote,
 	createPoll,
-} from "./pollServices.js";
+} = require("./pollServices.js");
 const pollRouter = express.Router();
 
 //Since we don't care about CORS but the browser does, allow everything.
@@ -142,4 +142,4 @@ pollRouter.post("/create", (req, res) => {
 	}
 });
 
-export { pollRouter };
+module.exports = { pollRouter };

@@ -1,11 +1,11 @@
-import express from "express";
-import cors from "cors";
-import { colorMagic } from "./colorMagic.js";
-import { authRouter } from "./authRouter.js";
-import { pollRouter } from "./pollRouter.js";
-import { userHandler } from "./userHandler.js";
-import { pingDB } from "./dbServices.js";
-import { handleWebSocket } from "./webSocetHandler.js";
+const express = require("express");
+const cors = require("cors");
+const { colorMagic } = require("./colorMagic.js");
+const { authRouter } = require("./authRouter.js");
+const { pollRouter } = require("./pollRouter.js");
+const { userHandler } = require("./userHandler.js");
+const { pingDB } = require("./dbServices.js");
+const { handleWebSocket } = require("./webSocetHandler.js");
 
 const app = express();
 

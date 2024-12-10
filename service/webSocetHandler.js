@@ -1,4 +1,4 @@
-import WebSocketServer from "ws";
+const { WebSocketServer } = require("ws");
 
 function handleWebSocket(server) {
 	const wss = new WebSocketServer({ backlog: 10, noServer: true });
@@ -19,4 +19,4 @@ function handleWebSocket(server) {
 	});
 }
 
-export { handleWebSocket };
+module.exports = { handleWebSocket };

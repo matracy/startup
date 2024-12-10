@@ -1,5 +1,5 @@
-import { validateToken, getUser } from "./authServices.js";
-import { getPollsVotedIn } from "./pollServices.js";
+const { validateToken, getUser } = require("./authServices.js");
+const { getPollsVotedIn } = require("./pollServices.js");
 
 function userHandler(req, res) {
 	const token = req.headers["authtoken"];
@@ -19,4 +19,4 @@ function userHandler(req, res) {
 	}
 }
 
-export { userHandler };
+module.exports = { userHandler };

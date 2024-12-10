@@ -50,4 +50,4 @@ function updatePoll(poll) {
 	return poll;
 }
 
-export { updatePoll };
+module.exports = { updatePoll };

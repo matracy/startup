@@ -28,4 +28,4 @@ function logHTTPRequestResponse(req, res, next) {
 	next();
 }
 
-export { logHTTPRequestResponse };
+moduel.exports = { logHTTPRequestResponse };

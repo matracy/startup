@@ -1,11 +1,11 @@
-import Router from "express";
-import cors from "cors";
-import {
+const { Router } = require("express");
+const cors = require("cors");
+const {
 	issueToken,
 	revokeToken,
 	authUser,
 	registerUser,
-} from "./authServices.js";
+} = require("./authServices.js");
 const authRouter = Router();
 
 //Since we don't care about CORS but the browser does, allow everything.
@@ -51,4 +51,4 @@ authRouter.delete("/", (req, res) => {
 	}
 });
 
-export { authRouter };
+module.exports = { authRouter };

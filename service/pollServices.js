@@ -1,4 +1,4 @@
-import {
+const {
 	addPoll,
 	patchPoll,
 	fetchPoll,
@@ -7,10 +7,10 @@ import {
 	addRegistrationInfo,
 	fetchParticipation,
 	patchParticipation,
-} from "./dbServices.js";
-import { v4 } from "uuid";
+} = require("./dbServices.js");
+const { v4 } = require("uuid");
 
-import { updatePoll } from "./STVMagic.js";
+const { updatePoll } = require("./STVMagic.js");
 
 function lookupPoll(pollID, callback) {
 	fetchPoll(pollID, callback);
@@ -96,4 +96,10 @@ function createPoll(options, settings) {
 	return { pollID: newPoll.id, registrationNumber: registrationNumber };
 }
 
-export { lookupPoll, countBallot, registerToVote, createPoll, getPollsVotedIn };
+module.exports = {
+	lookupPoll,
+	countBallot,
+	registerToVote,
+	createPoll,
+	getPollsVotedIn,
+};

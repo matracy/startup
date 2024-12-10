@@ -1,4 +1,4 @@
-import { writeFile } from "fs";
+const { writeFile } = require("fs");
 
 const interval = 2 * 60 * 1000; // refresh every two minutes (timing of imitation curl command showed 1.6 minute wait)
 const filename = "dynamic-colors.css";
@@ -74,4 +74,4 @@ async function colorMagic() {
 	return timer;
 }
 
-export { colorMagic };
+module.exports = { colorMagic };

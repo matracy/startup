@@ -1,7 +1,6 @@
 {
 	"name": "startup-service",
 	"private": true,
-	"type": "module",
 	"version": "0.0.0",
 	"description": "Backend service for CS 260 project",
 	"main": "index.js",
